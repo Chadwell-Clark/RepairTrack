@@ -10,10 +10,10 @@ INSERT INTO [UserProfile]
     ([Id], [FirstName], [LastName], [Email], [UserTypeId], [IsActive], [FirebaseUserId])
 VALUES
     (1, 'Foobert', 'Barbo', 'foo@bar.com', 1, 1, 'Z22j8jN9JHhSI87D1uwHqDShU5d2'),
-    (2, 'Emmaline', 'Cornfoot', 'emcornfoot@cnft.comx', 0, 1, 'f5YC7BolBdTTrdhdqHTvzpVRHZT2'),
-    (3, 'Kyle', 'Stevens', 'kyle93@comcrust.orgx', 0, 1, 'jwlVMhCQ8JfkFD5tDutEpp4hKAt2'),
-    (4, 'Frank', 'Greg', 'greg42@gmonk.comx', 0, 1, '3GkzANVnPRdZupM3k8Wti9f9H7B3'),
-    (5, 'Falcus', 'Aruman', 'aruman@talon.orgx', 0, 1, '9tULrqDsrBOqmmj8ogDsTw74MGn2')
+    (2, 'Emmaline', 'Cornfoot', 'emcornfoot@cnft.comx', 2, 1, 'f5YC7BolBdTTrdhdqHTvzpVRHZT2'),
+    (3, 'Kyle', 'Stevens', 'kyle93@comcrust.orgx', 2, 1, 'jwlVMhCQ8JfkFD5tDutEpp4hKAt2'),
+    (4, 'Frank', 'Greg', 'greg42@gmonk.comx', 2, 1, '3GkzANVnPRdZupM3k8Wti9f9H7B3'),
+    (5, 'Falcus', 'Aruman', 'aruman@talon.orgx', 2, 1, '9tULrqDsrBOqmmj8ogDsTw74MGn2')
 SET IDENTITY_INSERT [UserProfile] OFF
 
 
