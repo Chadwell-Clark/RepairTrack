@@ -74,7 +74,7 @@ GO
 -- ALTER TABLE [RepairNote] ADD FOREIGN KEY ([RepairIssueId]) REFERENCES [RepairIssue] ([Id])
 -- GO
 
--- ALTER TABLE [UserProfile] ADD FOREIGN KEY ([Id]) REFERENCES [RepairNote] ([TechId])
+-- ALTER TABLE [UserProfile] ADD FOREIGN KEY ([Id]) REFERENCES [RepairNote] ([UserProfileId])
 -- GO
 
 -- ALTER TABLE [UserTpye] ADD FOREIGN KEY ([Id]) REFERENCES [UserProfile] ([UserTypeId])
