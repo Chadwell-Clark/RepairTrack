@@ -19,7 +19,7 @@ SET IDENTITY_INSERT [UserProfile] OFF
 
 SET IDENTITY_INSERT [INVENTORY] ON
 INSERT INTO [INVENTORY]
-    ([Id], [Manufacturer], [Model], [SerialNumber], [ImageUrl], [Firmware], [InCommission])
+    ([Id], [Manufacturer], [Model], [SerialNumber], [ImageLoc], [Firmware], [InCommission])
 VALUES
     (1, 'Teletronix', 'LA - 2A Leveling Amplifier', '#39A00456', NULL, NULL, 1),
     (2, 'Neve', '1073 Mic Preamp', '59967', NULL, NULL, 1),
@@ -45,8 +45,8 @@ VALUES
 SET IDENTITY_INSERT [INVENTORY] OFF
 
 
-SET IDENTITY_INSERT [RepairIssue] ON
-INSERT INTO [RepairIssue]
+SET IDENTITY_INSERT [IssueTicket] ON
+INSERT INTO [IssueTicket]
     ([Id], [Issue], [CreateDateTime], [InventoryId], [IsResolved])
 VALUES
     (1, 'Issue One - In congue. Etiam justo. Etiam pretium iaculis justo.', '2020-01-23',  1, 1),
@@ -57,11 +57,11 @@ VALUES
     (6, 'Issue Six - Sed sagittis. Nam congue, risus semper porta volutpat', '2020-06-23',  8, 1),
     (7, 'Issue Seven - In congue. Etiam justo. Etiam pretium iaculis justo.', '2020-07-23',  2, 0),
     (8, 'Issue Eight - Sed sagittis. Nam congue, risus semper porta volutpat', '2020-08-23',  8, 0)
-SET IDENTITY_INSERT [RepairIssue] OFF
+SET IDENTITY_INSERT [IssueTicket] OFF
 
 SET IDENTITY_INSERT [RepairNote] ON
 INSERT INTO [RepairNote]
-    ([Id], [Note], [PartsNeeded], [PartsOrdered], [CreateDateTime], [RepairIssueId], [UserProfileId])
+    ([Id], [Note], [PartsNeeded], [PartsOrdered], [CreateDateTime], [IssueTicketId], [UserProfileId])
 VALUES
     (1, 'Test note ', NULL, 0, '2021-03-21', 1, 4),
     (2, 'Test note another ', NULL, 0, '2021-03-21', 2, 2),

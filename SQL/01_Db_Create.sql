@@ -1,6 +1,5 @@
 USE [master]
 
-
 IF db_id('RepairTrack') IS NULL
   CREATE DATABASE [RepairTrack]
 GO
@@ -11,6 +10,7 @@ GO
 
 DROP TABLE IF EXISTS [RepairNote];
 DROP TABLE IF EXISTS [RepairIssue];
+DROP TABLE IF EXISTS [IssueTicket];
 DROP TABLE IF EXISTS [Inventory];
 DROP TABLE IF EXISTS [UserProfile];
 DROP TABLE IF EXISTS [UserType];
@@ -27,7 +27,7 @@ CREATE TABLE [UserProfile] (
   [FirebaseUserId] varchar(28) NOT NULL,
   [FirstName] varchar(35) NOT NULL,
   [LastName] varchar(35) NOT NULL,
-  [Email] varchar(50) NOT NULL,
+  [Email] varchar(255) NOT NULL,
   [UserTypeId] int NOT NULL,
   [IsActive] bit NOT NULL DEFAULT (1),
 
@@ -43,29 +43,29 @@ CREATE TABLE [Inventory] (
   [SerialNumber] varchar(50),
   [InCommission] bit NOT NULL DEFAULT (1),
   [FirmWare] varchar(50),
-  [ImageUrl] varchar(120)
+  [ImageLoc] varchar
 )
 
-CREATE TABLE [RepairIssue] (
+CREATE TABLE [IssueTicket] (
   [Id] int PRIMARY KEY IDENTITY,
-  [Issue] nvarchar(255) NOT NULL,
+  [Issue] nvarchar(500) NOT NULL,
   [CreateDateTime] datetime NOT NULL,
   [InventoryId] int NOT NULL,
   [IsResolved] bit NOT NULL DEFAULT (0),
 
-  CONSTRAINT [FK_RepairIssue_Inventory] FOREIGN KEY ([InventoryId]) REFERENCES [Inventory] ([Id]),
+  CONSTRAINT [FK_IssueTicket_Inventory] FOREIGN KEY ([InventoryId]) REFERENCES [Inventory] ([Id]),
 )
 
 CREATE TABLE [RepairNote] (
   [Id] int PRIMARY KEY IDENTITY,
-  [Note] nvarchar(255) NOT NULL,
-  [PartsNeeded] nvarchar(255),
+  [Note] nvarchar(500) NOT NULL,
+  [PartsNeeded] nvarchar,
   [CreateDateTime] datetime NOT NULL,
-  [RepairIssueId] int NOT NULL,
+  [IssueTicketId] int NOT NULL,
   [UserProfileId] int NOT NULL,
   [PartsOrdered] int NOT NULL,
 
-  CONSTRAINT [FK_RepairNote_RepairIssue] FOREIGN KEY ([RepairIssueId]) REFERENCES [RepairIssue] ([Id]),
+  CONSTRAINT [FK_RepairNote_IssueTicket] FOREIGN KEY ([IssueTicketId]) REFERENCES [IssueTicket] ([Id]),
   CONSTRAINT [FK_RepairNote_UserProfile] FOREIGN KEY ([UserProfileId]) REFERENCES [UserProfile] ([Id])
   
 )
