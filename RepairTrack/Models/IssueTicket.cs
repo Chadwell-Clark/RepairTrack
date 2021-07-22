@@ -13,6 +13,7 @@ namespace RepairTrack.Models
         [Required]
         public int InventoryId { get; set; }
         [Required]
+        [MaxLength(500)]
         public string Issue { get; set; }
         [Required]
         public DateTime CreateDateTime { get; set; }

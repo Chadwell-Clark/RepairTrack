@@ -11,6 +11,7 @@ namespace RepairTrack.Models
         public int Id { get; set; }
 
         [Required]
+        [MaxLength(500)]
         public string Note { get; set; }
 
         public string PartsNeeded { get; set; }
