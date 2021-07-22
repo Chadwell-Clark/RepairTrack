@@ -2,21 +2,8 @@ import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import Login from "./Login";
 import Register from "./Register";
-// import Hello from "./Hello";
-// import CategoryList from "./CategoryList";
-// import CategoryForm from "./CategoryForm";
-// import UserList from "./UserList";
-// import CommentList from "./CommentList";
-// import TagList from "./TagList";
-// import TagForm from "./TagForm";
-// import CommentAddForm from "./CommentAddForm";
-// import PostList from "./PostList";
-// import MyPost from "./MyPost";
-// import PostDetails from "./PostDetail";
-// import UserDetails from "./UserDetails";
-// import PostForm from "./PostForm";
-// import DeactivatedUsers from "./DeactivatedUsers";
 import Landing from "./Landing";
+import InventoryList from "./Inventory/InventoryList";
 
 export default function ApplicationViews({ isLoggedIn, isAdmin }) {
   return (
@@ -26,8 +13,8 @@ export default function ApplicationViews({ isLoggedIn, isAdmin }) {
           {isLoggedIn ? <Landing /> : <Redirect to="/login" />}
         </Route>
 
-        <Route exact path="/tags">
-          {/* {isLoggedIn ? <TagList /> : <Redirect to="/login" />} */}
+        {/* <Route exact path="/tags">
+          
           {isLoggedIn && isAdmin ? (
             <TagList />
           ) : (
@@ -36,13 +23,13 @@ export default function ApplicationViews({ isLoggedIn, isAdmin }) {
         </Route>
 
         <Route exact path="/tags/add">
-          {/* {isLoggedIn ? <TagForm /> : <Redirect to="/login" />} */}
+         
           {isLoggedIn && isAdmin ? (
             <TagForm />
           ) : (
             [isLoggedIn && !isAdmin ? <Hello /> : <Redirect to="/login" />]
           )}
-        </Route>
+        </Route> */}
 
         <Route path="/login">
           <Login />
@@ -52,8 +39,8 @@ export default function ApplicationViews({ isLoggedIn, isAdmin }) {
           <Register />
         </Route>
 
-        <Route exact path="/category">
-          {/* {isLoggedIn ? <CategoryList /> : <Redirect to="/login" />} */}
+        {/* <Route exact path="/category">
+         
           {isLoggedIn && isAdmin ? (
             <CategoryList />
           ) : (
@@ -62,18 +49,18 @@ export default function ApplicationViews({ isLoggedIn, isAdmin }) {
         </Route>
 
         <Route path="/category/add">
-          {/* <CategoryForm /> */}
+         
           {isLoggedIn && isAdmin ? (
             <CategoryForm />
           ) : (
             [isLoggedIn && !isAdmin ? <Hello /> : <Redirect to="/login" />]
           )}
-        </Route>
+        </Route> */}
 
-        <Route exact path="/post">
-          {isLoggedIn ? <PostList /> : <Redirect to="/login" />}
+        <Route exact path="/inventory">
+          {isLoggedIn ? <InventoryList /> : <Redirect to="/login" />}
         </Route>
-        <Route path="/comment/GetByPostId/:postId(\d+)">
+        {/* <Route path="/comment/GetByPostId/:postId(\d+)">
           {isLoggedIn ? <CommentList /> : <Redirect to="/login" />}
         </Route>
         <Route path="/comment/:postId(\d+)">
@@ -88,8 +75,9 @@ export default function ApplicationViews({ isLoggedIn, isAdmin }) {
 
         <Route path="/post/:id(\d+)" exact>
           {isLoggedIn ? <PostDetails /> : <Redirect to="/login" />}
-        </Route>
-        <Route exact path="/users">
+        </Route> */}
+
+        {/* <Route exact path="/users">
           {isLoggedIn && isAdmin ? (
             <UserList />
           ) : (
@@ -109,7 +97,7 @@ export default function ApplicationViews({ isLoggedIn, isAdmin }) {
           ) : (
             [isLoggedIn && !isAdmin ? <Hello /> : <Redirect to="/login" />]
           )}
-        </Route>
+        </Route> */}
       </Switch>
     </main>
     //EXACT PATH can be used when routes begin the same

@@ -2,16 +2,14 @@ import React, { useState } from "react";
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 import { useHistory } from "react-router-dom";
 import { register } from "../modules/authManager";
-import logo1 from "../images/logo1.png";
+// import logo1 from "../images/logo1.png";
 
 export default function Register() {
   const history = useHistory();
 
   const [firstName, setFirstName] = useState();
   const [lastName, setLastName] = useState();
-  const [displayName, setDisplayName] = useState();
   const [email, setEmail] = useState();
-  const [imageLocation, setImageLocation] = useState();
   const [password, setPassword] = useState();
   const [confirmPassword, setConfirmPassword] = useState();
 
@@ -23,8 +21,6 @@ export default function Register() {
       const userProfile = {
         firstName,
         lastName,
-        displayName,
-        imageLocation,
         email,
       };
       register(userProfile, password).then(() => history.push("/"));
@@ -32,8 +28,8 @@ export default function Register() {
   };
 
   return (
-    <Form onSubmit={registerClick} className="form">
-      <img className="logo1" src={logo1} alt="logo1" />
+    <Form onSubmit={registerClick} className="form container-sm">
+      {/* <img className="logo1" src={logo1} alt="logo1" /> */}
       <fieldset className="loginform">
         <FormGroup>
           <Label htmlFor="firstName">First Name</Label>
@@ -51,14 +47,14 @@ export default function Register() {
             onChange={(e) => setLastName(e.target.value)}
           />
         </FormGroup>
-        <FormGroup>
+        {/* <FormGroup>
           <Label htmlFor="displayName">Display Name</Label>
           <Input
             id="displayName"
             type="text"
             onChange={(e) => setDisplayName(e.target.value)}
           />
-        </FormGroup>
+        </FormGroup> */}
         <FormGroup>
           <Label for="email">Email</Label>
           <Input
@@ -67,14 +63,14 @@ export default function Register() {
             onChange={(e) => setEmail(e.target.value)}
           />
         </FormGroup>
-        <FormGroup>
+        {/* <FormGroup>
           <Label htmlFor="imageLocation">Profile Image URL</Label>
           <Input
             id="imageLocation"
             type="text"
             onChange={(e) => setImageLocation(e.target.value)}
           />
-        </FormGroup>
+        </FormGroup> */}
         <FormGroup>
           <Label for="password">Password</Label>
           <Input

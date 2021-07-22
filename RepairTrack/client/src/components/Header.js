@@ -19,7 +19,7 @@ export default function Header({ isLoggedIn, isAdmin }) {
     <div>
       <Navbar color="light" light expand="md">
         <NavbarBrand tag={RRNavLink} to="/">
-          Tabloid
+          RepairTrack
         </NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
@@ -33,21 +33,25 @@ export default function Header({ isLoggedIn, isAdmin }) {
                   </NavLink>
                 </NavItem> */}
                 <NavItem>
-                  <NavLink tag={RRNavLink} to="/post">
-                    Posts
+                  <NavLink tag={RRNavLink} to="/inventory">
+                    Inventory
                   </NavLink>
                 </NavItem>
                 <NavItem>
-                  <NavLink tag={RRNavLink} className="nav-link" to="/myPost">
-                    My Posts
+                  <NavLink
+                    tag={RRNavLink}
+                    className="nav-link"
+                    to="/issuetickets"
+                  >
+                    Issue Tickets
                   </NavLink>
                 </NavItem>
-                <NavItem>
+                {/* <NavItem>
                   <NavLink tag={RRNavLink} className="nav-link" to="/post/add">
                     New Post
                   </NavLink>
-                </NavItem>
-                {isAdmin && (
+                </NavItem> */}
+                {/* {isAdmin && (
                   <>
                     <NavItem>
                       <NavLink tag={RRNavLink} to="/tags">
@@ -65,13 +69,14 @@ export default function Header({ isLoggedIn, isAdmin }) {
                       </NavLink>
                     </NavItem>
                   </>
-                )}
+                )} */}
                 <NavItem>
                   <a
                     aria-current="page"
                     className="nav-link"
                     style={{ cursor: "pointer" }}
                     onClick={logout}
+                    href="/"
                   >
                     Logout
                   </a>

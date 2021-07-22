@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using RepairTrack.Models;
 
-namespace Tabloid.Repositories
+namespace RepairTrack.Repositories
 {
     public interface IUserProfileRepository
     {

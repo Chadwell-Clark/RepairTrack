@@ -2,10 +2,11 @@
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Security.Claims;
-using Tabloid.Models;
-using Tabloid.Repositories;
+using RepairTrack.Models;
+using RepairTrack.Repositories;
 
-namespace Tabloid.Controllers
+
+namespace RepairTrack.Controllers
 {
     [Authorize]
     [Route("api/[controller]")]
@@ -60,17 +61,17 @@ namespace Tabloid.Controllers
             return Ok(currentUserProfile.UserType);
         }
 
-        [HttpGet("Deactivated")]
-        public IActionResult GetAllDeactivatedUsers()
-        {
-            return Ok(_userProfileRepository.GetAllDeactivated());
-        }
+        //[HttpGet("Deactivated")]
+        //public IActionResult GetAllDeactivatedUsers()
+        //{
+        //    return Ok(_userProfileRepository.GetAllDeactivated());
+        //}
 
         [HttpPost]
         public IActionResult Post(UserProfile userProfile)
         {
-            userProfile.CreateDateTime = DateTime.Now;
-            userProfile.UserTypeId = UserType.AUTHOR_ID;
+            
+            userProfile.UserTypeId = UserType.TECHNICIAN_ID;
             userProfile.IsActive = true;
             _userProfileRepository.Add(userProfile);
             return CreatedAtAction(

@@ -5,7 +5,7 @@ using RepairTrack.Utils;
 using Microsoft.Data.SqlClient;
 using RepairTrack.Repositories;
 
-namespace Tabloid.Repositories
+namespace RepairTrack.Repositories
 {
     public class UserProfileRepository : BaseRepository, IUserProfileRepository
     {
@@ -109,8 +109,8 @@ namespace Tabloid.Repositories
                     cmd.CommandText = @"INSERT INTO UserProfile (FirebaseUserId, FirstName, LastName, 
                                                                  Email, UserTypeId, IsActive)
                                         OUTPUT INSERTED.ID
-                                        VALUES (@FirebaseUserId, @FirstName, @LastName, @DisplayName, 
-                                                @Email, @CreateDateTime, @ImageLocation, @UserTypeId, @IsActive)";
+                                        VALUES (@FirebaseUserId, @FirstName, @LastName,  
+                                                @Email,   @UserTypeId, @IsActive)";
                     DbUtils.AddParameter(cmd, "@FirebaseUserId", userProfile.FirebaseUserId);
                     DbUtils.AddParameter(cmd, "@FirstName", userProfile.FirstName);
                     DbUtils.AddParameter(cmd, "@LastName", userProfile.LastName);
