@@ -27,5 +27,17 @@ namespace RepairTrack.Controllers
         {
             return Ok(_inventoryRepository.GetAll());
         }
+
+        [HttpGet("{id}")]
+        public IActionResult GetInventoryById(int id)
+        {
+            var inventory = _inventoryRepository.GetById(id);
+            if (inventory == null)
+            {
+                return NotFound();
+            }
+            return Ok(inventory);
+        }
     }
+
 }
