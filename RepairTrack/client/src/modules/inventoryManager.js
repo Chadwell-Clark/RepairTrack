@@ -1,6 +1,6 @@
 import { getToken } from "./authManager";
 
-const apiUrl = "/api/inventory";
+const apiUrl = "/api/Inventory";
 
 export const getAllInventory = () => {
   return getToken().then((token) => {

@@ -21,7 +21,7 @@ namespace RepairTrack.Models
         public string SerialNumber{get;set;}
 
         [MaxLength(50)]
-        public string Firmware{ get; set; }
+        public string FirmWare{ get; set; }
 
         public string ImageLoc{ get; set; }
 
