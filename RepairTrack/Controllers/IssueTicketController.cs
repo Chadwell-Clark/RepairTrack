@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using RepairTrack.Models;
 using RepairTrack.Repositories;
 using System;
 using System.Collections.Generic;
@@ -22,14 +23,15 @@ namespace RepairTrack.Controllers
             _issueTicketRepository = issueTicketRepository;
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("GetByInventoryId/{id}")]
 
         public IActionResult GetIssueTicketsById(int id)
         {
             var issueTickets = _issueTicketRepository.GetAllIssueTicketsByInventoryId(id);
             if (issueTickets == null)
             {
-                return NotFound();
+                issueTickets = new List<IssueTicket>();
+                return Ok(issueTickets);
             }
             return Ok(issueTickets);
 
