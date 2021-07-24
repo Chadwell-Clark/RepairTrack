@@ -64,7 +64,7 @@ namespace RepairTrack.Repositories
                 {
                     cmd.CommandText = @"
                           SELECT Id, Manufacturer, 
-                                Model, SerialNumber, FirmWare, ImageLoc
+                                Model, SerialNumber, FirmWare, ImageLoc, InCommission
                               
                             FROM Inventory 
                            
@@ -83,7 +83,8 @@ namespace RepairTrack.Repositories
                             Model = DbUtils.GetString(reader, "Model"),
                             SerialNumber = DbUtils.GetString(reader, "SerialNumber"),
                             FirmWare = DbUtils.GetString(reader, "FirmWare"),
-                            ImageLoc = DbUtils.GetString(reader, "ImageLoc")
+                            ImageLoc = DbUtils.GetString(reader, "ImageLoc"),
+                            InCommission = DbUtils.GetBoolean(reader, "InCommission")
                         };
                         reader.Close();
 

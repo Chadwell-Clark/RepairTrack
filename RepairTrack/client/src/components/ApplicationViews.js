@@ -4,6 +4,8 @@ import Login from "./Login";
 import Register from "./Register";
 import Landing from "./Landing";
 import InventoryList from "./Inventory/InventoryList";
+import InventoryDetail from "./Inventory/InventoryDetail";
+import IssueTicketList from "./IssueTicket/IssueTicketList";
 
 export default function ApplicationViews({ isLoggedIn, isAdmin }) {
   return (
@@ -60,10 +62,10 @@ export default function ApplicationViews({ isLoggedIn, isAdmin }) {
         <Route exact path="/inventory">
           {isLoggedIn ? <InventoryList /> : <Redirect to="/login" />}
         </Route>
-        {/* <Route path="/comment/GetByPostId/:postId(\d+)">
-          {isLoggedIn ? <CommentList /> : <Redirect to="/login" />}
+        <Route path="/inventory/:id(\d+)">
+          {isLoggedIn ? <InventoryDetail /> : <Redirect to="/login" />}
         </Route>
-        <Route path="/comment/:postId(\d+)">
+        {/* <Route path="/comment/:postId(\d+)">
           <CommentAddForm />
         </Route>
         <Route exact path="/myPost">

@@ -28,7 +28,7 @@ const Inventory = ({ inventory }) => {
         <Button
           color="primary"
           tag={Link}
-          to={`/`}
+          to={`/inventory/${inventory.id}`}
           //   type="submit"
           //   onClick={handleClick}
         >
