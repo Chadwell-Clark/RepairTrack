@@ -15,9 +15,7 @@ namespace RepairTrack.Controllers
     [ApiController]
     public class IssueTicketController : ControllerBase
     {
-
         private readonly IIssueTicketRepository _issueTicketRepository;
-
         public IssueTicketController(IIssueTicketRepository issueTicketRepository)
         {
             _issueTicketRepository = issueTicketRepository;

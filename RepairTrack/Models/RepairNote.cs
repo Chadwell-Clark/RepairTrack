@@ -27,5 +27,7 @@ namespace RepairTrack.Models
 
         [Required]
         public bool PartsOrdered { get; set; }
+
+        public UserProfile UserProfile { get; set; }
     }
 }
