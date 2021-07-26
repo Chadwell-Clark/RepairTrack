@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using RepairTrack.Models;
 using System;
 using System.Collections.Generic;
+using RepairTrack.Repositories;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -19,12 +20,7 @@ namespace RepairTrack.Controllers
         {
             _repairNoteRepository = repairNoteRepository;
         }
-        // GET: api/<RepairNoteController>
-        [HttpGet]
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
+        
 
         // GET api/<RepairNoteController>/5
         [HttpGet("GetByIssueTicketId/{id}")]
@@ -39,22 +35,6 @@ namespace RepairTrack.Controllers
             return Ok(repairNotes);
         }
 
-        // POST api/<RepairNoteController>
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
-        }
-
-        // PUT api/<RepairNoteController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE api/<RepairNoteController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
+       
     }
 }

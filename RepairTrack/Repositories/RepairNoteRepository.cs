@@ -24,7 +24,7 @@ namespace RepairTrack.Repositories
                         up.FirstName, up.LastName
                             FROM RepairNote rn
                            LEFT JOIN IssueTicket it ON it.Id = rn.IssueTicketId
-                           LEFT JOIN UserProfile ul ON ul.id = rn.UserProfileId
+                           LEFT JOIN UserProfile up ON up.id = rn.UserProfileId
                            WHERE it.Id = @issueTicketId
                         
                     ";
@@ -41,7 +41,7 @@ namespace RepairTrack.Repositories
                             CreateDateTime = DbUtils.GetDateTime(reader, "CreateDateTime"),
                             IssueTicketId = DbUtils.GetInt(reader, "IssueTicketId"),
                             UserProfileId = DbUtils.GetInt(reader, "UserProfileId"),
-                            PartsOrdered = DbUtils.GetBoolean(reader, "PartsOrdered"),
+                            PartsOrdered = DbUtils.GetInt(reader, "PartsOrdered"),
                             UserProfile = new UserProfile()
                             {
                                 FirstName = DbUtils.GetString(reader, "FirstName"),
