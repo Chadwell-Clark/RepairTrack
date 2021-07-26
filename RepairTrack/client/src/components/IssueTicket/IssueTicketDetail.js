@@ -1,20 +1,21 @@
 import React, { useState, useEffect } from "react";
-import { getInventoryById } from "../../modules/inventoryManager";
 import { Button, Table, Card } from "reactstrap";
 import { Link, useParams } from "react-router-dom";
-import { getIssueTicketsByInventoryId } from "../../modules/issueTicketManager";
-import IssueTicketList from "../IssueTicket/IssueTicketList";
+import { getIssueandInventoryByIssueTicketId } from "../../modules/issueTicketManager";
+import RepairNotesList from "../RepairNote/RepairNoteList";
 
 const IssueTicketDetail = () => {
-  const [issueTicketItem, setIssueTicketItem] = useState([]);
+  const [issueTicket, setIssueTicket] = useState({});
 
   const { id } = useParams();
+  console.log(id);
 
   useEffect(() => {
-    getIssueandInventoryByIssueTicketId(id).then(setIssueTicketItem);
+    getIssueandInventoryByIssueTicketId(id).then(setIssueTicket);
   }, [id]);
+  console.log("setissue", issueTicket);
 
-  if (!issueTicketItem) {
+  if (!issueTicket) {
     return null;
   }
 
@@ -26,20 +27,21 @@ const IssueTicketDetail = () => {
             IssueTicket# <strong>{issueTicket.id}</strong>
           </h3>{" "}
           <h3 className="col">
-            Manufacturer:{" "}
-            <strong>{issueTicketItem.inventory.manufacturer}</strong>
+            Manufacturer: <strong>{issueTicket.inventory?.manufacturer}</strong>
           </h3>
           <h3 className="col">
-            Model: <strong>{issueTicketItem.inventory.model}</strong>
+            Model: <strong>{issueTicket.inventory?.model}</strong>
           </h3>
           <div className="col">Image goes here</div>
           <h3>
             Serial Number:{" "}
-            <strong>{issueTicketItem.inventory.serailNumber}</strong>
+            <strong>{issueTicket.inventory?.serialNumber}</strong>
           </h3>
         </div>
       </Card>
-      <RepairNotesList issueTicketId={id} issueTicketItem={issueTicketItem} />
+      {issueTicket.id !== undefined ? (
+        <RepairNotesList issueTicket={issueTicket} />
+      ) : null}
     </div>
   );
 };

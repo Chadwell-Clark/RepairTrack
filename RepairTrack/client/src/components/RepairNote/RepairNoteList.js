@@ -1,25 +1,21 @@
 import React, { useState, useEffect } from "react";
-import { getRepairNotessByIssueTicketId } from "../../modules/repairNoteManager";
-import { Button, Table } from "reactstrap";
-import { Link } from "react-router-dom";
+import { getRepairNotesByIssueTicketId } from "../../modules/repairNoteManager";
+// import { Button, Table } from "reactstrap";
+import { Link, useParams } from "react-router-dom";
 import RepairNote from "./RepairNote";
 
-const RepairNoteList = ({ issueTicketId, issueTicketItem }) => {
-  const [repairNotess, setRepairNotes] = useState([]);
-
-  //   const getIssueTicket = () => {
-  //     getAllIssueTicket().then((res) => setIssueTicket(res));
-  //   };
-
+const RepairNoteList = ({ issueTicket }) => {
+  const [repairNotes, setRepairNotes] = useState([]);
+  const { id } = useParams();
   useEffect(() => {
-    getRepairNotesByIssueTicketId(issueTicketId).then(setRepairNotes);
+    getRepairNotesByIssueTicketId(issueTicket.id).then(setRepairNotes);
   }, []);
 
-  if (repairNotes.length == 0) {
+  if (repairNotes.length === 0 || repairNotes === null) {
     return (
       <div>
         <h3>
-          {`There are no Repair Notes for ${issueTicketItem.Id} ${issueTicketItem.model} Serial # : ${issueTicketItem.serialNumber}`}{" "}
+          {`There are no Repair Notes for IssueTicket #${issueTicket.id} ${issueTicket.inventory?.manufacturer} ${issueTicket.inventory?.model} Serial # ${issueTicket.inventory?.serialNumber}`}{" "}
         </h3>
       </div>
     );
@@ -28,7 +24,7 @@ const RepairNoteList = ({ issueTicketId, issueTicketItem }) => {
   return (
     <div>
       <h4>RepairNotes</h4>
-      {repairNotess.map((item) => (
+      {repairNotes.map((item) => (
         <RepairNote repairNote={item} key={item.id} />
       ))}
     </div>
