@@ -19,5 +19,7 @@ namespace RepairTrack.Models
         public DateTime CreateDateTime { get; set; }
         [Required]
         public bool IsResolved { get; set; }
+
+        public Inventory Inventory { get; set; }
     }
 }

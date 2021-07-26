@@ -35,7 +35,7 @@ namespace RepairTrack.Controllers
 
         }
 
-        [HttpGet("id")]
+        [HttpGet("{id}")]
         public IActionResult GetIssueTicketById(int id)
         {
             var issueTicket = _issueTicketRepository.GetIssueTicketById(id);
