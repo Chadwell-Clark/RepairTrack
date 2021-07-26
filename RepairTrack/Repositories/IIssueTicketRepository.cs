@@ -6,5 +6,7 @@ namespace RepairTrack.Repositories
     public interface IIssueTicketRepository
     {
         List<IssueTicket> GetAllIssueTicketsByInventoryId(int inventoryId);
+
+        IssueTicket GetIssueTicketById(int issueTicketId);
     }
 }

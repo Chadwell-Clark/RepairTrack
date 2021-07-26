@@ -9,6 +9,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using RepairTrack.Controllers;
 using RepairTrack.Repositories;
 using System;
 using System.Collections.Generic;
@@ -75,6 +76,7 @@ namespace RepairTrack
             services.AddTransient<IUserProfileRepository, UserProfileRepository>();
             services.AddTransient<IInventoryRepository, InventoryRepository>();
             services.AddTransient<IIssueTicketRepository, IssueTicketRepository>();
+            services.AddTransient<IRepairNoteRepository, RepairNoteRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -5,7 +5,7 @@ import Register from "./Register";
 import Landing from "./Landing";
 import InventoryList from "./Inventory/InventoryList";
 import InventoryDetail from "./Inventory/InventoryDetail";
-import IssueTicketList from "./IssueTicket/IssueTicketList";
+import IssueTicketDetail from "./IssueTicket/IssueTicketDetail";
 
 export default function ApplicationViews({ isLoggedIn, isAdmin }) {
   return (
@@ -65,10 +65,10 @@ export default function ApplicationViews({ isLoggedIn, isAdmin }) {
         <Route path="/inventory/:id(\d+)">
           {isLoggedIn ? <InventoryDetail /> : <Redirect to="/login" />}
         </Route>
-        {/* <Route path="/comment/:postId(\d+)">
-          <CommentAddForm />
+        <Route path="/IssueTicket/:id(\d+)">
+          {isLoggedIn ? <IssueTicketDetail /> : <Redirect to="/login" />}
         </Route>
-        <Route exact path="/myPost">
+        {/* <Route exact path="/myPost">
           {isLoggedIn ? <MyPost /> : <Redirect to="/login" />}
         </Route>
         <Route path="/post/add">

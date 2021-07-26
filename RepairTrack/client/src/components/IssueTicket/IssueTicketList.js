@@ -1,15 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { getIssueTicketsByInventoryId } from "../../modules/issueTicketManager";
-import { Button, Table } from "reactstrap";
-import { Link } from "react-router-dom";
+// import { Button, Table } from "reactstrap";
+// import { Link } from "react-router-dom";
 import IssueTicket from "./IssueTicket";
 
 const IssueTicketList = ({ inventoryId, inventoryItem }) => {
   const [issueTickets, setIssueTickets] = useState([]);
-
-  //   const getIssueTicket = () => {
-  //     getAllIssueTicket().then((res) => setIssueTicket(res));
-  //   };
 
   useEffect(() => {
     getIssueTicketsByInventoryId(inventoryId).then(setIssueTickets);

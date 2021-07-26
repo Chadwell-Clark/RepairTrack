@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using RepairTrack.Models;
+using Microsoft.AspNetCore.Http;
 using RepairTrack.Repositories;
 using System;
 using System.Collections.Generic;
@@ -15,9 +15,7 @@ namespace RepairTrack.Controllers
     [ApiController]
     public class IssueTicketController : ControllerBase
     {
-
         private readonly IIssueTicketRepository _issueTicketRepository;
-
         public IssueTicketController(IIssueTicketRepository issueTicketRepository)
         {
             _issueTicketRepository = issueTicketRepository;
@@ -37,23 +35,17 @@ namespace RepairTrack.Controllers
 
         }
 
-        //[HttpGet]
-        //public IActionResult GetAllInventory()
-        //{
-        //    return Ok(_issueTicketRepository.GetAll());
-        //}
+        [HttpGet("{id}")]
+        public IActionResult GetIssueTicketById(int id)
+        {
+            var issueTicket = _issueTicketRepository.GetIssueTicketById(id);
+            if (issueTicket == null)
+            {
+                return NotFound();
+            }
+            return Ok(issueTicket);
+        }
 
-        //[HttpGet("{id}")]
-        //public IActionResult GetInventoryById(int id)
-        //{
-        //    var issueTicket = _issueTicketRepository.GetById(id);
-        //    if (issueTicket == null)
-        //    {
-        //        return NotFound();
-        //    }
-        //    return Ok(issueTicket);
-        //}
     }
-
 }
 
