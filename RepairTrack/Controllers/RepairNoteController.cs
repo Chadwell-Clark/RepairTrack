@@ -35,6 +35,17 @@ namespace RepairTrack.Controllers
             return Ok(repairNotes);
         }
 
-       
+        [HttpGet("{id}")]
+        public IActionResult GetRepairNoteById(int id)
+        {
+            var repairNote = _repairNoteRepository.GetRepairNoteById(id);
+            if (repairNote == null)
+            {
+                return NotFound();
+            }
+            return Ok(repairNote);
+        }
+
+
     }
 }

@@ -34,7 +34,7 @@ const RepairNote = ({ repairNote }) => {
                   className=""
                   color="primary"
                   tag={Link}
-                  to={`/inventory`}
+                  to={`/repairNote/${repairNote.id}`}
                   //   type="submit"
                   //   onClick={handleClick}
                 >

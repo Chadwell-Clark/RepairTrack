@@ -6,6 +6,7 @@ import Landing from "./Landing";
 import InventoryList from "./Inventory/InventoryList";
 import InventoryDetail from "./Inventory/InventoryDetail";
 import IssueTicketDetail from "./IssueTicket/IssueTicketDetail";
+import RepairNoteDetail from "./RepairNote/RepairNoteDetail";
 
 export default function ApplicationViews({ isLoggedIn, isAdmin }) {
   return (
@@ -65,13 +66,13 @@ export default function ApplicationViews({ isLoggedIn, isAdmin }) {
         <Route path="/inventory/:id(\d+)">
           {isLoggedIn ? <InventoryDetail /> : <Redirect to="/login" />}
         </Route>
-        <Route path="/IssueTicket/:id(\d+)">
+        <Route path="/issueTicket/:id(\d+)">
           {isLoggedIn ? <IssueTicketDetail /> : <Redirect to="/login" />}
         </Route>
-        {/* <Route exact path="/myPost">
-          {isLoggedIn ? <MyPost /> : <Redirect to="/login" />}
+        <Route path="/repairNote/:id(\d+)">
+          {isLoggedIn ? <RepairNoteDetail /> : <Redirect to="/login" />}
         </Route>
-        <Route path="/post/add">
+        {/* <Route path="/post/add">
           {isLoggedIn ? <PostForm /> : <Redirect to="/login" />}
         </Route>
 

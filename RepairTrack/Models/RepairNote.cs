@@ -29,5 +29,7 @@ namespace RepairTrack.Models
         public int PartsOrdered { get; set; }
 
         public UserProfile UserProfile { get; set; }
+
+        public IssueTicket IssueTicket { get; set; }
     }
 }
