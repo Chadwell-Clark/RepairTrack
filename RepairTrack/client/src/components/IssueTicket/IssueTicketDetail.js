@@ -4,16 +4,18 @@ import { Link, useParams } from "react-router-dom";
 import { getIssueandInventoryByIssueTicketId } from "../../modules/issueTicketManager";
 import RepairNotesList from "../RepairNote/RepairNoteList";
 
-const IssueTicketDetail = () => {
+const IssueTicketDetail = ({ setIssueId }) => {
   const [issueTicket, setIssueTicket] = useState({});
 
   const { id } = useParams();
-  console.log(id);
+  //   console.log(id);
+  //   setIssueId(id);
 
   useEffect(() => {
     getIssueandInventoryByIssueTicketId(id).then(setIssueTicket);
+    setIssueId(id);
   }, [id]);
-  console.log("setissue", issueTicket);
+  //   console.log("setissue", issueTicket);
 
   if (!issueTicket) {
     return null;

@@ -21,5 +21,13 @@ namespace RepairTrack.Models
         public bool IsResolved { get; set; }
 
         public Inventory Inventory { get; set; }
+
+        public string DateCreated
+        {
+            get
+            {
+                return CreateDateTime.ToString("MM/dd/yyyy h:mm tt");
+            }
+        }
     }
 }

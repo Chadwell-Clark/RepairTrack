@@ -17,7 +17,7 @@ const RepairNote = ({ repairNote }) => {
             </div>
             <div className="col-md-4">
               <h4 className="text-center">
-                CreationDate: <strong>{repairNote.createDateTime}</strong>
+                CreationDate: <strong>{repairNote.dateCreated}</strong>
               </h4>
             </div>
           </div>
@@ -34,7 +34,7 @@ const RepairNote = ({ repairNote }) => {
                   className=""
                   color="primary"
                   tag={Link}
-                  to={`/inventory`}
+                  to={`/repairNote/${repairNote.id}`}
                   //   type="submit"
                   //   onClick={handleClick}
                 >

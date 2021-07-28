@@ -61,6 +61,13 @@ namespace RepairTrack.Controllers
             return Ok(currentUserProfile.UserType);
         }
 
+        [HttpGet("GetCurrentUser")]
+        public IActionResult GetCurrentUser()
+        {
+            var currentUserProfile = GetCurrentUserProfile();
+            return Ok(currentUserProfile);
+        }
+
         //[HttpGet("Deactivated")]
         //public IActionResult GetAllDeactivatedUsers()
         //{
