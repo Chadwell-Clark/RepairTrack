@@ -32,6 +32,7 @@ namespace RepairTrack.Models
 
         public IssueTicket IssueTicket { get; set; }
 
+        //Calculated Property
         public string DateCreated
         {
             get

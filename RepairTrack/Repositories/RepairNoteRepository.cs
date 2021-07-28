@@ -156,6 +156,38 @@ namespace RepairTrack.Repositories
             }
         }
 
+        public void Edit(RepairNote repairNote)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"
+                        UPDATE RepairNote 
+                            SET     Note =@Note, 
+                                    PartsNeeded = @PartsNeeded, 
+                                    CreateDateTime =  @CreateDateTime,
+                                    IssueTicketId = @IssueTicketId, 
+                                    UserProfileId = @UserProfileId, 
+                                    PartsOrdered = @PartsOrdered
+                            WHERE id = @id";
+
+                    DbUtils.AddParameter(cmd, "@Note", repairNote.Note);
+                    DbUtils.AddParameter(cmd, "@PartsNeeded", repairNote.PartsNeeded);
+                    DbUtils.AddParameter(cmd, "@CreateDateTime", repairNote.CreateDateTime);
+                    DbUtils.AddParameter(cmd, "@IssueTicketId", repairNote.IssueTicketId);
+                    DbUtils.AddParameter(cmd, "@UserProfileId", repairNote.UserProfileId);
+                    DbUtils.AddParameter(cmd, "@PartsOrdered", repairNote.PartsOrdered);
+                    DbUtils.AddParameter(cmd, "@Id", repairNote.Id);
+
+                    cmd.ExecuteNonQuery();
+                }
+
+                conn.Close();
+            }
+        }
+
 
     }
 }

@@ -10,5 +10,9 @@ namespace RepairTrack.Controllers
         RepairNote GetRepairNoteById(int repairNoteId);
 
         int  Add(RepairNote repairNote);
+
+
+        void Edit(RepairNote repairNote);
+
     }
 }

@@ -61,6 +61,17 @@ namespace RepairTrack.Controllers
             return Ok(id);
         }
 
+        [HttpPut("{id}")]
+        public IActionResult RepairNote(int id, RepairNote repairNote)
+        {
+            if (id != repairNote.Id)
+            {
+                return BadRequest();
+            }
+            _repairNoteRepository.Update(repairNote);
+            return Ok(repairNote);
+        }
+
 
     }
 }

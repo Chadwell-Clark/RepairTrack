@@ -8,6 +8,7 @@ import InventoryDetail from "./Inventory/InventoryDetail";
 import IssueTicketDetail from "./IssueTicket/IssueTicketDetail";
 import RepairNoteDetail from "./RepairNote/RepairNoteDetail";
 import RepairNoteForm from "./RepairNote/RepairNoteForm";
+import RepairNoteEdit from "./RepairNote/RepairNoteEdit";
 
 export default function ApplicationViews({ isLoggedIn, isAdmin }) {
   const [issueId, setIssueId] = useState(0);
@@ -46,6 +47,13 @@ export default function ApplicationViews({ isLoggedIn, isAdmin }) {
         <Route path="/repairNote/add">
           {isLoggedIn ? (
             <RepairNoteForm issueId={issueId} />
+          ) : (
+            <Redirect to="/login" />
+          )}
+        </Route>
+        <Route path="/repairNote/edit/:id(\d+)">
+          {isLoggedIn ? (
+            <RepairNoteEdit issueId={issueId} />
           ) : (
             <Redirect to="/login" />
           )}

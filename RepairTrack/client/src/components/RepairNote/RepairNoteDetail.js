@@ -31,7 +31,7 @@ const RepairNoteDetail = () => {
         <CardBody>
           <div className="row align-items-start">
             <h4 className="col">
-              IssueTicket# <strong>{repairNote.issueTicket?.id}</strong>
+              IssueTicket # <strong>{repairNote.issueTicket?.id}</strong>
             </h4>{" "}
             <h4 className="col">
               Manufacturer:{" "}
@@ -103,7 +103,7 @@ const RepairNoteDetail = () => {
               className="col"
               color="warning"
               tag={Link}
-              to={`/repairNote`}
+              to={`/repairNote/edit/${repairNote.id}`}
               //   type="submit"
               //   onClick={handleClick}
             >

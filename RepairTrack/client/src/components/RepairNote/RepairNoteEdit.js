@@ -66,7 +66,7 @@ const RepairNoteEdit = ({ issueId }) => {
         <CardBody>
           <div className="row align-items-start">
             <h5 className="col">
-              IssueTicket# <strong>{issueTicket?.id}</strong>
+              IssueTicket # <strong>{issueTicket?.id}</strong>
             </h5>{" "}
             <h5 className="col">
               Manufacturer:{" "}
@@ -146,7 +146,7 @@ const RepairNoteEdit = ({ issueId }) => {
                   type="submit"
                   onClick={handleClick}
                 >
-                  Save Repair Note
+                  Save Repair Note Edit
                 </Button>
               </Col>
             </FormGroup>
