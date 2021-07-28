@@ -46,6 +46,17 @@ namespace RepairTrack.Controllers
             return Ok(repairNote);
         }
 
+        [HttpGet("GetRepairNote/{id}")]
+        public IActionResult GetRepairNote(int id)
+        {
+            var repairNote = _repairNoteRepository.GetRepairNote(id);
+            if (repairNote == null)
+            {
+                return NotFound();
+            }
+            return Ok(repairNote);
+        }
+
         [HttpPost]
         public IActionResult Repairnote(RepairNote  repairNote)
         { 
@@ -59,6 +70,24 @@ namespace RepairTrack.Controllers
             var id = _repairNoteRepository.Add(repairNote);
 
             return Ok(id);
+        }
+
+        [HttpPut("{id}")]
+        public IActionResult RepairNote(int id, RepairNote repairNote)
+        {
+            if (id != repairNote.Id)
+            {
+                return BadRequest();
+            }
+            _repairNoteRepository.Update(repairNote);
+            return Ok(repairNote);
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            _repairNoteRepository.Delete(id);
+            return NoContent();
         }
 
 

@@ -24,9 +24,6 @@ const RepairNoteForm = ({ issueId }) => {
   const [issueTicket, setIssueTicket] = useState({});
   const [currentUser, setCurrentUser] = useState({});
   const [repairNote, setRepairNote] = useState(newRepairNote);
-  //   const [note, setNote] = useState();
-  //   const [partsNeeded, setPartsNeeded] = useState();
-  //   const [partsOrdered, setPartsOrdered] = useState();
   const history = useHistory();
 
   const handleChange = (e) => {
@@ -66,7 +63,7 @@ const RepairNoteForm = ({ issueId }) => {
         <CardBody>
           <div className="row align-items-start">
             <h5 className="col">
-              IssueTicket# <strong>{issueTicket?.id}</strong>
+              IssueTicket # <strong>{issueTicket?.id}</strong>
             </h5>{" "}
             <h5 className="col">
               Manufacturer:{" "}

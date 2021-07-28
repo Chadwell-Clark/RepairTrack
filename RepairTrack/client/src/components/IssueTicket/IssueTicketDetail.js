@@ -25,20 +25,24 @@ const IssueTicketDetail = ({ setIssueId }) => {
     <div className="container">
       <Card>
         <div className="row align-items-start">
-          <h3 className="col">
+          <h5 className="col">
             IssueTicket# <strong>{issueTicket.id}</strong>
-          </h3>{" "}
-          <h3 className="col">
-            Manufacturer: <strong>{issueTicket.inventory?.manufacturer}</strong>
-          </h3>
-          <h3 className="col">
-            Model: <strong>{issueTicket.inventory?.model}</strong>
-          </h3>
+          </h5>{" "}
+          <h5 className="col">
+            {/* Manufacturer:  */}
+            <strong>{issueTicket.inventory?.manufacturer}</strong>
+          </h5>
+          <h5 className="col">
+            {/* Model:  */}
+            <strong>{issueTicket.inventory?.model}</strong>
+          </h5>
           <div className="col">Image goes here</div>
-          <h3>
-            Serial Number:{" "}
-            <strong>{issueTicket.inventory?.serialNumber}</strong>
-          </h3>
+          <h5>
+            Serial # <strong>{issueTicket.inventory?.serialNumber}</strong>
+          </h5>
+          <h5>
+            Issue: <strong>{issueTicket.issue}</strong>
+          </h5>
         </div>
       </Card>
       {issueTicket.id !== undefined ? (

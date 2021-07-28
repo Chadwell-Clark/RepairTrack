@@ -8,6 +8,7 @@ import InventoryDetail from "./Inventory/InventoryDetail";
 import IssueTicketDetail from "./IssueTicket/IssueTicketDetail";
 import RepairNoteDetail from "./RepairNote/RepairNoteDetail";
 import RepairNoteForm from "./RepairNote/RepairNoteForm";
+import RepairNoteEdit from "./RepairNote/RepairNoteEdit";
 
 export default function ApplicationViews({ isLoggedIn, isAdmin }) {
   const [issueId, setIssueId] = useState(0);
@@ -30,9 +31,11 @@ export default function ApplicationViews({ isLoggedIn, isAdmin }) {
         <Route exact path="/inventory">
           {isLoggedIn ? <InventoryList /> : <Redirect to="/login" />}
         </Route>
+
         <Route path="/inventory/:id(\d+)">
           {isLoggedIn ? <InventoryDetail /> : <Redirect to="/login" />}
         </Route>
+
         <Route path="/issueTicket/:id(\d+)">
           {isLoggedIn ? (
             <IssueTicketDetail setIssueId={setIssueId} />
@@ -40,12 +43,22 @@ export default function ApplicationViews({ isLoggedIn, isAdmin }) {
             <Redirect to="/login" />
           )}
         </Route>
+
         <Route path="/repairNote/:id(\d+)">
           {isLoggedIn ? <RepairNoteDetail /> : <Redirect to="/login" />}
         </Route>
+
         <Route path="/repairNote/add">
           {isLoggedIn ? (
             <RepairNoteForm issueId={issueId} />
+          ) : (
+            <Redirect to="/login" />
+          )}
+        </Route>
+        
+        <Route path="/repairNote/edit/:id(\d+)">
+          {isLoggedIn ? (
+            <RepairNoteEdit issueId={issueId} />
           ) : (
             <Redirect to="/login" />
           )}

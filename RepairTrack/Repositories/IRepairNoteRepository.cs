@@ -9,6 +9,14 @@ namespace RepairTrack.Controllers
 
         RepairNote GetRepairNoteById(int repairNoteId);
 
+        RepairNote GetRepairNote(int Id);
+
         int  Add(RepairNote repairNote);
+
+
+        void Update(RepairNote repairNote);
+
+        void Delete(int id);
+
     }
 }

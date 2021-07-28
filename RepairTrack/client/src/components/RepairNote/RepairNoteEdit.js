@@ -9,25 +9,22 @@ import {
   Col,
 } from "reactstrap";
 import React, { useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 
 import { getIssueandInventoryByIssueTicketId } from "../../modules/issueTicketManager";
 import { getCurrentUser } from "../../modules/userManager";
-import { addRepairNote } from "../../modules/repairNoteManager";
+import {
+  editRepairNote,
+  getRepairNoteById,
+  getRepairNote,
+} from "../../modules/repairNoteManager";
 
 const RepairNoteEdit = ({ issueId }) => {
-  const newRepairNote = {
-    note: "",
-    partsNeeded: "",
-    partsOrdered: 0,
-  };
   const [issueTicket, setIssueTicket] = useState({});
   const [currentUser, setCurrentUser] = useState({});
-  const [repairNote, setRepairNote] = useState(newRepairNote);
-  //   const [note, setNote] = useState();
-  //   const [partsNeeded, setPartsNeeded] = useState();
-  //   const [partsOrdered, setPartsOrdered] = useState();
+  const [repairNote, setRepairNote] = useState({});
   const history = useHistory();
+  const { id } = useParams();
 
   const handleChange = (e) => {
     const repairNoteCopy = { ...repairNote };
@@ -40,14 +37,15 @@ const RepairNoteEdit = ({ issueId }) => {
     if (repairNote.note === "") {
       window.alert("Repair Note Required");
     } else {
-      repairNote.issueTicketId = issueId;
-      repairNote.userProfileId = currentUser.id;
-      debugger;
-      addRepairNote(repairNote).then((res) => {
-        history.push(`/repairNote/${res}`); //would like to push to Id
+      editRepairNote(repairNote).then(() => {
+        history.push(`/repairNote/${id}`); //would like to push to Id
       });
     }
   };
+
+  useEffect(() => {
+    getRepairNote(id).then(setRepairNote);
+  }, [id]);
 
   useEffect(() => {
     if (issueId !== 0 || currentUser !== {}) {
@@ -66,7 +64,7 @@ const RepairNoteEdit = ({ issueId }) => {
         <CardBody>
           <div className="row align-items-start">
             <h5 className="col">
-              IssueTicket# <strong>{issueTicket?.id}</strong>
+              IssueTicket # <strong>{issueTicket?.id}</strong>
             </h5>{" "}
             <h5 className="col">
               Manufacturer:{" "}
@@ -91,7 +89,7 @@ const RepairNoteEdit = ({ issueId }) => {
       <Card>
         <CardBody>
           <Form>
-            <h5 ml-5>{`New Repair Note  For Issue Ticket # ${issueId}`}</h5>
+            <h5>{`New Repair Note  For Issue Ticket # ${issueId}`}</h5>
             <FormGroup row>
               <Label for="note" sm={2}>
                 Notes on Repair:
@@ -101,7 +99,7 @@ const RepairNoteEdit = ({ issueId }) => {
                   id="note"
                   type="textarea"
                   rows="10"
-                  value={repairNote.note}
+                  defaultValue={repairNote.note}
                   onChange={handleChange}
                 />
               </Col>
@@ -115,7 +113,7 @@ const RepairNoteEdit = ({ issueId }) => {
                   id="partsNeeded"
                   type="textarea"
                   rows="6"
-                  value={repairNote.partsNeeded}
+                  defaultValue={repairNote.partsNeeded}
                   onChange={handleChange}
                 />
               </Col>
@@ -128,7 +126,7 @@ const RepairNoteEdit = ({ issueId }) => {
                 <Input
                   id="partsOrdered"
                   type="select"
-                  value={repairNote.partsNeeded}
+                  defaultValue={repairNote.partsNeeded}
                   onChange={handleChange}
                 >
                   <option value="0">Parts not Ordered</option>
@@ -146,7 +144,7 @@ const RepairNoteEdit = ({ issueId }) => {
                   type="submit"
                   onClick={handleClick}
                 >
-                  Save Repair Note
+                  Save Repair Note Edit
                 </Button>
               </Col>
             </FormGroup>
