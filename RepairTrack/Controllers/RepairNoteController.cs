@@ -46,6 +46,21 @@ namespace RepairTrack.Controllers
             return Ok(repairNote);
         }
 
+        [HttpPost]
+        public IActionResult Repairnote(RepairNote  repairNote)
+        { 
+            repairNote.CreateDateTime = DateTime.Now;
+            if (string.IsNullOrWhiteSpace(repairNote.PartsNeeded))
+            {
+                repairNote.PartsNeeded = null;
+            }
+
+            
+            var id = _repairNoteRepository.Add(repairNote);
+
+            return Ok(id);
+        }
+
 
     }
 }

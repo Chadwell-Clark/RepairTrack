@@ -14,12 +14,12 @@ const RepairNoteDetail = () => {
   const [repairNote, setRepairNote] = useState({});
 
   const { id } = useParams();
-  console.log(id);
+  //   console.log(id);
 
   useEffect(() => {
     getRepairNoteById(id).then(setRepairNote);
   }, [id]);
-  console.log("Repair Note", repairNote);
+  //   console.log("Repair Note", repairNote);
 
   if (!repairNote) {
     return null;
@@ -55,6 +55,16 @@ const RepairNoteDetail = () => {
             >
               New Issue
             </Button>{" "}
+            <Button
+              className="col"
+              color="primary"
+              tag={Link}
+              to={`/repairNote/add`}
+              //   type="submit"
+              //   onClick={handleClick}
+            >
+              New Repair Note
+            </Button>{" "}
           </div>
         </CardBody>
       </Card>
@@ -71,7 +81,7 @@ const RepairNoteDetail = () => {
               Technician: <strong>{repairNote.userProfile?.fullName}</strong>
             </h4>
             <h4 className="col">
-              Date Created: <strong>{repairNote.createDateTime}</strong>
+              Date Created: <strong>{repairNote.dateCreated}</strong>
             </h4>
             <div className="col">?</div>
           </div>

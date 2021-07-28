@@ -39,3 +39,24 @@ export const getRepairNoteById = (id) => {
     });
   });
 };
+
+export const addRepairNote = (repairNote) => {
+  return getToken().then((token) => {
+    return fetch(apiUrl, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(repairNote),
+    }).then((resp) => {
+      if (resp.ok) {
+        return resp.json();
+      } else {
+        throw new Error(
+          "An unknown error occurred while trying to save a new Repair Note."
+        );
+      }
+    });
+  });
+};

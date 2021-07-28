@@ -48,7 +48,7 @@ CREATE TABLE [Inventory] (
 
 CREATE TABLE [IssueTicket] (
   [Id] int PRIMARY KEY IDENTITY,
-  [Issue] nvarchar(500) NOT NULL,
+  [Issue] varchar(500) NOT NULL,
   [CreateDateTime] datetime NOT NULL,
   [InventoryId] int NOT NULL,
   [IsResolved] bit NOT NULL DEFAULT (0),
@@ -58,8 +58,8 @@ CREATE TABLE [IssueTicket] (
 
 CREATE TABLE [RepairNote] (
   [Id] int PRIMARY KEY IDENTITY,
-  [Note] nvarchar(500) NOT NULL,
-  [PartsNeeded] nvarchar,
+  [Note] varchar(500) NOT NULL,
+  [PartsNeeded] varchar(200),
   [CreateDateTime] datetime NOT NULL,
   [IssueTicketId] int NOT NULL,
   [UserProfileId] int NOT NULL,

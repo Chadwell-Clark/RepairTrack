@@ -17,7 +17,7 @@ const IssueTicket = ({ issueTicket }) => {
             </div>
             <div className="col-md-4">
               <h4 className="text-center">
-                CreationDate: <strong>{issueTicket.createDateTime}</strong>
+                CreationDate: <strong>{issueTicket.dateCreated}</strong>
               </h4>
             </div>
             <div className="col-md-4">

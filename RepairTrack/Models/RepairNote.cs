@@ -31,5 +31,13 @@ namespace RepairTrack.Models
         public UserProfile UserProfile { get; set; }
 
         public IssueTicket IssueTicket { get; set; }
+
+        public string DateCreated
+        {
+            get
+            {
+                return CreateDateTime.ToString("MM/dd/yyyy h:mm tt");
+            }
+        }
     }
 }

@@ -16,15 +16,15 @@ export default function Header({ isLoggedIn, isAdmin }) {
   const toggle = () => setIsOpen(!isOpen);
 
   return (
-    <div>
+    <div className="">
       <Navbar color="light" light expand="md">
-        <NavbarBrand tag={RRNavLink} to="/">
-          RepairTrack
+        <NavbarBrand className="mx-5" tag={RRNavLink} to="/">
+          <strong>RepairTrack</strong>
         </NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
-          <Nav className="mr-auto" navbar>
-            {/* When isLoggedIn === true, we will render the Home link */}
+          <Nav className="mr-auto d-flex justify-content-around" navbar>
+            {/* When isLoggedIn === true, we will render these links */}
             {isLoggedIn && (
               <>
                 {/* <NavItem>

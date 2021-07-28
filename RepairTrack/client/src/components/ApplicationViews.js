@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import Login from "./Login";
 import Register from "./Register";
@@ -7,32 +7,17 @@ import InventoryList from "./Inventory/InventoryList";
 import InventoryDetail from "./Inventory/InventoryDetail";
 import IssueTicketDetail from "./IssueTicket/IssueTicketDetail";
 import RepairNoteDetail from "./RepairNote/RepairNoteDetail";
+import RepairNoteForm from "./RepairNote/RepairNoteForm";
 
 export default function ApplicationViews({ isLoggedIn, isAdmin }) {
+  const [issueId, setIssueId] = useState(0);
+
   return (
     <main>
       <Switch>
         <Route path="/" exact>
           {isLoggedIn ? <Landing /> : <Redirect to="/login" />}
         </Route>
-
-        {/* <Route exact path="/tags">
-          
-          {isLoggedIn && isAdmin ? (
-            <TagList />
-          ) : (
-            [isLoggedIn && !isAdmin ? <Hello /> : <Redirect to="/login" />]
-          )}
-        </Route>
-
-        <Route exact path="/tags/add">
-         
-          {isLoggedIn && isAdmin ? (
-            <TagForm />
-          ) : (
-            [isLoggedIn && !isAdmin ? <Hello /> : <Redirect to="/login" />]
-          )}
-        </Route> */}
 
         <Route path="/login">
           <Login />
@@ -42,6 +27,51 @@ export default function ApplicationViews({ isLoggedIn, isAdmin }) {
           <Register />
         </Route>
 
+        <Route exact path="/inventory">
+          {isLoggedIn ? <InventoryList /> : <Redirect to="/login" />}
+        </Route>
+        <Route path="/inventory/:id(\d+)">
+          {isLoggedIn ? <InventoryDetail /> : <Redirect to="/login" />}
+        </Route>
+        <Route path="/issueTicket/:id(\d+)">
+          {isLoggedIn ? (
+            <IssueTicketDetail setIssueId={setIssueId} />
+          ) : (
+            <Redirect to="/login" />
+          )}
+        </Route>
+        <Route path="/repairNote/:id(\d+)">
+          {isLoggedIn ? <RepairNoteDetail /> : <Redirect to="/login" />}
+        </Route>
+        <Route path="/repairNote/add">
+          {isLoggedIn ? (
+            <RepairNoteForm issueId={issueId} />
+          ) : (
+            <Redirect to="/login" />
+          )}
+        </Route>
+
+        {/* <Route exact path="/tags">
+                
+                {isLoggedIn && isAdmin ? (
+                  <TagList />
+                ) : (
+                  [isLoggedIn && !isAdmin ? <Hello /> : <Redirect to="/login" />]
+                )}
+              </Route>
+      
+              <Route exact path="/tags/add">
+               
+                {isLoggedIn && isAdmin ? (
+                  <TagForm />
+                ) : (
+                  [isLoggedIn && !isAdmin ? <Hello /> : <Redirect to="/login" />]
+                )}
+              </Route> */}
+
+        {/* <Route path="/post/:id(\d+)" exact>
+          {isLoggedIn ? <PostDetails /> : <Redirect to="/login" />}
+        </Route> */}
         {/* <Route exact path="/category">
          
           {isLoggedIn && isAdmin ? (
@@ -58,26 +88,6 @@ export default function ApplicationViews({ isLoggedIn, isAdmin }) {
           ) : (
             [isLoggedIn && !isAdmin ? <Hello /> : <Redirect to="/login" />]
           )}
-        </Route> */}
-
-        <Route exact path="/inventory">
-          {isLoggedIn ? <InventoryList /> : <Redirect to="/login" />}
-        </Route>
-        <Route path="/inventory/:id(\d+)">
-          {isLoggedIn ? <InventoryDetail /> : <Redirect to="/login" />}
-        </Route>
-        <Route path="/issueTicket/:id(\d+)">
-          {isLoggedIn ? <IssueTicketDetail /> : <Redirect to="/login" />}
-        </Route>
-        <Route path="/repairNote/:id(\d+)">
-          {isLoggedIn ? <RepairNoteDetail /> : <Redirect to="/login" />}
-        </Route>
-        {/* <Route path="/post/add">
-          {isLoggedIn ? <PostForm /> : <Redirect to="/login" />}
-        </Route>
-
-        <Route path="/post/:id(\d+)" exact>
-          {isLoggedIn ? <PostDetails /> : <Redirect to="/login" />}
         </Route> */}
 
         {/* <Route exact path="/users">

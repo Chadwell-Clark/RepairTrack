@@ -12,6 +12,8 @@ namespace RepairTrack.Repositories
     public class RepairNoteRepository : BaseRepository, IRepairNoteRepository
     {
         public RepairNoteRepository(IConfiguration configuration) : base(configuration) { }
+
+
         public List<RepairNote> GetAllRepairNotesByIssueTicketId(int issueTicketId)
         {
             using (var conn = Connection)
@@ -127,6 +129,31 @@ namespace RepairTrack.Repositories
 
             }
 
+        }
+        public int Add(RepairNote repairNote)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"
+                        INSERT INTO RepairNote (Note, PartsNeeded, CreateDateTime, IssueTicketId, UserProfileId, PartsOrdered)
+                        OUTPUT INSERTED.ID
+                        VALUES (@Note, @PartsNeeded, @CreateDateTime, @IssueTicketId, @UserProfileId, @PartsOrdered)";
+
+                    DbUtils.AddParameter(cmd, "@Note", repairNote.Note);
+                    DbUtils.AddParameter(cmd, "@PartsNeeded", repairNote.PartsNeeded);
+                    DbUtils.AddParameter(cmd, "@CreateDateTime", repairNote.CreateDateTime);
+                    DbUtils.AddParameter(cmd, "@IssueTicketId", repairNote.IssueTicketId);
+                    DbUtils.AddParameter(cmd, "@UserProfileId", repairNote.UserProfileId);
+                    DbUtils.AddParameter(cmd, "@PartsOrdered", repairNote.PartsOrdered);
+
+                    repairNote.Id = (int)cmd.ExecuteScalar();
+                }
+
+                return repairNote.Id;
+            }
         }
 
 
