@@ -24,9 +24,6 @@ const RepairNoteForm = ({ issueId }) => {
   const [issueTicket, setIssueTicket] = useState({});
   const [currentUser, setCurrentUser] = useState({});
   const [repairNote, setRepairNote] = useState(newRepairNote);
-  //   const [note, setNote] = useState();
-  //   const [partsNeeded, setPartsNeeded] = useState();
-  //   const [partsOrdered, setPartsOrdered] = useState();
   const history = useHistory();
 
   const handleChange = (e) => {

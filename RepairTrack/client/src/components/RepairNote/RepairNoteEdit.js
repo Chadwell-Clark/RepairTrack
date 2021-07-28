@@ -16,15 +16,13 @@ import { getCurrentUser } from "../../modules/userManager";
 import {
   editRepairNote,
   getRepairNoteById,
+  getRepairNote,
 } from "../../modules/repairNoteManager";
 
 const RepairNoteEdit = ({ issueId }) => {
   const [issueTicket, setIssueTicket] = useState({});
   const [currentUser, setCurrentUser] = useState({});
-  const [repairNote, setRepairNote] = useState(newRepairNote);
-  //   const [note, setNote] = useState();
-  //   const [partsNeeded, setPartsNeeded] = useState();
-  //   const [partsOrdered, setPartsOrdered] = useState();
+  const [repairNote, setRepairNote] = useState({});
   const history = useHistory();
   const { id } = useParams();
 
@@ -39,14 +37,14 @@ const RepairNoteEdit = ({ issueId }) => {
     if (repairNote.note === "") {
       window.alert("Repair Note Required");
     } else {
-      editRepairNote(repairNote).then((res) => {
+      editRepairNote(repairNote).then(() => {
         history.push(`/repairNote/${id}`); //would like to push to Id
       });
     }
   };
 
   useEffect(() => {
-    getRepairNoteById(id).then(setRepairNote);
+    getRepairNote(id).then(setRepairNote);
   }, [id]);
 
   useEffect(() => {
@@ -91,7 +89,7 @@ const RepairNoteEdit = ({ issueId }) => {
       <Card>
         <CardBody>
           <Form>
-            <h5 ml-5>{`New Repair Note  For Issue Ticket # ${issueId}`}</h5>
+            <h5>{`New Repair Note  For Issue Ticket # ${issueId}`}</h5>
             <FormGroup row>
               <Label for="note" sm={2}>
                 Notes on Repair:

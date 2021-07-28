@@ -130,6 +130,47 @@ namespace RepairTrack.Repositories
             }
 
         }
+
+        public RepairNote GetRepairNote(int Id)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"
+                          SELECT rn.Id, rn.Note, rn.partsNeeded, rn.CreateDateTime, rn.IssueTicketId, rn.UserProfileId, rn.PartsOrdered
+                                
+                          FROM RepairNote rn
+                            
+                           WHERE rn.Id = @Id
+                    ";
+                    DbUtils.AddParameter(cmd, "@Id", Id);
+
+                    var reader = cmd.ExecuteReader();
+                    RepairNote repairNote = null;
+                    if (reader.Read())
+                    {
+                        repairNote = new RepairNote()
+                        {
+                            Id = DbUtils.GetInt(reader, "Id"),
+                            Note = DbUtils.GetString(reader, "Note"),
+                            PartsNeeded = DbUtils.GetString(reader, "PartsNeeded"),
+                            CreateDateTime = DbUtils.GetDateTime(reader, "CreateDateTime"),
+                            IssueTicketId = DbUtils.GetInt(reader, "IssueTicketId"),
+                            UserProfileId = DbUtils.GetInt(reader, "UserProfileId"),
+                            PartsOrdered = DbUtils.GetInt(reader, "PartsOrdered"),
+ 
+                        };
+                    }
+                    reader.Close();
+
+                    return repairNote;
+                }
+
+            }
+
+        }
         public int Add(RepairNote repairNote)
         {
             using (var conn = Connection)
@@ -156,7 +197,7 @@ namespace RepairTrack.Repositories
             }
         }
 
-        public void Edit(RepairNote repairNote)
+        public void Update(RepairNote repairNote)
         {
             using (var conn = Connection)
             {
@@ -180,6 +221,27 @@ namespace RepairTrack.Repositories
                     DbUtils.AddParameter(cmd, "@UserProfileId", repairNote.UserProfileId);
                     DbUtils.AddParameter(cmd, "@PartsOrdered", repairNote.PartsOrdered);
                     DbUtils.AddParameter(cmd, "@Id", repairNote.Id);
+
+                    cmd.ExecuteNonQuery();
+                }
+
+                conn.Close();
+            }
+        }
+
+        public void Delete(int id)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"
+                        DELETE FROM RepairNote
+                            WHERE id = @id";
+
+                    
+                    DbUtils.AddParameter(cmd, "@Id", id);
 
                     cmd.ExecuteNonQuery();
                 }

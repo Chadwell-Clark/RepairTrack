@@ -32,12 +32,10 @@ const Inventory = ({ inventory }) => {
           //   type="submit"
           //   onClick={handleClick}
         >
-          Details
+          Issues
         </Button>{" "}
       </td>
-      <td>
-        <Button color="success">New Issue</Button>{" "}
-      </td>
+      <td>{/* <Button color="success">New Issue</Button>{" "} */}</td>
       <td></td>
     </tr>
   );

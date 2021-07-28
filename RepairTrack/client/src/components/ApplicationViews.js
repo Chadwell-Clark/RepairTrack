@@ -31,9 +31,11 @@ export default function ApplicationViews({ isLoggedIn, isAdmin }) {
         <Route exact path="/inventory">
           {isLoggedIn ? <InventoryList /> : <Redirect to="/login" />}
         </Route>
+
         <Route path="/inventory/:id(\d+)">
           {isLoggedIn ? <InventoryDetail /> : <Redirect to="/login" />}
         </Route>
+
         <Route path="/issueTicket/:id(\d+)">
           {isLoggedIn ? (
             <IssueTicketDetail setIssueId={setIssueId} />
@@ -41,9 +43,11 @@ export default function ApplicationViews({ isLoggedIn, isAdmin }) {
             <Redirect to="/login" />
           )}
         </Route>
+
         <Route path="/repairNote/:id(\d+)">
           {isLoggedIn ? <RepairNoteDetail /> : <Redirect to="/login" />}
         </Route>
+
         <Route path="/repairNote/add">
           {isLoggedIn ? (
             <RepairNoteForm issueId={issueId} />
@@ -51,6 +55,7 @@ export default function ApplicationViews({ isLoggedIn, isAdmin }) {
             <Redirect to="/login" />
           )}
         </Route>
+        
         <Route path="/repairNote/edit/:id(\d+)">
           {isLoggedIn ? (
             <RepairNoteEdit issueId={issueId} />

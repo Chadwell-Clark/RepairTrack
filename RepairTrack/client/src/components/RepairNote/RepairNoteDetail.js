@@ -7,13 +7,24 @@ import {
   CardFooter,
   Badge,
 } from "reactstrap";
-import { Link, useParams } from "react-router-dom";
-import { getRepairNoteById } from "../../modules/repairNoteManager";
+import { Link, useHistory, useParams } from "react-router-dom";
+import {
+  getRepairNoteById,
+  deleteRepairNote,
+} from "../../modules/repairNoteManager";
 
 const RepairNoteDetail = () => {
   const [repairNote, setRepairNote] = useState({});
+  const history = useHistory();
 
   const { id } = useParams();
+
+  const handleDelete = (e) => {
+    e.preventDefault();
+    deleteRepairNote(repairNote.id).then(
+      history.push(`/issueTicket/${repairNote.issueTicket?.id}`)
+    );
+  };
   //   console.log(id);
 
   useEffect(() => {
@@ -45,23 +56,19 @@ const RepairNoteDetail = () => {
               Serial Number:{" "}
               <strong>{repairNote.issueTicket?.inventory.serialNumber}</strong>
             </h4>
-            <Button
+            {/* <Button
               className="col"
               color="primary"
               tag={Link}
               to={`/repairNote`}
-              //   type="submit"
-              //   onClick={handleClick}
             >
               New Issue
-            </Button>{" "}
+            </Button>{" "} */}
             <Button
               className="col"
               color="primary"
               tag={Link}
               to={`/repairNote/add`}
-              //   type="submit"
-              //   onClick={handleClick}
             >
               New Repair Note
             </Button>{" "}
@@ -113,9 +120,9 @@ const RepairNoteDetail = () => {
               className="col"
               color="danger"
               tag={Link}
-              to={`/repairNote`}
+              //   to={``}
               //   type="submit"
-              //   onClick={handleClick}
+              onClick={handleDelete}
             >
               Delete
             </Button>{" "}
