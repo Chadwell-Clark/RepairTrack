@@ -9,18 +9,16 @@ import {
   Col,
 } from "reactstrap";
 import React, { useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 
 import { getIssueandInventoryByIssueTicketId } from "../../modules/issueTicketManager";
 import { getCurrentUser } from "../../modules/userManager";
-import { addRepairNote } from "../../modules/repairNoteManager";
+import {
+  editRepairNote,
+  getRepairNoteById,
+} from "../../modules/repairNoteManager";
 
 const RepairNoteEdit = ({ issueId }) => {
-  const newRepairNote = {
-    note: "",
-    partsNeeded: "",
-    partsOrdered: 0,
-  };
   const [issueTicket, setIssueTicket] = useState({});
   const [currentUser, setCurrentUser] = useState({});
   const [repairNote, setRepairNote] = useState(newRepairNote);
@@ -28,6 +26,7 @@ const RepairNoteEdit = ({ issueId }) => {
   //   const [partsNeeded, setPartsNeeded] = useState();
   //   const [partsOrdered, setPartsOrdered] = useState();
   const history = useHistory();
+  const { id } = useParams();
 
   const handleChange = (e) => {
     const repairNoteCopy = { ...repairNote };
@@ -40,14 +39,15 @@ const RepairNoteEdit = ({ issueId }) => {
     if (repairNote.note === "") {
       window.alert("Repair Note Required");
     } else {
-      repairNote.issueTicketId = issueId;
-      repairNote.userProfileId = currentUser.id;
-      debugger;
-      addRepairNote(repairNote).then((res) => {
-        history.push(`/repairNote/${res}`); //would like to push to Id
+      editRepairNote(repairNote).then((res) => {
+        history.push(`/repairNote/${id}`); //would like to push to Id
       });
     }
   };
+
+  useEffect(() => {
+    getRepairNoteById(id).then(setRepairNote);
+  }, [id]);
 
   useEffect(() => {
     if (issueId !== 0 || currentUser !== {}) {
@@ -101,7 +101,7 @@ const RepairNoteEdit = ({ issueId }) => {
                   id="note"
                   type="textarea"
                   rows="10"
-                  value={repairNote.note}
+                  defaultValue={repairNote.note}
                   onChange={handleChange}
                 />
               </Col>
@@ -115,7 +115,7 @@ const RepairNoteEdit = ({ issueId }) => {
                   id="partsNeeded"
                   type="textarea"
                   rows="6"
-                  value={repairNote.partsNeeded}
+                  defaultValue={repairNote.partsNeeded}
                   onChange={handleChange}
                 />
               </Col>
@@ -128,7 +128,7 @@ const RepairNoteEdit = ({ issueId }) => {
                 <Input
                   id="partsOrdered"
                   type="select"
-                  value={repairNote.partsNeeded}
+                  defaultValue={repairNote.partsNeeded}
                   onChange={handleChange}
                 >
                   <option value="0">Parts not Ordered</option>
