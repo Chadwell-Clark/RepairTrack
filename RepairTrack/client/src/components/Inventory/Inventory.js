@@ -3,7 +3,7 @@ import { Button } from "reactstrap";
 import { Link, useHistory } from "react-router-dom";
 
 const Inventory = ({ inventory }) => {
-  const history = useHistory();
+  // const history = useHistory();
 
   //   const handleDeactivate = (e) => {
   //     e.preventDefault();

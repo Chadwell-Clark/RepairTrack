@@ -11,14 +11,18 @@ const IssueTicketList = ({ inventoryId, inventoryItem }) => {
     getIssueTicketsByInventoryId(inventoryId).then(setIssueTickets);
   }, []);
 
-  if (issueTickets.length == 0) {
-    return (
-      <div>
-        <h3>
-          {`There are no issue tickets for ${inventoryItem.manufacturer} ${inventoryItem.model} Serial # : ${inventoryItem.serialNumber}`}{" "}
-        </h3>
-      </div>
-    );
+  // if (issueTickets.length === 0) {
+  //   return (
+  //     <div>
+  //       <h3>
+  //         {`There are no issue tickets for ${inventoryItem.manufacturer} ${inventoryItem.model} Serial # : ${inventoryItem.serialNumber}`}{" "}
+  //       </h3>
+  //     </div>
+  //   );
+  // }
+
+  if (!issueTickets) {
+    return null;
   }
 
   return (

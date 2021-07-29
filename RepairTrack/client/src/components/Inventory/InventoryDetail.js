@@ -2,10 +2,10 @@ import React, { useState, useEffect } from "react";
 import { getInventoryById } from "../../modules/inventoryManager";
 import { Button, Table, Card } from "reactstrap";
 import { Link, useParams } from "react-router-dom";
-import { getIssueTicketsByInventoryId } from "../../modules/issueTicketManager";
+
 import IssueTicketList from "../IssueTicket/IssueTicketList";
 
-const InventoryDetail = () => {
+const InventoryDetail = ({ setInventoryId }) => {
   const [inventoryItem, setInventoryItem] = useState([]);
   const [issuetickets, setIssueTickets] = useState([]);
 
@@ -17,6 +17,8 @@ const InventoryDetail = () => {
 
   useEffect(() => {
     getInventoryById(id).then(setInventoryItem);
+    setInventoryId(id);
+
     // getIssueTicketsByInventoryId(id).then(setIssueTickets);
   }, [id]);
 

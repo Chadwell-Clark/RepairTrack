@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { getRepairNotesByIssueTicketId } from "../../modules/repairNoteManager";
 // import { Button, Table } from "reactstrap";
-import { Link, useParams } from "react-router-dom";
+
 import RepairNote from "./RepairNote";
 
 const RepairNoteList = ({ issueTicket }) => {
   const [repairNotes, setRepairNotes] = useState([]);
-  const { id } = useParams();
   useEffect(() => {
     getRepairNotesByIssueTicketId(issueTicket.id).then(setRepairNotes);
   }, []);
