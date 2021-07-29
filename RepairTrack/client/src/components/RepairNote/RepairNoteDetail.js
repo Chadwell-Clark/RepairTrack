@@ -16,7 +16,7 @@ import {
 const RepairNoteDetail = () => {
   const [repairNote, setRepairNote] = useState({});
   const history = useHistory();
-
+  let ordered = "";
   const { id } = useParams();
 
   const handleDelete = (e) => {
@@ -27,6 +27,16 @@ const RepairNoteDetail = () => {
   };
   //   console.log(id);
 
+  const partsOrdered = () => {
+    if (repairNote.partsOrdered === 0) {
+      ordered = "<strong>Parts Not Ordered</strong>";
+    } else if (repairNote.partsOrdered === 1) {
+      ordered = <strong>Parts Ordered</strong>;
+    } else {
+      ordered = "<strong>Parts Not Needed</strong>";
+    }
+  };
+
   useEffect(() => {
     getRepairNoteById(id).then(setRepairNote);
   }, [id]);
@@ -35,27 +45,28 @@ const RepairNoteDetail = () => {
   if (!repairNote) {
     return null;
   }
+  partsOrdered();
 
   return (
     <div className="container">
       <Card>
         <CardBody>
           <div className="row align-items-start">
-            <h4 className="col">
+            <h5 className="col">
               IssueTicket # <strong>{repairNote.issueTicket?.id}</strong>
-            </h4>{" "}
-            <h4 className="col">
+            </h5>{" "}
+            <h5 className="col">
               Manufacturer:{" "}
               <strong>{repairNote.issueTicket?.inventory.manufacturer}</strong>
-            </h4>
-            <h4 className="col">
+            </h5>
+            <h5 className="col">
               Model: <strong>{repairNote.issueTicket?.inventory.model}</strong>
-            </h4>
+            </h5>
             <div className="col">Image goes here</div>
-            <h4 className="col">
+            <h5 className="col">
               Serial Number:{" "}
               <strong>{repairNote.issueTicket?.inventory.serialNumber}</strong>
-            </h4>
+            </h5>
             {/* <Button
               className="col"
               color="primary"
@@ -72,6 +83,9 @@ const RepairNoteDetail = () => {
             >
               New Repair Note
             </Button>{" "}
+            <h5>
+              Issue: <strong>{repairNote.issueTicket?.issue}</strong>
+            </h5>
           </div>
         </CardBody>
       </Card>
@@ -105,7 +119,7 @@ const RepairNoteDetail = () => {
         </CardBody>
         <CardFooter>
           <div className="row">
-            <h4 className="col-9">PartsOrdered: </h4>
+            <h4 className="col-9">PartsOrdered: {ordered}</h4>
             <Button
               className="col"
               color="warning"
@@ -119,7 +133,7 @@ const RepairNoteDetail = () => {
             <Button
               className="col"
               color="danger"
-              tag={Link}
+              //   tag={Link}
               //   to={``}
               //   type="submit"
               onClick={handleDelete}

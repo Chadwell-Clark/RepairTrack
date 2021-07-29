@@ -98,45 +98,86 @@ namespace RepairTrack.Repositories
 
         }
 
-        //public List<IssueTicket> GetAllIssueTicketsByInventoryId(int inventoryId)
-        //{
-        //    using (var conn = Connection)
-        //    {
-        //        conn.Open();
-        //        using (var cmd = conn.CreateCommand())
-        //        {
-        //            cmd.CommandText = @"
-        //                  SELECT it.Id, it.Issue, it.CreateDateTime, it.InventoryId, it.IsResolved
-        //                    FROM IssueTicket it
-        //                   LEFT JOIN Inventory i ON i.Id = it.InventoryId
-        //                   WHERE i.Id = @inventoryId
-                        
-        //            ";
-        //            cmd.Parameters.AddWithValue("@inventoryId", inventoryId);
-        //            var reader = cmd.ExecuteReader();
-        //            List<IssueTicket> issueTickets = new List<IssueTicket>();
-        //            while (reader.Read())
-        //            {
-        //                IssueTicket issueTicket = new IssueTicket()
-        //                {
-        //                    Id = DbUtils.GetInt(reader, "Id"),
-        //                    Issue = DbUtils.GetString(reader, "Issue"),
-        //                    CreateDateTime = DbUtils.GetDateTime(reader, "CreateDateTime"),
-        //                    InventoryId = DbUtils.GetInt(reader, "InventoryId"),
-        //                    IsResolved = DbUtils.GetBoolean(reader, "IsResolved")
-                            
-        //                };
+        public int Add(Inventory inventory)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"
+                        INSERT INTO Inventory (Manufacturer, Model, SerialNumber, FirmWare,, ImageLoc, InCommission)
+                        OUTPUT INSERTED.ID
+                        VALUES (@Manufacturer,  @Model, @SerialNumber,  @FirmWare, @ImageLoc, @InCommission)";
 
-        //            issueTickets.Add(issueTicket);
-        //            }
-        //            reader.Close();
-                   
-        //            return issueTickets;
-        //        }
+                    DbUtils.AddParameter(cmd, "@Manufacturer", inventory.Manufacturer);
+                    DbUtils.AddParameter(cmd, "@Model", inventory.Model);
+                    DbUtils.AddParameter(cmd, "@SerialNumber", inventory.SerialNumber);
+                    DbUtils.AddParameter(cmd, "@FirmWare", inventory.FirmWare);
+                    DbUtils.AddParameter(cmd, "@ImageLoc", inventory.ImageLoc);
+                    DbUtils.AddParameter(cmd, "@InCommission", inventory.InCommission);
 
-        //    }
+                    inventory.Id = (int)cmd.ExecuteScalar();
+                }
 
-        //}
+                return inventory.Id;
+            }
+        }
+
+        public void Update(Inventory inventory)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"
+                        UPDATE Inventory 
+                            SET     Manufacturer = @Manufacturer, 
+                                    Model =  @Model,
+                                    SerialNumber = @SerialNumber, 
+                                    FirmWare = @FirmWare,
+                                    ImageLoc = @ImageLoc,
+                                    InCommission = @InCommission
+
+                            WHERE id = @id";
+
+                    DbUtils.AddParameter(cmd, "@Manufacturer", inventory.Manufacturer);
+                    DbUtils.AddParameter(cmd, "@Model", inventory.Model);
+                    DbUtils.AddParameter(cmd, "@SerialNumber", inventory.SerialNumber);
+                    DbUtils.AddParameter(cmd, "@FirmWare", inventory.FirmWare);
+                    DbUtils.AddParameter(cmd, "@ImageLoc", inventory.ImageLoc);
+                    DbUtils.AddParameter(cmd, "@InCommission", inventory.InCommission);
+                    DbUtils.AddParameter(cmd, "@Id", inventory.Id);
+
+                    cmd.ExecuteNonQuery();
+                }
+
+                conn.Close();
+            }
+        }
+
+        public void Delete(int id)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"
+                        DELETE FROM RepairNote WHERE IssueId = InventoryId;
+                        DELETE FROM IssueTicket WHERE InventoryId = @id
+                        DELETE FROM Inventory WHERE id = @id";
+
+
+                    DbUtils.AddParameter(cmd, "@Id", id);
+
+                    cmd.ExecuteNonQuery();
+                }
+
+                conn.Close();
+            }
+        }
 
     }
 }

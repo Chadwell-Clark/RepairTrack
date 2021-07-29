@@ -9,44 +9,48 @@ import {
   Col,
 } from "reactstrap";
 import React, { useState, useEffect } from "react";
-import { useHistory, useParams } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
-import { getIssueandInventoryByIssueTicketId } from "../../modules/issueTicketManager";
-import { getCurrentUser } from "../../modules/userManager";
-import { editRepairNote, getRepairNote } from "../../modules/repairNoteManager";
+import { getInventoryById } from "../../modules/inventoryManager";
+// import { getCurrentUser } from "../../modules/userManager";
+import { addIssueTicket } from "../../modules/issueTicketManager";
 
-const RepairNoteEdit = ({ issueId }) => {
-  const [issueTicket, setIssueTicket] = useState({});
+const IssueTicketForm = ({ inventoryId }) => {
+  const newIssueTicket = {
+    issue: "",
+    partsNeeded: "",
+    partsOrdered: 0,
+  };
+  const [issueTicket, setIssueTicket] = useState(newIssueTicket);
   const [currentUser, setCurrentUser] = useState({});
-  const [repairNote, setRepairNote] = useState({});
+  const [inventory, setInventory] = useState({});
+
   const history = useHistory();
-  const { id } = useParams();
 
   const handleChange = (e) => {
-    const repairNoteCopy = { ...repairNote };
-    repairNoteCopy[e.target.id] = e.target.value;
-    setRepairNote(repairNoteCopy);
+    const issueTicketCopy = { ...issueTicket };
+    issueTicketCopy[e.target.id] = e.target.value;
+    setIssueTicket(issueTicketCopy);
   };
 
   const handleClick = (e) => {
     e.preventDefault();
-    if (repairNote.note === "") {
-      window.alert("Repair Note Required");
-    } else {
-      editRepairNote(repairNote).then(() => {
-        history.push(`/repairNote/${id}`); //would like to push to Id
-      });
-    }
+    //   if (repairNote.note === "") {
+    //     window.alert("Repair Note Required");
+    //   } else {
+    //     repairNote.issueTicketId = issueId;
+    //     //   repairNote.userProfileId = currentUser.id;
+    //     debugger;
+    //     addIssueTicket(issueTicket).then((res) => {
+    //       history.push(`/issueTicket/${res}`); //would like to push to Id
+    //     });
+    //   }
   };
 
   useEffect(() => {
-    getRepairNote(id).then(setRepairNote);
-  }, [id]);
-
-  useEffect(() => {
-    if (issueId !== 0 || currentUser !== {}) {
-      getIssueandInventoryByIssueTicketId(issueId).then(setIssueTicket);
-      getCurrentUser().then(setCurrentUser);
+    if (inventoryId !== 0) {
+      getInventoryById(inventoryId).then(setInventory);
+      //   getCurrentUser().then(setCurrentUser);
     }
   }, []);
 
@@ -85,7 +89,9 @@ const RepairNoteEdit = ({ issueId }) => {
       <Card>
         <CardBody>
           <Form>
-            <h5>{`New Repair Note  For Issue Ticket # ${issueId}`}</h5>
+            <h5
+              ml-5
+            >{`New Repair Note  For Inventory Item # ${inventoryId}`}</h5>
             <FormGroup row>
               <Label for="note" sm={2}>
                 Notes on Repair:
@@ -95,7 +101,7 @@ const RepairNoteEdit = ({ issueId }) => {
                   id="note"
                   type="textarea"
                   rows="10"
-                  defaultValue={repairNote.note}
+                  value={issueTicket.note}
                   onChange={handleChange}
                 />
               </Col>
@@ -109,7 +115,7 @@ const RepairNoteEdit = ({ issueId }) => {
                   id="partsNeeded"
                   type="textarea"
                   rows="6"
-                  defaultValue={repairNote.partsNeeded}
+                  value={issueTicket.partsNeeded}
                   onChange={handleChange}
                 />
               </Col>
@@ -122,7 +128,7 @@ const RepairNoteEdit = ({ issueId }) => {
                 <Input
                   id="partsOrdered"
                   type="select"
-                  defaultValue={repairNote.partsNeeded}
+                  value={issueTicket.partsNeeded}
                   onChange={handleChange}
                 >
                   <option value="0">Parts not Ordered</option>
@@ -140,7 +146,7 @@ const RepairNoteEdit = ({ issueId }) => {
                   type="submit"
                   onClick={handleClick}
                 >
-                  Save Repair Note Edit
+                  Save IssueTicket
                 </Button>
               </Col>
             </FormGroup>
@@ -151,4 +157,4 @@ const RepairNoteEdit = ({ issueId }) => {
   );
 };
 
-export default RepairNoteEdit;
+export default IssueTicketForm;

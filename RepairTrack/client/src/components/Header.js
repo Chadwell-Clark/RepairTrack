@@ -41,7 +41,8 @@ export default function Header({ isLoggedIn, isAdmin }) {
                   <NavLink
                     tag={RRNavLink}
                     className="nav-link"
-                    to="/issuetickets"
+                    to="/issueTicket"
+                    activeClassName="active"
                   >
                     Issue Tickets
                   </NavLink>
