@@ -17,29 +17,32 @@ const RepairNoteDetail = () => {
   const [repairNote, setRepairNote] = useState({});
   const history = useHistory();
   let ordered = "";
-  const { id } = useParams();
+  const { repId, issId, invId } = useParams();
 
   const handleDelete = (e) => {
     e.preventDefault();
     deleteRepairNote(repairNote.id).then(
-      history.push(`/issueTicket/${repairNote.issueTicket?.id}`)
+      history.push(`/issueTicket/${invId}/${issId}`)
     );
   };
   //   console.log(id);
 
   const partsOrdered = () => {
     if (repairNote.partsOrdered === 0) {
-      ordered = "<strong>Parts Not Ordered</strong>";
+      ordered = <strong>Parts Not Ordered</strong>;
     } else if (repairNote.partsOrdered === 1) {
       ordered = <strong>Parts Ordered</strong>;
+    } else if (repairNote.partsOrdered === 2) {
+      ordered = <strong>Parts Not Needed</strong>;
     } else {
-      ordered = "<strong>Parts Not Needed</strong>";
+      ordered = <strong>Parts In Stock</strong>;
     }
   };
 
   useEffect(() => {
-    getRepairNoteById(id).then(setRepairNote);
-  }, [id]);
+    getRepairNoteById(repId).then(setRepairNote);
+    //   .then(setIssueId(repairNote.issueTicket?.id));
+  }, [repId]);
   //   console.log("Repair Note", repairNote);
 
   if (!repairNote) {
@@ -79,7 +82,7 @@ const RepairNoteDetail = () => {
               className="col"
               color="primary"
               tag={Link}
-              to={`/repairNote/add`}
+              to={`/repairNote/add/${invId}/${issId}`}
             >
               New Repair Note
             </Button>{" "}
@@ -104,7 +107,7 @@ const RepairNoteDetail = () => {
             <h4 className="col">
               Date Created: <strong>{repairNote.dateCreated}</strong>
             </h4>
-            <div className="col">?</div>
+            {/* <div className="col">?</div> */}
           </div>
         </CardHeader>
         <CardBody>
@@ -119,12 +122,12 @@ const RepairNoteDetail = () => {
         </CardBody>
         <CardFooter>
           <div className="row">
-            <h4 className="col-9">PartsOrdered: {ordered}</h4>
+            <h4 className="col-9">Parts: {ordered}</h4>
             <Button
               className="col"
               color="warning"
               tag={Link}
-              to={`/repairNote/edit/${repairNote.id}`}
+              to={`/repairNote/edit/${invId}/${issId}/${repId}`}
               //   type="submit"
               //   onClick={handleClick}
             >
