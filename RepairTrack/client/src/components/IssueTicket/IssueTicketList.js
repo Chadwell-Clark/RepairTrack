@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { getIssueTicketsByInventoryId } from "../../modules/issueTicketManager";
-import { Button, Table } from "reactstrap";
-import { Link } from "react-router-dom";
+import { Button, Card } from "reactstrap";
+import { Link, useParams } from "react-router-dom";
 import IssueTicket from "./IssueTicket";
 
-const IssueTicketList = ({ inventoryId, inventoryItem }) => {
+const IssueTicketList = ({ inventoryItem }) => {
   const [issueTickets, setIssueTickets] = useState([]);
-
+  const { invId } = useParams();
   useEffect(() => {
-    getIssueTicketsByInventoryId(inventoryId).then(setIssueTickets);
+    getIssueTicketsByInventoryId(invId).then(setIssueTickets);
   }, []);
 
   if (!issueTickets) {
@@ -17,7 +17,7 @@ const IssueTicketList = ({ inventoryId, inventoryItem }) => {
 
   if (issueTickets.length === 0) {
     return (
-      <div>
+      <Card>
         <h3>
           {`There are no issue tickets for ${inventoryItem.manufacturer} ${inventoryItem.model} Serial # : ${inventoryItem.serialNumber}`}{" "}
         </h3>
@@ -25,11 +25,11 @@ const IssueTicketList = ({ inventoryId, inventoryItem }) => {
           className="col"
           color="primary"
           tag={Link}
-          to={`/issueTicket/add`}
+          to={`/issueTicket/add/${invId}`}
         >
           New Issue Ticket
         </Button>{" "}
-      </div>
+      </Card>
     );
   }
 
@@ -37,11 +37,7 @@ const IssueTicketList = ({ inventoryId, inventoryItem }) => {
     <div>
       <h4>Issue Tickets</h4>
       {issueTickets.map((item) => (
-        <IssueTicket
-          issueTicket={item}
-          inventoryId={inventoryId}
-          key={item.id}
-        />
+        <IssueTicket issueTicket={item} inventoryId={invId} key={item.id} />
       ))}
     </div>
   );

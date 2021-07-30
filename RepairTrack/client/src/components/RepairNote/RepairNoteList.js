@@ -15,12 +15,12 @@ const RepairNoteList = ({ issueTicket }) => {
 
   if (repairNotes.length === 0 || repairNotes === null) {
     return (
-      <div>
-        <h3>
-          {`There are no Repair Notes for IssueTicket #${issueTicket.id} ${issueTicket.inventory?.manufacturer} ${issueTicket.inventory?.model} Serial # ${issueTicket.inventory?.serialNumber}`}{" "}
+      <div className="row">
+        <h3 className="col-8">
+          {`There are no Repair Notes for IssueTicket #${issueTicket.id}`}{" "}
         </h3>
         <Button
-          className="col"
+          className="col-2"
           color="primary"
           tag={Link}
           to={`/repairNote/add/${invId}/${issId}`}
@@ -33,7 +33,9 @@ const RepairNoteList = ({ issueTicket }) => {
 
   return (
     <div>
-      <h4>RepairNotes</h4>
+      <h3 className="text-center">
+        <strong>Repair Notes</strong>
+      </h3>
       {repairNotes.map((item) => (
         <RepairNote issueTicket={issueTicket} repairNote={item} key={item.id} />
       ))}

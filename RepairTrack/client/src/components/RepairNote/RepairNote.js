@@ -6,19 +6,19 @@ const RepairNote = ({ repairNote, issueTicket }) => {
   //   const history = useHistory();
 
   return (
-    <Card className="my-4">
-      <div className="row">
+    <Card className="my-4 px-3 border-0 shadow-sm">
+      <div className="row px-3">
         <div className="col-md-12">
           <div className="row">
             <div className="col-md-4">
-              <h4 className=" text-start">
+              <h5 className=" text-start">
                 RepairNote#: <strong>{repairNote.id}</strong>
-              </h4>
+              </h5>
             </div>
             <div className="col-md-4">
-              <h4 className="text-center">
+              <h5 className="text-center">
                 CreationDate: <strong>{repairNote.dateCreated}</strong>
-              </h4>
+              </h5>
             </div>
           </div>
           <div className="row">

@@ -19,7 +19,9 @@ export default function Header({ isLoggedIn, isAdmin }) {
     <div className="">
       <Navbar color="light" light expand="md">
         <NavbarBrand className="mx-5" tag={RRNavLink} to="/">
-          <strong>RepairTrack</strong>
+          <strong>
+            <h2>RepairTrack</h2>
+          </strong>
         </NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
@@ -32,19 +34,19 @@ export default function Header({ isLoggedIn, isAdmin }) {
                     Home
                   </NavLink>
                 </NavItem> */}
-                <NavItem>
+                <NavItem className="mx-4">
                   <NavLink tag={RRNavLink} to="/inventory">
-                    Inventory
+                    <h3>Inventory</h3>
                   </NavLink>
                 </NavItem>
-                <NavItem>
+                <NavItem className="mx-4">
                   <NavLink
                     tag={RRNavLink}
                     className="nav-link"
                     to="/issueTicket"
                     activeClassName="active"
                   >
-                    Issue Tickets
+                    <h3>Issue Tickets</h3>
                   </NavLink>
                 </NavItem>
                 {/* <NavItem>
@@ -71,7 +73,7 @@ export default function Header({ isLoggedIn, isAdmin }) {
                     </NavItem>
                   </>
                 )} */}
-                <NavItem>
+                <NavItem className="mx-4">
                   <a
                     aria-current="page"
                     className="nav-link"
@@ -79,7 +81,7 @@ export default function Header({ isLoggedIn, isAdmin }) {
                     onClick={logout}
                     href="/"
                   >
-                    Logout
+                    <h3>Logout</h3>
                   </a>
                 </NavItem>
               </>

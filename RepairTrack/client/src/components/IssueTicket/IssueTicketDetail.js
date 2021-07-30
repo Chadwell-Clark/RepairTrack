@@ -22,7 +22,7 @@ const IssueTicketDetail = () => {
 
   return (
     <div className="container">
-      <Card>
+      <Card className="my-4 shadow">
         <div className="row align-items-start">
           <h5 className="col">
             IssueTicket# <strong>{issueTicket.id}</strong>
@@ -40,23 +40,53 @@ const IssueTicketDetail = () => {
             <h5 className="col-8">
               Serial # <strong>{issueTicket.inventory?.serialNumber}</strong>
             </h5>
-            <Button
+            {/* <Button
               className="col-2"
               color="primary"
               tag={Link}
               to={`/repairNote/add/${invId}/${issId}`}
             >
               New Repair Note
-            </Button>{" "}
+            </Button>{" "} */}
           </div>
           <h5>
             Issue: <strong>{issueTicket.issue}</strong>
           </h5>
         </div>
       </Card>
+      <Card className="my-4 border-0">
+        <div className="row justify-content-around">
+          <Button
+            className="col-2"
+            color="danger"
+            tag={Link}
+            to={`/repairNote/add/${invId}/${issId}`}
+          >
+            Delete Issue Ticket
+          </Button>{" "}
+          <Button
+            className="col-2"
+            color="warning"
+            tag={Link}
+            to={`/repairNote/edit/${invId}/${issId}`}
+          >
+            Edit Issue Ticket
+          </Button>{" "}
+          <Button
+            className="col-2"
+            color="primary"
+            tag={Link}
+            to={`/repairNote/add/${invId}/${issId}`}
+          >
+            New Repair Note
+          </Button>{" "}
+        </div>
+      </Card>
+      {/* <Card className="my-4 shadow"> */}
       {issueTicket.id !== undefined ? (
         <RepairNotesList issueTicket={issueTicket} />
       ) : null}
+      {/* </Card> */}
     </div>
   );
 };
