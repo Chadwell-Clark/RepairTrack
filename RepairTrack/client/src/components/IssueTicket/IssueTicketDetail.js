@@ -62,7 +62,7 @@ const IssueTicketDetail = () => {
       </Card>
       <Card className="my-4 border-0">
         <div className="row justify-content-around">
-          <Button className="col-2" color="danger" onClick={handleDelete}>
+          {/* <Button className="col-2" color="danger" onClick={handleDelete}>
             Delete Issue Ticket
           </Button>{" "}
           <Button
@@ -72,7 +72,7 @@ const IssueTicketDetail = () => {
             to={`/issueTicket/edit/${invId}/${issId}`}
           >
             Edit Issue Ticket
-          </Button>{" "}
+          </Button>{" "} */}
           <Button
             className="col-2"
             color="primary"
