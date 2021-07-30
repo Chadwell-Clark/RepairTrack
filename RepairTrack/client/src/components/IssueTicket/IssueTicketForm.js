@@ -40,7 +40,7 @@ const IssueTicketForm = ({ inventoryId }) => {
       issueTicket.inventoryId = invId;
       issueTicket.isResolved = false;
       //   repairNote.userProfileId = currentUser.id;
-      debugger;
+
       addIssueTicket(issueTicket).then((res) => {
         history.push(`/issueTicket/${invId}/${res}`); //would like to push to Id
       });

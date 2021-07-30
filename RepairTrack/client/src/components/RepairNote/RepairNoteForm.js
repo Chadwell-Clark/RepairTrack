@@ -40,7 +40,7 @@ const RepairNoteForm = () => {
     } else {
       repairNote.issueTicketId = issId;
       repairNote.userProfileId = currentUser.id;
-      debugger;
+
       addRepairNote(repairNote).then((res) => {
         history.push(`/repairNote/${invId}/${issId}/${res}`); //would like to push to Id
       });
@@ -49,7 +49,6 @@ const RepairNoteForm = () => {
 
   useEffect(() => {
     if (issId !== undefined && issId !== 0 && currentUser !== {}) {
-      //   debugger;
       getIssueandInventoryByIssueTicketId(issId).then(setIssueTicket);
       getCurrentUser().then(setCurrentUser);
     }
