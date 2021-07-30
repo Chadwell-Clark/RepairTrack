@@ -27,7 +27,7 @@ const InventoryDetail = () => {
 
   return (
     <div className="container">
-      <Card>
+      <Card className="my-4 border-0 shadow">
         <div className="row align-items-start">
           <h3 className="col">
             Manufacturer: <strong>{inventoryItem.manufacturer}</strong>

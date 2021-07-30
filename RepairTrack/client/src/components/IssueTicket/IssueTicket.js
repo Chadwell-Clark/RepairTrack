@@ -7,12 +7,12 @@ const IssueTicket = ({ issueTicket }) => {
   const { invId } = useParams();
 
   return (
-    <Card className="my-4">
+    <Card className="my-4 border-0 shadow">
       <div className="row">
         <div className="col-md-12">
           <div className="row">
             <div className="col-md-4">
-              <h4 className=" text-start">
+              <h4 className="  ml-4">
                 IssueTicket#: <strong>{issueTicket.id}</strong>
               </h4>
             </div>
@@ -37,7 +37,7 @@ const IssueTicket = ({ issueTicket }) => {
           </div>
           <div className="row">
             <div className="col-md-10">
-              <div className="text-start">
+              <div className="text-start ml-4">
                 {" "}
                 Description: <strong>{issueTicket.issue}</strong>
               </div>
