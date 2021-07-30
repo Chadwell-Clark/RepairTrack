@@ -9,13 +9,13 @@ import {
   Col,
 } from "reactstrap";
 import React, { useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 
 import { getIssueandInventoryByIssueTicketId } from "../../modules/issueTicketManager";
 import { getCurrentUser } from "../../modules/userManager";
 import { addRepairNote } from "../../modules/repairNoteManager";
 
-const RepairNoteForm = ({ issueId }) => {
+const RepairNoteForm = () => {
   const newRepairNote = {
     note: "",
     partsNeeded: "",
@@ -25,6 +25,7 @@ const RepairNoteForm = ({ issueId }) => {
   const [currentUser, setCurrentUser] = useState({});
   const [repairNote, setRepairNote] = useState(newRepairNote);
   const history = useHistory();
+  const { invId, issId } = useParams();
 
   const handleChange = (e) => {
     const repairNoteCopy = { ...repairNote };
@@ -37,18 +38,19 @@ const RepairNoteForm = ({ issueId }) => {
     if (repairNote.note === "") {
       window.alert("Repair Note Required");
     } else {
-      repairNote.issueTicketId = issueId;
+      repairNote.issueTicketId = issId;
       repairNote.userProfileId = currentUser.id;
       debugger;
       addRepairNote(repairNote).then((res) => {
-        history.push(`/repairNote/${res}`); //would like to push to Id
+        history.push(`/repairNote/${invId}/${issId}/${res}`); //would like to push to Id
       });
     }
   };
 
   useEffect(() => {
-    if (issueId !== 0 || currentUser !== {}) {
-      getIssueandInventoryByIssueTicketId(issueId).then(setIssueTicket);
+    if (issId !== undefined && issId !== 0 && currentUser !== {}) {
+      //   debugger;
+      getIssueandInventoryByIssueTicketId(issId).then(setIssueTicket);
       getCurrentUser().then(setCurrentUser);
     }
   }, []);
@@ -82,13 +84,18 @@ const RepairNoteForm = ({ issueId }) => {
               Serial Number:{" "}
               <strong>{issueTicket?.inventory?.serialNumber}</strong>
             </h5>
+            <div className="row">
+              <h5>
+                Issue: <strong>{issueTicket.issue}</strong>
+              </h5>
+            </div>
           </div>
         </CardBody>
       </Card>
       <Card>
         <CardBody>
           <Form>
-            <h5 ml-5>{`New Repair Note  For Issue Ticket # ${issueId}`}</h5>
+            <h5 ml-5>{`New Repair Note  For Issue Ticket # ${issId}`}</h5>
             <FormGroup row>
               <Label for="note" sm={2}>
                 Notes on Repair:
@@ -123,6 +130,7 @@ const RepairNoteForm = ({ issueId }) => {
               </Label>
               <Col sm={10}>
                 <Input
+                  className="caret"
                   id="partsOrdered"
                   type="select"
                   value={repairNote.partsNeeded}
@@ -131,6 +139,7 @@ const RepairNoteForm = ({ issueId }) => {
                   <option value="0">Parts not Ordered</option>
                   <option value="1">Parts Ordered</option>
                   <option value="2">Parts not Needed</option>
+                  <option value="3">Parts in Stock</option>
                 </Input>
               </Col>
             </FormGroup>

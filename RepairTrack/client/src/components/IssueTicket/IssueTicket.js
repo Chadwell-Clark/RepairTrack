@@ -1,9 +1,10 @@
 import React from "react";
 import { Button, Card, Alert } from "reactstrap";
-import { Link, useHistory } from "react-router-dom";
+import { Link, useHistory, useParams } from "react-router-dom";
 
 const IssueTicket = ({ issueTicket }) => {
   //   const history = useHistory();
+  const { invId } = useParams();
 
   return (
     <Card className="my-4">
@@ -47,7 +48,7 @@ const IssueTicket = ({ issueTicket }) => {
                   className=""
                   color="primary"
                   tag={Link}
-                  to={`/IssueTicket/${issueTicket.id}`}
+                  to={`/IssueTicket/${issueTicket.inventoryId}/${issueTicket.id}`}
                   //   type="submit"
                   //   onClick={handleClick}
                 >

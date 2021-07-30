@@ -5,22 +5,21 @@ import { Link, useParams } from "react-router-dom";
 
 import IssueTicketList from "../IssueTicket/IssueTicketList";
 
-const InventoryDetail = ({ setInventoryId }) => {
+const InventoryDetail = () => {
   const [inventoryItem, setInventoryItem] = useState([]);
   const [issuetickets, setIssueTickets] = useState([]);
 
-  const { id } = useParams();
+  const { invId } = useParams();
 
   //   const getInventoryItem = () => {
   //     getInventoryById().then((res) => setInventoryItem(res));
   //   };
 
   useEffect(() => {
-    getInventoryById(id).then(setInventoryItem);
-    setInventoryId(id);
+    getInventoryById(invId).then(setInventoryItem);
 
     // getIssueTicketsByInventoryId(id).then(setIssueTickets);
-  }, [id]);
+  }, [invId]);
 
   if (!inventoryItem) {
     return null;
@@ -37,12 +36,22 @@ const InventoryDetail = ({ setInventoryId }) => {
             Model: <strong>{inventoryItem.model}</strong>
           </h3>
           <div className="col">Image goes here</div>
-          <h3>
-            Serial Number: <strong>{inventoryItem.serialNumber}</strong>
-          </h3>
+          <div className="row">
+            <h3 className="col">
+              Serial Number: <strong>{inventoryItem.serialNumber}</strong>
+            </h3>
+            <Button
+              className="col-2"
+              color="primary"
+              tag={Link}
+              to={`/issueTicket/add/${invId}`}
+            >
+              New Issue Ticket
+            </Button>{" "}
+          </div>
         </div>
       </Card>
-      <IssueTicketList inventoryId={id} inventoryItem={inventoryItem} />
+      <IssueTicketList inventoryId={invId} inventoryItem={inventoryItem} />
     </div>
   );
 };

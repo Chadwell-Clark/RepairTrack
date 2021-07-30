@@ -2,7 +2,7 @@ import React from "react";
 import { Button, Card, Alert } from "reactstrap";
 import { Link, useHistory } from "react-router-dom";
 
-const RepairNote = ({ repairNote }) => {
+const RepairNote = ({ repairNote, issueTicket }) => {
   //   const history = useHistory();
 
   return (
@@ -34,7 +34,7 @@ const RepairNote = ({ repairNote }) => {
                   className=""
                   color="primary"
                   tag={Link}
-                  to={`/repairNote/${repairNote.id}`}
+                  to={`/repairNote/${issueTicket.inventoryId}/${issueTicket.id}/${repairNote.id}`}
                   //   type="submit"
                   //   onClick={handleClick}
                 >

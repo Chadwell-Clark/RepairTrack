@@ -15,12 +15,12 @@ import { getIssueandInventoryByIssueTicketId } from "../../modules/issueTicketMa
 import { getCurrentUser } from "../../modules/userManager";
 import { editRepairNote, getRepairNote } from "../../modules/repairNoteManager";
 
-const RepairNoteEdit = ({ issueId }) => {
+const RepairNoteEdit = () => {
   const [issueTicket, setIssueTicket] = useState({});
   const [currentUser, setCurrentUser] = useState({});
   const [repairNote, setRepairNote] = useState({});
   const history = useHistory();
-  const { id } = useParams();
+  const { invId, issId, repId } = useParams();
 
   const handleChange = (e) => {
     const repairNoteCopy = { ...repairNote };
@@ -34,18 +34,18 @@ const RepairNoteEdit = ({ issueId }) => {
       window.alert("Repair Note Required");
     } else {
       editRepairNote(repairNote).then(() => {
-        history.push(`/repairNote/${id}`); //would like to push to Id
+        history.push(`/repairNote/${invId}/${issId}/${repId}`); //would like to push to Id
       });
     }
   };
 
   useEffect(() => {
-    getRepairNote(id).then(setRepairNote);
-  }, [id]);
+    getRepairNote(repId).then(setRepairNote);
+  }, [repId]);
 
   useEffect(() => {
-    if (issueId !== 0 || currentUser !== {}) {
-      getIssueandInventoryByIssueTicketId(issueId).then(setIssueTicket);
+    if (issId !== 0 || currentUser !== {}) {
+      getIssueandInventoryByIssueTicketId(issId).then(setIssueTicket);
       getCurrentUser().then(setCurrentUser);
     }
   }, []);
@@ -79,13 +79,18 @@ const RepairNoteEdit = ({ issueId }) => {
               Serial Number:{" "}
               <strong>{issueTicket?.inventory?.serialNumber}</strong>
             </h5>
+            <div className="row">
+              <h5>
+                Issue: <strong>{issueTicket.issue}</strong>
+              </h5>
+            </div>
           </div>
         </CardBody>
       </Card>
       <Card>
         <CardBody>
           <Form>
-            <h5>{`New Repair Note  For Issue Ticket # ${issueId}`}</h5>
+            <h5>{`Edit Repair Note  For Issue Ticket # ${issId}`}</h5>
             <FormGroup row>
               <Label for="note" sm={2}>
                 Notes on Repair:
