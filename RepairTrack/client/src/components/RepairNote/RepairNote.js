@@ -6,7 +6,7 @@ const RepairNote = ({ repairNote, issueTicket }) => {
   //   const history = useHistory();
 
   return (
-    <Card className="my-4 px-3 border-0 shadow-sm">
+    <Card className="my-4 px-3 border-0 shadow">
       <div className="row px-3">
         <div className="col-md-12">
           <div className="row">

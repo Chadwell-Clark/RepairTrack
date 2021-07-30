@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { getRepairNotesByIssueTicketId } from "../../modules/repairNoteManager";
-import { Button, Table } from "reactstrap";
+import { Button, Card } from "reactstrap";
 import { Link, useParams } from "react-router-dom";
 
 import RepairNote from "./RepairNote";
@@ -15,19 +15,21 @@ const RepairNoteList = ({ issueTicket }) => {
 
   if (repairNotes.length === 0 || repairNotes === null) {
     return (
-      <div className="row">
-        <h3 className="col-8">
-          {`There are no Repair Notes for IssueTicket #${issueTicket.id}`}{" "}
-        </h3>
-        <Button
-          className="col-2"
-          color="primary"
-          tag={Link}
-          to={`/repairNote/add/${invId}/${issId}`}
-        >
-          New Repair Note
-        </Button>{" "}
-      </div>
+      <Card className="border-0 shadow my-4">
+        <div className="row">
+          <h3 className="col-8">
+            {`There are no Repair Notes for IssueTicket #${issueTicket.id}`}{" "}
+          </h3>
+          <Button
+            className="col-2"
+            color="primary"
+            tag={Link}
+            to={`/repairNote/add/${invId}/${issId}`}
+          >
+            New Repair Note
+          </Button>{" "}
+        </div>
+      </Card>
     );
   }
 

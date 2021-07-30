@@ -11,6 +11,7 @@ import RepairNoteDetail from "./RepairNote/RepairNoteDetail";
 import RepairNoteForm from "./RepairNote/RepairNoteForm";
 import RepairNoteEdit from "./RepairNote/RepairNoteEdit";
 import IssuesList from "./IssueTicket/IssuesList";
+import IssueTicketEdit from "./IssueTicket/IssueTicketEdit";
 
 export default function ApplicationViews({ isLoggedIn, isAdmin }) {
   return (
@@ -46,6 +47,10 @@ export default function ApplicationViews({ isLoggedIn, isAdmin }) {
 
         <Route exact path="/issueTicket/add/:invId(\d+)">
           {isLoggedIn ? <IssueTicketForm /> : <Redirect to="/login" />}
+        </Route>
+
+        <Route exact path="/issueTicket/edit/:invId(\d+)/:issId(\d+)">
+          {isLoggedIn ? <IssueTicketEdit /> : <Redirect to="/login" />}
         </Route>
 
         <Route path="/repairNote/:invId(\d+)/:issId(\d+)/:repId(\d+)">

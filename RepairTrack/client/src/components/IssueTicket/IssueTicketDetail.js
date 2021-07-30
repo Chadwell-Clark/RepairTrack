@@ -1,20 +1,26 @@
 import React, { useState, useEffect } from "react";
 import { Button, Table, Card } from "reactstrap";
-import { Link, useParams } from "react-router-dom";
-import { getIssueandInventoryByIssueTicketId } from "../../modules/issueTicketManager";
+import { Link, useParams, useHistory } from "react-router-dom";
+import {
+  getIssueandInventoryByIssueTicketId,
+  deleteIssueTicket,
+} from "../../modules/issueTicketManager";
 import RepairNotesList from "../RepairNote/RepairNoteList";
 
 const IssueTicketDetail = () => {
   const [issueTicket, setIssueTicket] = useState({});
 
   const { issId, invId } = useParams();
-  //   console.log(id);
-  //   setIssueId(id);
+  const history = useHistory();
+
+  const handleDelete = (e) => {
+    e.preventDefault();
+    deleteIssueTicket(issueTicket.id).then(history.push(`/inventory/${invId}`));
+  };
 
   useEffect(() => {
     getIssueandInventoryByIssueTicketId(issId).then(setIssueTicket);
   }, [issId]);
-  //   console.log("setissue", issueTicket);
 
   if (!issueTicket) {
     return null;
@@ -22,7 +28,7 @@ const IssueTicketDetail = () => {
 
   return (
     <div className="container">
-      <Card className="my-4 shadow">
+      <Card className="my-4 shadow border-0">
         <div className="row align-items-start">
           <h5 className="col">
             IssueTicket# <strong>{issueTicket.id}</strong>
@@ -56,19 +62,14 @@ const IssueTicketDetail = () => {
       </Card>
       <Card className="my-4 border-0">
         <div className="row justify-content-around">
-          <Button
-            className="col-2"
-            color="danger"
-            tag={Link}
-            to={`/repairNote/add/${invId}/${issId}`}
-          >
+          <Button className="col-2" color="danger" onClick={handleDelete}>
             Delete Issue Ticket
           </Button>{" "}
           <Button
             className="col-2"
             color="warning"
             tag={Link}
-            to={`/repairNote/edit/${invId}/${issId}`}
+            to={`/issueTicket/edit/${invId}/${issId}`}
           >
             Edit Issue Ticket
           </Button>{" "}
