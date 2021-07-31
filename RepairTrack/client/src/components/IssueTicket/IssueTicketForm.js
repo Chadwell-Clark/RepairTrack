@@ -15,7 +15,7 @@ import { getInventoryById } from "../../modules/inventoryManager";
 // import { getCurrentUser } from "../../modules/userManager";
 import { addIssueTicket } from "../../modules/issueTicketManager";
 
-const IssueTicketForm = ({ inventoryId }) => {
+const IssueTicketForm = () => {
   const newIssueTicket = {
     issue: "",
     isResolved: false,
@@ -48,7 +48,7 @@ const IssueTicketForm = ({ inventoryId }) => {
   };
 
   useEffect(() => {
-    if (inventoryId !== 0) {
+    if (invId !== 0) {
       getInventoryById(invId).then(setInventory);
       //   getCurrentUser().then(setCurrentUser);
     }

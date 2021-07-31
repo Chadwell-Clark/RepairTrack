@@ -19,8 +19,8 @@ const RepairNoteEdit = () => {
   const [issueTicket, setIssueTicket] = useState({});
   const [currentUser, setCurrentUser] = useState({});
   const [repairNote, setRepairNote] = useState({});
-  const history = useHistory();
   const { invId, issId, repId } = useParams();
+  const history = useHistory();
 
   const handleChange = (e) => {
     const repairNoteCopy = { ...repairNote };

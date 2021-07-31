@@ -220,7 +220,7 @@ namespace RepairTrack.Repositories
                 using (var cmd = conn.CreateCommand())
                 {
                     cmd.CommandText = @"
-                        DELETE FROM RepairNote WHERE IssueId = @id;
+                        DELETE FROM RepairNote WHERE IssueTicketId = @id;
                         DELETE FROM IssueTicket WHERE id = @id";
 
 
