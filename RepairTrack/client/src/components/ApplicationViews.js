@@ -12,6 +12,7 @@ import RepairNoteForm from "./RepairNote/RepairNoteForm";
 import RepairNoteEdit from "./RepairNote/RepairNoteEdit";
 import IssuesList from "./IssueTicket/IssuesList";
 import IssueTicketEdit from "./IssueTicket/IssueTicketEdit";
+import InventoryForm from "./Inventory/InventoryForm";
 
 export default function ApplicationViews({ isLoggedIn, isAdmin }) {
   return (
@@ -35,6 +36,10 @@ export default function ApplicationViews({ isLoggedIn, isAdmin }) {
 
         <Route path="/inventory/:invId(\d+)">
           {isLoggedIn ? <InventoryDetail /> : <Redirect to="/login" />}
+        </Route>
+
+        <Route exact path="/inventory/add">
+          {isLoggedIn ? <InventoryForm /> : <Redirect to="/login" />}
         </Route>
 
         <Route exact path="/issueTicket">

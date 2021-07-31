@@ -1,7 +1,7 @@
 ﻿using RepairTrack.Models;
 using System.Collections.Generic;
 
-namespace RepairTrack.Controllers
+namespace RepairTrack.Repositories
 {
     public interface IRepairNoteRepository
     {

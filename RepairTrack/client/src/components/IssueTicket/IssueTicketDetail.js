@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Button, Table, Card } from "reactstrap";
+import { Button, Alert, Card } from "reactstrap";
 import { Link, useParams, useHistory } from "react-router-dom";
 import {
   getIssueandInventoryByIssueTicketId,
@@ -43,17 +43,18 @@ const IssueTicketDetail = () => {
           </h5>
           <div className="col">Image goes here</div>
           <div className="row">
-            <h5 className="col-8">
+            <h5 className="col-4">
               Serial # <strong>{issueTicket.inventory?.serialNumber}</strong>
             </h5>
-            {/* <Button
-              className="col-2"
-              color="primary"
-              tag={Link}
-              to={`/repairNote/add/${invId}/${issId}`}
-            >
-              New Repair Note
-            </Button>{" "} */}
+            {issueTicket.isResolved == 0 ? (
+              <Alert className="text-center col-3" color="danger">
+                <strong>Unresolved</strong>
+              </Alert>
+            ) : (
+              <Alert className="text-center col-3" color="success">
+                <strong>Resolved</strong>
+              </Alert>
+            )}
           </div>
           <h5>
             Issue: <strong>{issueTicket.issue}</strong>
@@ -62,7 +63,7 @@ const IssueTicketDetail = () => {
       </Card>
       <Card className="my-4 border-0">
         <div className="row justify-content-around">
-          {/* <Button className="col-2" color="danger" onClick={handleDelete}>
+          <Button className="col-2" color="danger" onClick={handleDelete}>
             Delete Issue Ticket
           </Button>{" "}
           <Button
@@ -72,7 +73,7 @@ const IssueTicketDetail = () => {
             to={`/issueTicket/edit/${invId}/${issId}`}
           >
             Edit Issue Ticket
-          </Button>{" "} */}
+          </Button>{" "}
           <Button
             className="col-2"
             color="primary"

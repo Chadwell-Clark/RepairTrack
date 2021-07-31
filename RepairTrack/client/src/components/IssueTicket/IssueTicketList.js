@@ -13,9 +13,7 @@ const IssueTicketList = ({ inventoryItem }) => {
 
   if (!issueTickets) {
     return null;
-  }
-
-  if (issueTickets.length === 0) {
+  } else if (issueTickets.length === 0) {
     return (
       <Card>
         <h3>
