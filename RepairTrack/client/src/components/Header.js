@@ -54,25 +54,15 @@ export default function Header({ isLoggedIn, isAdmin }) {
                     New Post
                   </NavLink>
                 </NavItem> */}
-                {/* {isAdmin && (
+                {isAdmin && (
                   <>
-                    <NavItem>
-                      <NavLink tag={RRNavLink} to="/tags">
-                        Tag Management
-                      </NavLink>
-                    </NavItem>
-                    <NavItem>
-                      <NavLink tag={RRNavLink} to="/category">
-                        Categories
-                      </NavLink>
-                    </NavItem>
-                    <NavItem>
-                      <NavLink tag={RRNavLink} to="/users">
-                        User Profiles
+                    <NavItem className="mx-4">
+                      <NavLink tag={RRNavLink} to="/userProfile">
+                        <h3>User Profiles</h3>
                       </NavLink>
                     </NavItem>
                   </>
-                )} */}
+                )}
                 <NavItem className="mx-4">
                   <a
                     aria-current="page"

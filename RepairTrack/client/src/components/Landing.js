@@ -5,6 +5,7 @@ export default function Landing() {
   return (
     <span
     // style={{
+    //   backgroundColor: "#34f35a",
     //   position: "fixed",
     //   left: 0,
     //   right: 0,
@@ -14,7 +15,7 @@ export default function Landing() {
     // }}
     >
       <h1 className="m-5 text-center">
-        <strong>Hello Chadwell this is Gamma</strong>
+        <strong>Issue Tickets</strong>
       </h1>
       <IssuesList />
     </span>

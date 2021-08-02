@@ -12,7 +12,7 @@ import React, { useState, useEffect } from "react";
 import { useHistory, useParams } from "react-router-dom";
 
 import { getIssueandInventoryByIssueTicketId } from "../../modules/issueTicketManager";
-import { getCurrentUser } from "../../modules/userManager";
+import { getCurrentUser } from "../../modules/userProfileManager";
 import { addRepairNote } from "../../modules/repairNoteManager";
 
 const RepairNoteForm = () => {

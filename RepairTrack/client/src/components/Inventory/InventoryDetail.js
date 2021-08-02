@@ -1,19 +1,23 @@
 import React, { useState, useEffect } from "react";
-import { getInventoryById } from "../../modules/inventoryManager";
+import {
+  getInventoryById,
+  deleteInventory,
+} from "../../modules/inventoryManager";
 import { Button, Table, Card } from "reactstrap";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useHistory } from "react-router-dom";
 
 import IssueTicketList from "../IssueTicket/IssueTicketList";
 
-const InventoryDetail = () => {
+const InventoryDetail = ({ isAdmin }) => {
   const [inventoryItem, setInventoryItem] = useState([]);
   const [issuetickets, setIssueTickets] = useState([]);
 
   const { invId } = useParams();
-
-  //   const getInventoryItem = () => {
-  //     getInventoryById().then((res) => setInventoryItem(res));
-  //   };
+  const history = useHistory();
+  const handleDelete = (e) => {
+    e.preventDefault();
+    deleteInventory(invId).then(history.push(`/inventory`));
+  };
 
   useEffect(() => {
     getInventoryById(invId).then(setInventoryItem);
@@ -27,7 +31,7 @@ const InventoryDetail = () => {
 
   return (
     <div className="container">
-      <Card className="my-4 border-0 shadow">
+      <Card className="my-4 border-0 shadow-sm">
         <div className="row align-items-start">
           <h3 className="col">
             Manufacturer: <strong>{inventoryItem.manufacturer}</strong>
@@ -40,15 +44,22 @@ const InventoryDetail = () => {
             <h3 className="col">
               Serial Number: <strong>{inventoryItem.serialNumber}</strong>
             </h3>
-            <Button
-              className="col-2"
-              color="primary"
-              tag={Link}
-              to={`/issueTicket/add/${invId}`}
-            >
-              New Issue Ticket
-            </Button>{" "}
           </div>
+        </div>
+      </Card>
+      <Card className="border-0 shadow-sm">
+        <div className="row justify-content-around ">
+          <Button
+            className="col-2"
+            color="warning"
+            tag={Link}
+            to={`/inventory/edit/${invId}`}
+          >
+            Edit Inventory Item
+          </Button>{" "}
+          <Button className="col-2" color="danger" onClick={handleDelete}>
+            Delete Inventory Item
+          </Button>{" "}
         </div>
       </Card>
       <IssueTicketList inventoryId={invId} inventoryItem={inventoryItem} />

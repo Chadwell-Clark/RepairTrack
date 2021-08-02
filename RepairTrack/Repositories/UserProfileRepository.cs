@@ -174,7 +174,7 @@ namespace RepairTrack.Repositories
                             FROM UserProfile up 
                             JOIN UserType ut ON up.UserTypeId = ut.id
                            
-                        ORDER BY up.DisplayName
+                       
                     ";
 
                     var reader = cmd.ExecuteReader();
