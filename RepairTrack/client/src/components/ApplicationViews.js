@@ -107,6 +107,13 @@ export default function ApplicationViews({ isLoggedIn, isAdmin }) {
             [isLoggedIn && !isAdmin ? <Landing /> : <Redirect to="/login" />]
           )}
         </Route>
+        <Route path="/userProfile/:id(\d+)">
+          {isLoggedIn && isAdmin ? (
+            <UserProfileDetail />
+          ) : (
+            [isLoggedIn && !isAdmin ? <Landing /> : <Redirect to="/login" />]
+          )}
+        </Route>
       </Switch>
     </main>
   );

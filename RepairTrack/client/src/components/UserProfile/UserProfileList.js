@@ -42,7 +42,7 @@ const UserProfileList = () => {
               <th></th>
               <th></th>
               <th>
-                <Button
+                {/* <Button
                   color="danger"
                   tag={Link}
                   to={`/users/deactivated`}
@@ -50,7 +50,7 @@ const UserProfileList = () => {
                   //   onClick={handleClick}
                 >
                   Deactivated Users
-                </Button>
+                </Button> */}
               </th>
             </tr>
           </thead>

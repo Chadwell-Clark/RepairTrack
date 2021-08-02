@@ -41,10 +41,10 @@ const InventoryDetail = ({ isAdmin }) => {
           </h3>
           <div className="col">
             <img
-              className="d-flex justify-content-end"
+              className="img-fluid"
               src={
                 (require = `
-              ./images/${inventoryItem.imageLoc}
+              /images/${inventoryItem.imageLoc}
                  `)
               }
             />
