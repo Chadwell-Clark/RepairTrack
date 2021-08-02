@@ -39,7 +39,16 @@ const InventoryDetail = ({ isAdmin }) => {
           <h3 className="col">
             Model: <strong>{inventoryItem.model}</strong>
           </h3>
-          <div className="col">Image goes here</div>
+          <div className="col">
+            <img
+              className="d-flex justify-content-end"
+              src={
+                (require = `
+              ./images/${inventoryItem.imageLoc}
+                 `)
+              }
+            />
+          </div>
           <div className="row">
             <h3 className="col">
               Serial Number: <strong>{inventoryItem.serialNumber}</strong>
