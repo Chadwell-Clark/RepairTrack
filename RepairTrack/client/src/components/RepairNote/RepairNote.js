@@ -17,6 +17,11 @@ const RepairNote = ({ repairNote, issueTicket }) => {
             </div>
             <div className="col-md-4">
               <h5 className="text-center">
+                Technician: <strong>{repairNote.userProfile.fullName}</strong>
+              </h5>
+            </div>
+            <div className="col-md-4">
+              <h5 className="text-end">
                 CreationDate: <strong>{repairNote.dateCreated}</strong>
               </h5>
             </div>
