@@ -106,7 +106,7 @@ namespace RepairTrack.Repositories
                 using (var cmd = conn.CreateCommand())
                 {
                     cmd.CommandText = @"
-                        INSERT INTO Inventory (Manufacturer, Model, SerialNumber, FirmWare,, ImageLoc, InCommission)
+                        INSERT INTO Inventory (Manufacturer, Model, SerialNumber, FirmWare, ImageLoc, InCommission)
                         OUTPUT INSERTED.ID
                         VALUES (@Manufacturer,  @Model, @SerialNumber,  @FirmWare, @ImageLoc, @InCommission)";
 
