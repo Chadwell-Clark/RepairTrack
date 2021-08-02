@@ -33,7 +33,17 @@ const IssueTicketList = ({ inventoryItem }) => {
 
   return (
     <div>
-      <h4>Issue Tickets</h4>
+      <div className="row mt-4 ">
+        <h4 className="col-2">Issue Tickets</h4>
+        <Button
+          className="col-2"
+          color="primary"
+          tag={Link}
+          to={`/issueTicket/add/${invId}`}
+        >
+          New Issue Ticket
+        </Button>{" "}
+      </div>
       {issueTickets.map((item) => (
         <IssueTicket issueTicket={item} inventoryId={invId} key={item.id} />
       ))}

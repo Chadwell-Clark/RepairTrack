@@ -106,7 +106,7 @@ namespace RepairTrack.Repositories
                 using (var cmd = conn.CreateCommand())
                 {
                     cmd.CommandText = @"
-                        INSERT INTO Inventory (Manufacturer, Model, SerialNumber, FirmWare,, ImageLoc, InCommission)
+                        INSERT INTO Inventory (Manufacturer, Model, SerialNumber, FirmWare, ImageLoc, InCommission)
                         OUTPUT INSERTED.ID
                         VALUES (@Manufacturer,  @Model, @SerialNumber,  @FirmWare, @ImageLoc, @InCommission)";
 
@@ -165,7 +165,7 @@ namespace RepairTrack.Repositories
                 using (var cmd = conn.CreateCommand())
                 {
                     cmd.CommandText = @"
-                        DELETE FROM RepairNote WHERE IssueId = InventoryId;
+                        DELETE FROM RepairNote WHERE IssueTicketId = IssueTicket.Id;
                         DELETE FROM IssueTicket WHERE InventoryId = @id
                         DELETE FROM Inventory WHERE id = @id";
 

@@ -49,7 +49,7 @@ SET IDENTITY_INSERT [IssueTicket] ON
 INSERT INTO [IssueTicket]
     ([Id], [Issue], [CreateDateTime], [InventoryId], [IsResolved])
 VALUES
-    (1, 'Issue One - In congue. Etiam justo. Etiam pretium iaculis justo.', '2020-01-23',  1, 1),
+    (1, 'Engineer complained that the unit was noisy, Note it may have been the aux send or channel in on the console. Please check', '2020-01-23',  1, 1),
     (2, 'Issue Two - Sed sagittis. Nam congue, risus semper porta volutpat', '2020-02-23',  10, 1),
     (3, 'Issue Three - In congue. Etiam justo. Etiam pretium iaculis justo.', '2020-03-23',  1, 0),
     (4, 'Issue Four - Sed sagittis. Nam congue, risus semper porta volutpat', '2020-04-23',  10, 0),

@@ -1,3 +1,8 @@
+import React, { useState, useEffect } from "react";
+import { useHistory, useParams } from "react-router-dom";
+
+import { getIssueandInventoryByIssueTicketId } from "../../modules/issueTicketManager";
+import { editIssueTicket } from "../../modules/issueTicketManager";
 import {
   Card,
   CardBody,
@@ -8,10 +13,6 @@ import {
   Button,
   Col,
 } from "reactstrap";
-import React, { useState, useEffect } from "react";
-import { useHistory, useParams } from "react-router-dom";
-import { getIssueandInventoryByIssueTicketId } from "../../modules/issueTicketManager";
-import { editIssueTicket } from "../../modules/issueTicketManager";
 
 const IssueTicketEdit = () => {
   const [issueTicket, setIssueTicket] = useState({});
@@ -26,7 +27,6 @@ const IssueTicketEdit = () => {
 
   const handleChecked = (e) => {
     console.log(`CheckToggled ${e.target.checked}`);
-    // document.querySelector("#isResolved").checked = !issueTicket.isResolved;
     const issueTicketCopy = { ...issueTicket };
     issueTicketCopy.isResolved = e.target.checked;
     setIssueTicket(issueTicketCopy);
@@ -38,7 +38,6 @@ const IssueTicketEdit = () => {
     if (issueTicket.issue === "") {
       window.alert("Issue Required");
     } else {
-      // issueTicket.isResolved = issueTicket.isResolved === "true";
       editIssueTicket(issueTicket).then(() => {
         history.push(`/issueTicket/${invId}/${issId}`); //would like to push to Id
       });

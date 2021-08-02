@@ -4,7 +4,7 @@ import { Spinner } from "reactstrap";
 import Header from "./components/Header";
 import ApplicationViews from "./components/ApplicationViews";
 import { onLoginStatusChange } from "./modules/authManager";
-import { getCurrentUserType } from "./modules/userManager";
+import { getCurrentUserType } from "./modules/userProfileManager";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(null);
@@ -35,6 +35,7 @@ function App() {
     return <Spinner className="app-spinner dark" />;
   }
 
+  console.log("ADMIN", isAdmin);
   return (
     <Router>
       <Header isLoggedIn={isLoggedIn} isAdmin={isAdmin} />

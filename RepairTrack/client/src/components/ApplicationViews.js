@@ -13,10 +13,13 @@ import RepairNoteEdit from "./RepairNote/RepairNoteEdit";
 import IssuesList from "./IssueTicket/IssuesList";
 import IssueTicketEdit from "./IssueTicket/IssueTicketEdit";
 import InventoryForm from "./Inventory/InventoryForm";
+import InventoryEdit from "./Inventory/InventoryEdit";
+import UserProfileList from "./UserProfile/UserProfileList";
+import UserProfileDetail from "./UserProfile/UserProfileDetail";
 
 export default function ApplicationViews({ isLoggedIn, isAdmin }) {
   return (
-    <main>
+    <main className="main">
       <Switch>
         <Route path="/" exact>
           {isLoggedIn ? <Landing /> : <Redirect to="/login" />}
@@ -31,15 +34,35 @@ export default function ApplicationViews({ isLoggedIn, isAdmin }) {
         </Route>
 
         <Route exact path="/inventory">
-          {isLoggedIn ? <InventoryList /> : <Redirect to="/login" />}
+          {isLoggedIn ? (
+            <InventoryList isAdmin={isAdmin} />
+          ) : (
+            <Redirect to="/login" />
+          )}
         </Route>
 
         <Route path="/inventory/:invId(\d+)">
-          {isLoggedIn ? <InventoryDetail /> : <Redirect to="/login" />}
+          {isLoggedIn ? (
+            <InventoryDetail isAdmin={isAdmin} />
+          ) : (
+            <Redirect to="/login" />
+          )}
         </Route>
 
         <Route exact path="/inventory/add">
+          {isLoggedIn && isAdmin ? (
+            <InventoryForm />
+          ) : (
+            [isLoggedIn && !isAdmin ? <IssuesList /> : <Redirect to="/login" />]
+          )}
+        </Route>
+
+        {/* <Route exact path="/inventory/add">
           {isLoggedIn ? <InventoryForm /> : <Redirect to="/login" />}
+        </Route> */}
+
+        <Route exact path="/inventory/edit/:invId(\d+)">
+          {isLoggedIn ? <InventoryEdit /> : <Redirect to="/login" />}
         </Route>
 
         <Route exact path="/issueTicket">
@@ -70,20 +93,20 @@ export default function ApplicationViews({ isLoggedIn, isAdmin }) {
           {isLoggedIn ? <RepairNoteEdit /> : <Redirect to="/login" />}
         </Route>
 
-        {/* <Route exact path="/users">
+        <Route exact path="/userProfile">
           {isLoggedIn && isAdmin ? (
-            <UserList />
+            <UserProfileList />
           ) : (
-            [isLoggedIn && !isAdmin ? <Hello /> : <Redirect to="/login" />]
+            [isLoggedIn && !isAdmin ? <Landing /> : <Redirect to="/login" />]
           )}
         </Route>
-        <Route path="/users/:id(\d+)">
+        <Route path="/userProfile/:id(\d+)">
           {isLoggedIn && isAdmin ? (
-            <UserDetails />
+            <UserProfileDetail />
           ) : (
-            [isLoggedIn && !isAdmin ? <Hello /> : <Redirect to="/login" />]
+            [isLoggedIn && !isAdmin ? <Landing /> : <Redirect to="/login" />]
           )}
-        </Route> */}
+        </Route>
       </Switch>
     </main>
   );

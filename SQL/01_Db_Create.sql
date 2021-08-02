@@ -43,7 +43,7 @@ CREATE TABLE [Inventory] (
   [SerialNumber] varchar(50),
   [InCommission] bit NOT NULL DEFAULT (1),
   [FirmWare] varchar(50),
-  [ImageLoc] varchar
+  [ImageLoc] varchar(150)
 )
 
 CREATE TABLE [IssueTicket] (
