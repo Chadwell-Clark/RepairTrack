@@ -69,7 +69,16 @@ const IssueTicketEdit = () => {
             <h5 className="col">
               Model: <strong>{issueTicket?.inventory?.model}</strong>
             </h5>
-            <div className="col">Image goes here</div>
+            <div className="col">
+              <img
+                className="img-fluid"
+                src={
+                  (require = `
+              /images/${issueTicket?.inventory?.imageLoc}
+                 `)
+                }
+              />
+            </div>
           </div>
           <div className="row">
             <h5 className="col">

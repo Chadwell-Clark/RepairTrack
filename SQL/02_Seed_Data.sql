@@ -21,26 +21,26 @@ SET IDENTITY_INSERT [INVENTORY] ON
 INSERT INTO [INVENTORY]
     ([Id], [Manufacturer], [Model], [SerialNumber], [ImageLoc], [Firmware], [InCommission])
 VALUES
-    (1, 'Teletronix', 'LA - 2A Leveling Amplifier', '#39A00456', NULL, NULL, 1),
-    (2, 'Neve', '1073 Mic Preamp', '59967', NULL, NULL, 1),
-    (3, 'Neve', '1081 Mic Preamp', '8954', NULL, NULL, 1),
-    (4, 'Teletronix', 'LA - 2A Leveling Amplifier', '#39A01845', NULL, NULL, 1),
-    (5, 'Neve', '1073 Mic Preamp', '59959', NULL, NULL, 1),
-    (6, 'Neve', '1081 Mic Preamp', '8952', NULL, NULL, 1),
-    (7, 'Neumann', 'U87 Condensor Microphone', '93351E', NULL, NULL,1),
-    (8, 'API','2500+ Stereo Bus Compressor ','API2500-23453', NULL,NULL, 1),
-    (9, 'Solid State Logic','FX G384 G-Series Stereo Bus Compressor','G+87-4352', NULL,NULL, 1),
-    (10, 'Lexicon','480L Digital Effects System','55396-2', NULL,NULL, 1),
-    (11, 'tc Electronic','D-Two Multi-Tap Delay','TC-D2-34753', NULL,NULL, 1),
-    (12, 'tc Electronic','2290 Dynamic Digital Delay','512400', NULL,NULL, 1),
-    (13, 'Yamaha','NS-10M Studio Monitor','180553', NULL,NULL, 0),
-    (14, 'Yamaha','NS-10M Studio Monitor','180554', NULL,NULL, 0),
-    (15, 'TubeTech','CL 1B','CL1B-33451', NULL,NULL, 1),
-    (16, 'Lexicon','PCM-70 Digital Reverb','70-25377', NULL,NULL, 1),
-    (17, 'Eventide','H3000-D/SX Ultra-Harmonizer ','S1231', NULL,NULL, 1),
-    (18, 'API','3124+ Mic Preamplifier','API3124P-345', NULL,NULL, 1),
-    (19, 'Pultec','EQP-1A Tube Program Equalizer','8734', NULL,NULL, 1),
-    (20, 'GML','8200 Parametric Equalizer','82005436', NULL,NULL, 1)
+    (1, 'Teletronix', 'LA - 2A Leveling Amplifier', '#39A00456', 'Teletronix-LA-2A.png', NULL, 1),
+    (2, 'Neve', '1073 Mic Preamp', '59967', '1073.png', NULL, 1),
+    (3, 'Neve', '1081 Mic Preamp', '8954', '1081.png', NULL, 1),
+    (4, 'Teletronix', 'LA - 2A Leveling Amplifier', '#39A01845', 'Teletronix-LA-2A.png', NULL, 1),
+    (5, 'Neve', '1073 Mic Preamp', '59959', '1073.png', NULL, 1),
+    (6, 'Neve', '1081 Mic Preamp', '8952', '1081.png', NULL, 1),
+    (7, 'Neumann', 'U87 Condensor Microphone', '93351E', 'U87.png', NULL,1),
+    (8, 'API','2500+ Stereo Bus Compressor ','API2500-23453', 'API2500.png',NULL, 1),
+    (9, 'Solid State Logic','FX G384 G-Series Stereo Bus Compressor','G+87-4352', 'G384.png',NULL, 1),
+    (10, 'Lexicon','480L Digital Effects System','55396-2', '480L.png','v4.10', 1),
+    (11, 'tc Electronic','D-Two Multi-Tap Delay','TC-D2-34753', 'D-TWOwhtbgrd.png',NULL, 1),
+    (12, 'tc Electronic','2290 Dynamic Digital Delay','512400', 'TC2290.png','VERSION 30.08', 1),
+    (13, 'Yamaha','NS-10M Studio Monitor','180553', 'NS-10M.jpg',NULL, 0),
+    (14, 'Yamaha','NS-10M Studio Monitor','180554', 'NS-10M.jpg',NULL, 0),
+    (15, 'TubeTech','CL 1B','CL1B-33451', 'CL1B.jpg',NULL, 1),
+    (16, 'Lexicon','PCM-70 Digital Reverb','70-25377', 'PCM-70.png','v3.01', 1),
+    (17, 'Eventide','H3000-D/SX Ultra-Harmonizer ','S1231','H3000.png','v2.17', 1),
+    (18, 'API','3124+ Mic Preamplifier','API3124P-345', 'API3124',NULL, 1),
+    (19, 'Pultec','EQP-1A Tube Program Equalizer','8734', 'EQP-1A.png',NULL, 1),
+    (20, 'GML','8200 Parametric Equalizer','82005436', 'GML8200.png',NULL, 1)
 
 SET IDENTITY_INSERT [INVENTORY] OFF
 

@@ -39,9 +39,9 @@ const UserProfile = ({ user }) => {
         <Button color="info">Edit</Button>{" "}
       </td>
       <td>
-        <Button color="danger" onClick={handleDeactivate}>
+        {/* <Button color="danger" onClick={handleDeactivate}>
           Deactivate
-        </Button>
+        </Button> */}
       </td>
     </tr>
   );

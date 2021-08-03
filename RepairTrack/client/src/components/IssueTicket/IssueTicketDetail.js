@@ -41,13 +41,17 @@ const IssueTicketDetail = () => {
             {/* Model:  */}
             <strong>{issueTicket.inventory?.model}</strong>
           </h5>
-          {/* <div className="col">
+          <div className="col">
             <img
-              className="d-flex justify-content-end"
-              src={require(`./src/images/${issueTicket.inventory?.imageLoc}
-                 `)}
+              className="img-fluid"
+              alt="Image not available"
+              src={
+                (require = `
+              /images/${issueTicket.inventory?.imageLoc}
+                 `)
+              }
             />
-          </div> */}
+          </div>
           <div className="row">
             <h5 className="col-4">
               Serial # <strong>{issueTicket.inventory?.serialNumber}</strong>

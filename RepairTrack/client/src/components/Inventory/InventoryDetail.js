@@ -41,10 +41,10 @@ const InventoryDetail = ({ isAdmin }) => {
           </h3>
           <div className="col">
             <img
-              className="d-flex justify-content-end"
+              className="img-fluid"
               src={
                 (require = `
-              ./images/${inventoryItem.imageLoc}
+              /images/${inventoryItem.imageLoc}
                  `)
               }
             />
@@ -53,22 +53,35 @@ const InventoryDetail = ({ isAdmin }) => {
             <h3 className="col">
               Serial Number: <strong>{inventoryItem.serialNumber}</strong>
             </h3>
+            {inventoryItem?.firmWare ? (
+              <h3 className="col">
+                Firmware: <strong>{inventoryItem.firmWare}</strong>
+              </h3>
+            ) : (
+              ""
+            )}
           </div>
         </div>
       </Card>
       <Card className="border-0 shadow-sm">
         <div className="row justify-content-around ">
-          <Button
-            className="col-2"
-            color="warning"
-            tag={Link}
-            to={`/inventory/edit/${invId}`}
-          >
-            Edit Inventory Item
-          </Button>{" "}
-          <Button className="col-2" color="danger" onClick={handleDelete}>
-            Delete Inventory Item
-          </Button>{" "}
+          {isAdmin ? (
+            <>
+              <Button
+                className="col-2"
+                color="warning"
+                tag={Link}
+                to={`/inventory/edit/${invId}`}
+              >
+                Edit Inventory Item
+              </Button>
+              <Button className="col-2" color="danger" onClick={handleDelete}>
+                Delete Inventory Item
+              </Button>
+            </>
+          ) : (
+            ""
+          )}
         </div>
       </Card>
       <IssueTicketList inventoryId={invId} inventoryItem={inventoryItem} />
