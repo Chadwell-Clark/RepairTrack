@@ -49,26 +49,6 @@ const InventoryList = ({ isAdmin }) => {
             </th>
             <th></th>
             <th></th>
-            {/* <th>
-                <Button
-                  color="info"
-                  tag={Link}
-                  to={`/`}
-                  //   type="submit"
-                  //   onClick={handleClick}
-                >
-                  Details
-                </Button>
-                <Button
-                  color="success"
-                  tag={Link}
-                  to={`/`}
-                  //   type="submit"
-                  //   onClick={handleClick}
-                >
-                  New Issue
-                </Button>
-              </th> */}
           </tr>
         </thead>
         <tbody>

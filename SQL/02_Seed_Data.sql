@@ -35,7 +35,7 @@ VALUES
     (12, 'tc Electronic','2290 Dynamic Digital Delay','512400', 'TC2290.png','VERSION 30.08', 1),
     (13, 'Yamaha','NS-10M Studio Monitor','180553', 'NS-10M.jpg',NULL, 0),
     (14, 'Yamaha','NS-10M Studio Monitor','180554', 'NS-10M.jpg',NULL, 0),
-    (15, 'TubeTech','CL 1B','CL1B-33451', 'CL1B.png',NULL, 1),
+    (15, 'TubeTech','CL 1B','CL1B-33451', 'CL1B.jpg',NULL, 1),
     (16, 'Lexicon','PCM-70 Digital Reverb','70-25377', 'PCM-70.png','v3.01', 1),
     (17, 'Eventide','H3000-D/SX Ultra-Harmonizer ','S1231','H3000.png','v2.17', 1),
     (18, 'API','3124+ Mic Preamplifier','API3124P-345', 'API3124',NULL, 1),
