@@ -70,6 +70,7 @@ const InventoryForm = () => {
                   type="text"
                   value={inventory.manufacturer}
                   onChange={handleChange}
+                  autoFocus
                 />
               </Col>
             </FormGroup>

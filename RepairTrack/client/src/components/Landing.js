@@ -14,9 +14,9 @@ export default function Landing() {
     //   textAlign: "center",
     // }}
     >
-      <h1 className="m-5 text-center">
+      {/* <h1 className="m-5 text-center">
         <strong>Issue Tickets</strong>
-      </h1>
+      </h1> */}
       <IssuesList />
     </span>
   );

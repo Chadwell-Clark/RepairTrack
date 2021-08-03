@@ -17,7 +17,9 @@ const IssuesList = ({ inventoryId, inventoryItem }) => {
   }
   return (
     <div className="container">
-      <h4>Issue Tickets</h4>
+      <h1 className="my-4 text-center">
+        <strong>Issue Tickets</strong>
+      </h1>
       {issueTickets.map((item) => (
         <IssueTicket issueTicket={item} key={item.id} />
       ))}

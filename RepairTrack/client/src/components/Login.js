@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Form, FormGroup, Label, Input } from "reactstrap";
+import { Button, Form, FormGroup, Label, Input, Col, Card } from "reactstrap";
 import { useHistory, Link } from "react-router-dom";
 import { login } from "../modules/authManager";
 // import logo1 from "../images/logo1.png";
@@ -18,37 +18,54 @@ export default function Login() {
   };
 
   return (
-    <div className="container">
-      <Form onSubmit={loginSubmit} className="form">
-        {/* <img className="logo1" src={logo1} alt="logo1" /> */}
-        <fieldset className="loginform">
-          <h3>User Login</h3>
-          <FormGroup>
-            <Label for="email">Email</Label>
-            <Input
-              id="email"
-              type="text"
-              autoFocus
-              onChange={(e) => setEmail(e.target.value)}
-            />
-          </FormGroup>
-          <FormGroup>
-            <Label for="password">Password</Label>
-            <Input
-              id="password"
-              type="password"
-              onChange={(e) => setPassword(e.target.value)}
-            />
-          </FormGroup>
-          <br></br>
-          <FormGroup>
-            <Button className="loginbutton">Login</Button>
-          </FormGroup>
-          <em>
-            Don't have an account? <Link to="register">Sign up here</Link>
-          </em>
-        </fieldset>
-      </Form>
+    <div className="container-sm">
+      <Card className="my-4 border-0 shadow">
+        <Form onSubmit={loginSubmit} className="form">
+          {/* <img className="logo1" src={logo1} alt="logo1" /> */}
+          <fieldset className="loginform m-3">
+            <FormGroup row>
+              <div sm={2}>{""}</div>
+              <Col sm={8}>
+                <h3>User Login</h3>
+              </Col>
+            </FormGroup>
+            <FormGroup row>
+              <Label for="email" sm={2}>
+                Email
+              </Label>
+              <Col sm={8}>
+                <Input
+                  id="email"
+                  type="text"
+                  autoFocus
+                  placeholder="Email"
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+              </Col>
+            </FormGroup>
+            <FormGroup row>
+              <Label for="password" sm={2}>
+                Password
+              </Label>
+              <Col sm={8} className="my-3">
+                <Input
+                  id="password"
+                  type="password"
+                  placeholder="Password"
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+              </Col>
+            </FormGroup>
+            <br></br>
+            <FormGroup>
+              <Button className="loginbutton">Login</Button>
+            </FormGroup>
+            <em>
+              Don't have an account? <Link to="register">Sign up here</Link>
+            </em>
+          </fieldset>
+        </Form>
+      </Card>
     </div>
   );
 }

@@ -17,16 +17,20 @@ const IssueTicketList = ({ inventoryItem }) => {
     return (
       <Card>
         <h3>
-          {`There are no issue tickets for ${inventoryItem.manufacturer} ${inventoryItem.model} Serial # : ${inventoryItem.serialNumber}`}{" "}
+          {`There are no issue tickets for ${inventoryItem.manufacturer} ${inventoryItem.model} Serial # ${inventoryItem.serialNumber}`}{" "}
         </h3>
-        <Button
-          className="col"
-          color="primary"
-          tag={Link}
-          to={`/issueTicket/add/${invId}`}
-        >
-          New Issue Ticket
-        </Button>{" "}
+        <div className="row">
+          <div className="col-5"></div>
+          <Button
+            className="col-2"
+            color="primary"
+            tag={Link}
+            to={`/issueTicket/add/${invId}`}
+          >
+            New Issue Ticket
+          </Button>{" "}
+          <div className="col-5"></div>
+        </div>
       </Card>
     );
   }
@@ -34,15 +38,19 @@ const IssueTicketList = ({ inventoryItem }) => {
   return (
     <div>
       <div className="row mt-4 ">
-        <h4 className="col-2">Issue Tickets</h4>
+        <h1 className="m-3 text-center">
+          <strong>Issue Tickets</strong>
+        </h1>
+        <div className="col-5"></div>
         <Button
-          className="col-2"
+          className=" col-2  d-flex justify-content-center"
           color="primary"
           tag={Link}
           to={`/issueTicket/add/${invId}`}
         >
           New Issue Ticket
         </Button>{" "}
+        <div className="col-5"></div>
       </div>
       {issueTickets.map((item) => (
         <IssueTicket issueTicket={item} inventoryId={invId} key={item.id} />

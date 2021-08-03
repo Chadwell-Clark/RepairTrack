@@ -70,7 +70,11 @@ export default function ApplicationViews({ isLoggedIn, isAdmin }) {
         </Route>
 
         <Route exact path="/issueTicket/:invId(\d+)/:issId(\d+)">
-          {isLoggedIn ? <IssueTicketDetail /> : <Redirect to="/login" />}
+          {isLoggedIn ? (
+            <IssueTicketDetail isAdmin={isAdmin} />
+          ) : (
+            <Redirect to="/login" />
+          )}
         </Route>
 
         <Route exact path="/issueTicket/add/:invId(\d+)">

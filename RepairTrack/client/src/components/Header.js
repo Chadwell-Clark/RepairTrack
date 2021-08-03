@@ -79,19 +79,27 @@ export default function Header({ isLoggedIn, isAdmin }) {
             {!isLoggedIn && (
               <>
                 <NavItem>
-                  <NavLink tag={RRNavLink} to="/login">
-                    Login
+                  <NavLink className="mx-4" tag={RRNavLink} to="/login">
+                    <h3>Login</h3>
                   </NavLink>
                 </NavItem>
                 <NavItem>
-                  <NavLink tag={RRNavLink} to="/register">
-                    Register
+                  <NavLink className="mx-4" tag={RRNavLink} to="/register">
+                    <h3>Register</h3>
                   </NavLink>
                 </NavItem>
               </>
             )}
           </Nav>
         </Collapse>
+        <img
+          className="img-fluid "
+          src={
+            (require = `
+              /images/vt2.png
+                 `)
+          }
+        ></img>
       </Navbar>
     </div>
   );
