@@ -18,6 +18,14 @@ export default function Header({ isLoggedIn, isAdmin }) {
   return (
     <div className="">
       <Navbar color="light" light expand="md">
+        <img
+          className="img-fluid "
+          src={
+            (require = `
+              /images/vt5l.png
+                 `)
+          }
+        ></img>
         <NavbarBrand className="mx-5" tag={RRNavLink} to="/">
           <strong>
             <h2>RepairTrack</h2>
@@ -96,7 +104,7 @@ export default function Header({ isLoggedIn, isAdmin }) {
           className="img-fluid "
           src={
             (require = `
-              /images/vt2.png
+              /images/vt5r.png
                  `)
           }
         ></img>
