@@ -99,11 +99,11 @@ const RepairNoteForm = () => {
               <Label for="note" sm={2}>
                 Notes on Repair:
               </Label>
-              <Col sm={10}>
+              <Col sm={8}>
                 <Input
                   id="note"
                   type="textarea"
-                  rows="10"
+                  rows="6"
                   value={repairNote.note}
                   onChange={handleChange}
                 />
@@ -113,11 +113,11 @@ const RepairNoteForm = () => {
               <Label for="partsNeeded" sm={2}>
                 Parts Needed:
               </Label>
-              <Col sm={10}>
+              <Col sm={8}>
                 <Input
                   id="partsNeeded"
                   type="textarea"
-                  rows="6"
+                  rows="4"
                   value={repairNote.partsNeeded}
                   onChange={handleChange}
                 />
@@ -127,7 +127,7 @@ const RepairNoteForm = () => {
               <Label for="partsOrdered" sm={2}>
                 Parts Ordered:
               </Label>
-              <Col sm={10}>
+              <Col sm={8}>
                 <Input
                   className="caret"
                   id="partsOrdered"

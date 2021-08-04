@@ -108,6 +108,7 @@ const IssueTicketForm = () => {
                   rows="10"
                   value={issueTicket.issue}
                   onChange={handleChange}
+                  autoFocus
                 />
               </Col>
             </FormGroup>

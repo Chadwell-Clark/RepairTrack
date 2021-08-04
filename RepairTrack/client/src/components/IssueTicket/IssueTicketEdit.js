@@ -56,7 +56,7 @@ const IssueTicketEdit = () => {
 
   return (
     <div className="container">
-      <Card>
+      <Card className="mt-3">
         <CardBody>
           <div className="row align-items-start">
             <h5 className="col">
@@ -88,7 +88,7 @@ const IssueTicketEdit = () => {
           </div>
         </CardBody>
       </Card>
-      <Card>
+      <Card className="mt-3">
         <CardBody>
           <Form>
             <h5>{`Edit Issue Ticket # ${issId} For Inventory Item # ${invId}`}</h5>

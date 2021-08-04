@@ -7,7 +7,7 @@ import {
 } from "../../modules/issueTicketManager";
 import RepairNotesList from "../RepairNote/RepairNoteList";
 
-const IssueTicketDetail = () => {
+const IssueTicketDetail = (isAdmin) => {
   const [issueTicket, setIssueTicket] = useState({});
 
   const { issId, invId } = useParams();
@@ -29,7 +29,7 @@ const IssueTicketDetail = () => {
   return (
     <div className="container">
       <Card className="my-4 shadow border-0">
-        <div className="row align-items-start">
+        <div className="row p-2 align-items-start">
           <h5 className="col">
             IssueTicket# <strong>{issueTicket.id}</strong>
           </h5>{" "}
@@ -73,9 +73,13 @@ const IssueTicketDetail = () => {
       </Card>
       <Card className="my-4 border-0">
         <div className="row justify-content-around">
-          <Button className="col-2" color="danger" onClick={handleDelete}>
-            Delete Issue Ticket
-          </Button>{" "}
+          {isAdmin ? (
+            <Button className="col-2" color="danger" onClick={handleDelete}>
+              Delete Issue Ticket
+            </Button>
+          ) : (
+            ""
+          )}
           <Button
             className="col-2"
             color="warning"

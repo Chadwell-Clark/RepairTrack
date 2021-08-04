@@ -7,7 +7,7 @@ const RepairNote = ({ repairNote, issueTicket }) => {
 
   return (
     <Card className="my-4 px-3 border-0 shadow">
-      <div className="row px-3">
+      <div className="row p-2">
         <div className="col-md-12">
           <div className="row">
             <div className="col-md-4">

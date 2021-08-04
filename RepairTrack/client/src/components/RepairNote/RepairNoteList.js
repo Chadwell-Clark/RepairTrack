@@ -15,9 +15,9 @@ const RepairNoteList = ({ issueTicket }) => {
 
   if (repairNotes.length === 0 || repairNotes === null) {
     return (
-      <Card className="border-0 shadow my-4">
-        <div className="row">
-          <h3 className="col-8">
+      <Card className="border-0 shadow my-4 p-3">
+        <div className="row ">
+          <h3 className=" col-8 ml-3">
             {`There are no Repair Notes for IssueTicket #${issueTicket.id}`}{" "}
           </h3>
           <Button

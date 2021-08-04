@@ -18,6 +18,14 @@ export default function Header({ isLoggedIn, isAdmin }) {
   return (
     <div className="">
       <Navbar color="light" light expand="md">
+        <img
+          className="img-fluid "
+          src={
+            (require = `
+              /images/vt5l.png
+                 `)
+          }
+        ></img>
         <NavbarBrand className="mx-5" tag={RRNavLink} to="/">
           <strong>
             <h2>RepairTrack</h2>
@@ -79,19 +87,27 @@ export default function Header({ isLoggedIn, isAdmin }) {
             {!isLoggedIn && (
               <>
                 <NavItem>
-                  <NavLink tag={RRNavLink} to="/login">
-                    Login
+                  <NavLink className="mx-4" tag={RRNavLink} to="/login">
+                    <h3>Login</h3>
                   </NavLink>
                 </NavItem>
                 <NavItem>
-                  <NavLink tag={RRNavLink} to="/register">
-                    Register
+                  <NavLink className="mx-4" tag={RRNavLink} to="/register">
+                    <h3>Register</h3>
                   </NavLink>
                 </NavItem>
               </>
             )}
           </Nav>
         </Collapse>
+        <img
+          className="img-fluid "
+          src={
+            (require = `
+              /images/vt5r.png
+                 `)
+          }
+        ></img>
       </Navbar>
     </div>
   );
