@@ -23,6 +23,7 @@ namespace RepairTrack.Repositories
                                 Model, SerialNumber, FirmWare, ImageLoc, InCommission
                               
                             FROM Inventory 
+                            WHERE InCommission = 1
                            
                         
                     ";
