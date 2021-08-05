@@ -12,11 +12,25 @@ const RepairNoteDetail = () => {
   let ordered = "";
   const { repId, issId, invId } = useParams();
 
+  //   const handleDelete = (e) => {
+  //     e.preventDefault();
+  //     deleteRepairNote(repairNote.id).then(
+  //       history.push(`/issueTicket/${invId}/${issId}`)
+  //     );
+  //   };
+
   const handleDelete = (e) => {
     e.preventDefault();
-    deleteRepairNote(repairNote.id).then(
-      history.push(`/issueTicket/${invId}/${issId}`)
+    var deleteConfirm = window.confirm(
+      ` Are You Sure You Want To Delete RepairNote # ${repId}?`
     );
+    if (deleteConfirm === true) {
+      deleteRepairNote(repId).then(() =>
+        history.push(`/issueTicket/${invId}/${issId}`)
+      );
+    } else {
+      history.push(`/repairNote/${invId}/${issId}/${repId}`);
+    }
   };
   //   console.log(id);
 

@@ -14,9 +14,22 @@ const InventoryDetail = ({ isAdmin }) => {
   const { invId } = useParams();
   const history = useHistory();
 
+  // const handleDelete = (e) => {
+  //   e.preventDefault();
+  //   deleteInventory(invId)
+  //   .then(() => history.push(`/inventory`));
+  // };
+
   const handleDelete = (e) => {
     e.preventDefault();
-    deleteInventory(invId).then(() => history.push(`/inventory`));
+    var deleteConfirm = window.confirm(
+      ` Are You Sure You Want To Delete Inventory # ${invId}?`
+    );
+    if (deleteConfirm === true) {
+      deleteInventory(invId).then(() => history.push(`/inventory`));
+    } else {
+      history.push(() => `/inventory/${invId}`);
+    }
   };
 
   useEffect(() => {
@@ -31,7 +44,7 @@ const InventoryDetail = ({ isAdmin }) => {
 
   return (
     <div className="container">
-      <Card className="my-4 border-0 shadow-sm">
+      <Card className="my-4 p-3 border-0 shadow-sm">
         <div className="row align-items-start">
           <h3 className="col">
             Manufacturer: <strong>{inventoryItem.manufacturer}</strong>
@@ -74,7 +87,7 @@ const InventoryDetail = ({ isAdmin }) => {
                   className="col-2"
                   color="success"
                   tag={Link}
-                  to={`inventory/add`}
+                  to={`/inventory/add`}
                 >
                   New Inventory Item
                 </Button>
