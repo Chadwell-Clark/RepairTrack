@@ -7,7 +7,7 @@ import {
 } from "../../modules/issueTicketManager";
 import RepairNoteList from "../RepairNote/RepairNoteList";
 
-const IssueTicketDetail = (isAdmin) => {
+const IssueTicketDetail = ({ isAdmin }) => {
   const [issueTicket, setIssueTicket] = useState({});
 
   const { issId, invId } = useParams();

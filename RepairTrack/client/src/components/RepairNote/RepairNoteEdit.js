@@ -57,7 +57,7 @@ const RepairNoteEdit = () => {
 
   return (
     <div className="container">
-      <Card className="my-3">
+      <Card className="my-3 border-0 shadow">
         <CardBody>
           <div className="row align-items-start">
             <h5 className="col">
@@ -99,7 +99,7 @@ const RepairNoteEdit = () => {
           </div>
         </CardBody>
       </Card>
-      <Card className="my-3">
+      <Card className="my-3 border-0 shadow">
         <CardBody>
           <Form>
             <FormGroup row>
@@ -147,6 +147,7 @@ const RepairNoteEdit = () => {
                   <option value="0">Parts not Ordered</option>
                   <option value="1">Parts Ordered</option>
                   <option value="2">Parts not Needed</option>
+                  <option value="3">Parts in Stock</option>
                 </Input>
               </Col>
             </FormGroup>

@@ -69,6 +69,18 @@ const InventoryDetail = ({ isAdmin }) => {
         <div className="row justify-content-around ">
           {isAdmin ? (
             <>
+              {isAdmin ? (
+                <Button
+                  className="col-2"
+                  color="success"
+                  tag={Link}
+                  to={`inventory/add`}
+                >
+                  New Inventory Item
+                </Button>
+              ) : (
+                ""
+              )}
               <Button
                 className="col-2"
                 color="warning"
