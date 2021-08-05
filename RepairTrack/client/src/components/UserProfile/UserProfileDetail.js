@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { Card, CardBody, CardHeader, CardFooter, Button } from "reactstrap";
-import { useParams, Link } from "react-router-dom";
+import { Card, CardBody, CardHeader } from "reactstrap";
+import { useParams } from "react-router-dom";
 
 import { getUserById } from "../../modules/userProfileManager";
 
@@ -10,6 +10,7 @@ const UserDetails = () => {
 
   useEffect(() => {
     getUserById(id).then(setUser);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   if (!user) {
@@ -50,11 +51,11 @@ const UserDetails = () => {
             </CardBody>
           </Card>
           <div className="row justify-content-around">
-            <Button
+            {/* <Button
               className="col-2"
               color="warning"
               tag={Link}
-              to={`/userProfile/${user.id}`}
+              to={`/userProfile/edit/${user.id}`}
               //
             >
               Edit
@@ -67,7 +68,7 @@ const UserDetails = () => {
               //
             >
               Delete
-            </Button>{" "}
+            </Button>{" "} */}
           </div>
         </div>
       </div>

@@ -1,24 +1,21 @@
 import React from "react";
 import { Button } from "reactstrap";
-import { Link, useHistory } from "react-router-dom";
-import { deactivateUser } from "../../modules/userProfileManager";
+import { Link } from "react-router-dom";
 
 const UserProfile = ({ user }) => {
-  const history = useHistory();
-
-  const handleDeactivate = (e) => {
-    e.preventDefault();
-    var deactivateConfirm = window.confirm(
-      `Deactivate user ${user.displayName}?`
-    );
-    if (deactivateConfirm == true) {
-      // deactivateUser(user).then(() => {
-      history.push("/users/deactivated");
-      // });
-    } else {
-      history.push("users");
-    }
-  };
+  // const handleDeactivate = (e) => {
+  //   e.preventDefault();
+  //   var deactivateConfirm = window.confirm(
+  //     `Deactivate user ${user.displayName}?`
+  //   );
+  //   if (deactivateConfirm == true) {
+  //     // deactivateUser(user).then(() => {
+  //     history.push("/users/deactivated");
+  //     // });
+  //   } else {
+  //     history.push("users");
+  //   }
+  // };
 
   return (
     <tr>
@@ -35,9 +32,9 @@ const UserProfile = ({ user }) => {
           Details
         </Button>{" "}
       </td>
-      <td>
+      {/* <td>
         <Button color="info">Edit</Button>{" "}
-      </td>
+      </td> */}
       <td>
         {/* <Button color="danger" onClick={handleDeactivate}>
           Deactivate

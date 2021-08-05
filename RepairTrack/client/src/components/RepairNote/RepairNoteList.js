@@ -11,6 +11,7 @@ const RepairNoteList = ({ issueTicket }) => {
 
   useEffect(() => {
     getRepairNotesByIssueTicketId(issueTicket.id).then(setRepairNotes);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   if (repairNotes.length === 0 || repairNotes === null) {
@@ -34,14 +35,24 @@ const RepairNoteList = ({ issueTicket }) => {
   }
 
   return (
-    <div>
+    <Card className="my-3 border-0">
       <h3 className="text-center">
         <strong>Repair Notes</strong>
       </h3>
+      <div className="row justify-content-center">
+        <Button
+          className="col-2"
+          color="primary"
+          tag={Link}
+          to={`/repairNote/add/${invId}/${issId}`}
+        >
+          New Repair Note
+        </Button>{" "}
+      </div>
       {repairNotes.map((item) => (
         <RepairNote issueTicket={issueTicket} repairNote={item} key={item.id} />
       ))}
-    </div>
+    </Card>
   );
 };
 

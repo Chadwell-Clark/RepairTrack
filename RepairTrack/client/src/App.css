@@ -40,3 +40,18 @@
 .main {
   background-color: rgb(97, 117, 117);
 }
+/* #root {
+  min-height: 100vh;
+} */
+/* body {
+  min-height: 100vh;
+} */
+/* .footer {
+  position: sticky;
+  top: 100%;
+} */
+/* .footer {
+  position: fixed;
+  bottom: 0;
+  width: 100vw;
+} */

@@ -1,6 +1,6 @@
 import React from "react";
-import { Button, Card, Alert } from "reactstrap";
-import { Link, useHistory } from "react-router-dom";
+import { Button, Card } from "reactstrap";
+import { Link } from "react-router-dom";
 
 const RepairNote = ({ repairNote, issueTicket }) => {
   //   const history = useHistory();

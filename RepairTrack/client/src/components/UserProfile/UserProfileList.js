@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+
 import { getAllUsers } from "../../modules/userProfileManager";
-import { Button, Table } from "reactstrap";
+import { Table } from "reactstrap";
 import User from "./UserProfile";
 
 const UserProfileList = () => {
@@ -33,9 +33,8 @@ const UserProfileList = () => {
               <th>
                 <h5>Name</h5>
               </th>
-              <th>
-                <h5>Display Name</h5>
-              </th>
+              <th></th>
+
               <th>
                 <h5>User Type</h5>
               </th>

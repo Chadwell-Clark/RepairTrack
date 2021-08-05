@@ -8,11 +8,8 @@ import {
   Button,
   Col,
 } from "reactstrap";
-import React, { useState, useEffect } from "react";
-import { useHistory, useParams } from "react-router-dom";
-
-//   import { getInventoryById } from "../../modules/inventoryManager";
-// import { getCurrentUser } from "../../modules/userManager";
+import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import { addInventory } from "../../modules/inventoryManager";
 
 const InventoryForm = () => {
@@ -23,7 +20,6 @@ const InventoryForm = () => {
   const [inventory, setInventory] = useState(newInventory);
 
   const history = useHistory();
-  const { invId } = useParams();
 
   const handleChange = (e) => {
     const inventoryCopy = { ...inventory };
@@ -59,15 +55,19 @@ const InventoryForm = () => {
       <Card>
         <CardBody>
           <Form>
-            <h5>New Inventory Item</h5>
             <FormGroup row>
-              <Label for="manufacturer" sm={2}>
-                Manufacturer:
-              </Label>
-              <Col sm={8}>
+              <Label sm={2}></Label>
+              <Col sm={8} className="my-3">
+                <h3>New Inventory Item</h3>
+              </Col>
+            </FormGroup>
+            <FormGroup row>
+              <Label for="manufacturer" sm={2}></Label>
+              <Col sm={8} className="my-3">
                 <Input
                   id="manufacturer"
                   type="text"
+                  placeholder="Manufacturer"
                   value={inventory.manufacturer}
                   onChange={handleChange}
                   autoFocus
@@ -75,52 +75,48 @@ const InventoryForm = () => {
               </Col>
             </FormGroup>
             <FormGroup row>
-              <Label for="model" sm={2}>
-                Model:
-              </Label>
-              <Col sm={8}>
+              <Label for="model" sm={2}></Label>
+              <Col sm={8} className="my-3">
                 <Input
                   id="model"
                   type="text"
+                  placeholder="Model"
                   value={inventory.model}
                   onChange={handleChange}
                 />
               </Col>
             </FormGroup>
             <FormGroup row>
-              <Label for="serialNumber" sm={2}>
-                Serial Number:
-              </Label>
-              <Col sm={8}>
+              <Label for="serialNumber" sm={2}></Label>
+              <Col sm={8} className="my-3">
                 <Input
                   id="serialNumber"
                   type="text"
+                  placeholder="Serial Number"
                   value={inventory.serialNumber}
                   onChange={handleChange}
                 />
               </Col>
             </FormGroup>
             <FormGroup row>
-              <Label for="firmWare" sm={2}>
-                FirmWare
-              </Label>
-              <Col sm={8}>
+              <Label for="firmWare" sm={2}></Label>
+              <Col sm={8} className="my-3">
                 <Input
                   id="firmWare"
                   type="text"
+                  placeholder="Firmware"
                   value={inventory.firmWare}
                   onChange={handleChange}
                 />
               </Col>
             </FormGroup>
             <FormGroup row>
-              <Label for="imageLoc" sm={2}>
-                Image Location URL
-              </Label>
-              <Col sm={8}>
+              <Label for="imageLoc" sm={2}></Label>
+              <Col sm={8} className="my-3">
                 <Input
                   id="imageLoc"
                   type="text"
+                  placeholder="Image Location URL"
                   value={inventory.imageLoc}
                   onChange={handleChange}
                 />
@@ -128,14 +124,15 @@ const InventoryForm = () => {
             </FormGroup>
 
             <FormGroup row>
-              <Label for="inCommission" sm={2}>
-                Issue Resolved
-              </Label>
-              <Col sm={8}>
+              <Label for="inCommission" sm={2}></Label>
+
+              <Col sm={2} className="my-3">
+                Inventory in Commission
                 <Input
-                  className="inCommission"
+                  className="inCommission "
                   id="inCommission"
                   type="checkbox"
+                  placeholder="Issue Resolved"
                   checked={inventory.inCommission}
                   //   value={!inventory.inCommission}
                   onChange={handleChecked}

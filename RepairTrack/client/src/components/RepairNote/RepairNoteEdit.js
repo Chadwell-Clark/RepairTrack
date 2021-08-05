@@ -48,6 +48,7 @@ const RepairNoteEdit = () => {
       getIssueandInventoryByIssueTicketId(issId).then(setIssueTicket);
       getCurrentUser().then(setCurrentUser);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   if (!issueTicket || !currentUser) {
@@ -56,7 +57,7 @@ const RepairNoteEdit = () => {
 
   return (
     <div className="container">
-      <Card>
+      <Card className="my-3">
         <CardBody>
           <div className="row align-items-start">
             <h5 className="col">
@@ -69,7 +70,18 @@ const RepairNoteEdit = () => {
             <h5 className="col">
               Model: <strong>{issueTicket?.inventory?.model}</strong>
             </h5>
-            <div className="col">Image goes here</div>
+            <div className="col">
+              <img
+                className="img-fluid"
+                src={
+                  // eslint-disable-next-line no-native-reassign
+                  (require = `
+              /images/${issueTicket?.inventory?.imageLoc}
+                 `)
+                }
+                alt="Not Available"
+              />
+            </div>
           </div>
           <div className="row">
             <h5 className="col">
@@ -87,43 +99,45 @@ const RepairNoteEdit = () => {
           </div>
         </CardBody>
       </Card>
-      <Card>
+      <Card className="my-3">
         <CardBody>
           <Form>
-            <h5>{`Edit Repair Note  For Issue Ticket # ${issId}`}</h5>
             <FormGroup row>
-              <Label for="note" sm={2}>
-                Notes on Repair:
-              </Label>
-              <Col sm={10}>
+              <Label sm={2}></Label>
+              <Col sm={8} className="my-3">
+                <h5>{`Edit Repair Note  For Issue Ticket # ${issId}`}</h5>
+              </Col>
+            </FormGroup>
+
+            <FormGroup row>
+              <Label for="note" sm={2}></Label>
+              <Col sm={8} className="my-3">
                 <Input
                   id="note"
                   type="textarea"
-                  rows="10"
+                  rows="6"
+                  placeholder="Detailed notes on repair - Required"
                   defaultValue={repairNote.note}
                   onChange={handleChange}
                 />
               </Col>
             </FormGroup>
             <FormGroup row>
-              <Label for="partsNeeded" sm={2}>
-                Parts Needed:
-              </Label>
-              <Col sm={10}>
+              <Label for="partsNeeded" sm={2}></Label>
+              <Col sm={8} className="my-3">
                 <Input
                   id="partsNeeded"
                   type="textarea"
-                  rows="6"
+                  rows="4"
+                  placeholder="Parts needed for repair - Not Required"
                   defaultValue={repairNote.partsNeeded}
                   onChange={handleChange}
                 />
               </Col>
             </FormGroup>
             <FormGroup row>
-              <Label for="partsOrdered" sm={2}>
-                Parts Ordered:
-              </Label>
-              <Col sm={10}>
+              <Label for="partsOrdered" sm={2}></Label>
+              <Col sm={8} className="my-3">
                 <Input
                   id="partsOrdered"
                   type="select"
@@ -138,7 +152,7 @@ const RepairNoteEdit = () => {
             </FormGroup>
             <FormGroup row>
               <Label sm={2}></Label>
-              <Col sm={10}>
+              <Col sm={8} className="my-3">
                 <Button
                   className=""
                   color="success"
