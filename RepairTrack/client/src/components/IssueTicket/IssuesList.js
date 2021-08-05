@@ -3,9 +3,8 @@ import { getAllIssueTickets } from "../../modules/issueTicketManager";
 // import { Button, Table } from "reactstrap";
 // import { Link } from "react-router-dom";
 import IssueTicket from "./IssueTicket";
-import { Card } from "reactstrap";
 
-const IssuesList = ({ inventoryId, inventoryItem }) => {
+const IssuesList = () => {
   const [issueTickets, setIssueTickets] = useState([]);
 
   useEffect(() => {

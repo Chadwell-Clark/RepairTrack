@@ -48,6 +48,7 @@ const IssueTicketEdit = () => {
     if (issId !== 0) {
       getIssueandInventoryByIssueTicketId(issId).then(setIssueTicket);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   if (!issueTicket) {
@@ -73,10 +74,12 @@ const IssueTicketEdit = () => {
               <img
                 className="img-fluid"
                 src={
+                  // eslint-disable-next-line no-native-reassign
                   (require = `
               /images/${issueTicket?.inventory?.imageLoc}
                  `)
                 }
+                alt="Not available"
               />
             </div>
           </div>

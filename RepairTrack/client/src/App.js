@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router } from "react-router-dom";
 import { Spinner } from "reactstrap";
 import Header from "./components/Header";
+import Footer from "./components/Footer";
 import ApplicationViews from "./components/ApplicationViews";
 import { onLoginStatusChange } from "./modules/authManager";
 import { getCurrentUserType } from "./modules/userProfileManager";
@@ -35,11 +36,12 @@ function App() {
     return <Spinner className="app-spinner dark" />;
   }
 
-  console.log("ADMIN", isAdmin);
+  // console.log("ADMIN", isAdmin);
   return (
     <Router>
       <Header isLoggedIn={isLoggedIn} isAdmin={isAdmin} />
       <ApplicationViews isLoggedIn={isLoggedIn} isAdmin={isAdmin} />
+      <Footer isLoggedIn={isLoggedIn} isAdmin={isAdmin} />
     </Router>
   );
 }

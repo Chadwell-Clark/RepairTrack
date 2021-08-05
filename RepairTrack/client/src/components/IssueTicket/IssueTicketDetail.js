@@ -46,19 +46,20 @@ const IssueTicketDetail = (isAdmin) => {
           <div className="col">
             <img
               className="img-fluid"
-              alt="Image not available"
               src={
+                // eslint-disable-next-line no-native-reassign
                 (require = `
               /images/${issueTicket.inventory?.imageLoc}
                  `)
               }
+              alt="Not available"
             />
           </div>
           <div className="row">
             <h5 className="col-5">
               Serial # <strong>{issueTicket.inventory?.serialNumber}</strong>
             </h5>
-            {issueTicket.isResolved == 0 ? (
+            {issueTicket.isResolved === false ? (
               <Alert className="text-center col-2" color="danger">
                 <strong>Unresolved</strong>
               </Alert>

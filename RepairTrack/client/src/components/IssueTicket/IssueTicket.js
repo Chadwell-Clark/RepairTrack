@@ -1,11 +1,8 @@
 import React from "react";
 import { Button, Card, Alert } from "reactstrap";
-import { Link, useHistory, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const IssueTicket = ({ issueTicket }) => {
-  //   const history = useHistory();
-  const { invId } = useParams();
-
   return (
     <Card className="my-4 border-0 shadow">
       <div className="row p-2">
@@ -23,7 +20,7 @@ const IssueTicket = ({ issueTicket }) => {
             </div>
             <div className="col-md-2 mr-3">
               <>
-                {issueTicket.isResolved == 0 ? (
+                {issueTicket.isResolved === false ? (
                   <Alert className="text-center" color="danger">
                     <strong>Unresolved</strong>
                   </Alert>
@@ -49,8 +46,6 @@ const IssueTicket = ({ issueTicket }) => {
                   color="primary"
                   tag={Link}
                   to={`/IssueTicket/${issueTicket.inventoryId}/${issueTicket.id}`}
-                  //   type="submit"
-                  //   onClick={handleClick}
                 >
                   Details
                 </Button>{" "}

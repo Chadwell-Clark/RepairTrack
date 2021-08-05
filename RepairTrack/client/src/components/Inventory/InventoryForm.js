@@ -8,11 +8,8 @@ import {
   Button,
   Col,
 } from "reactstrap";
-import React, { useState, useEffect } from "react";
-import { useHistory, useParams } from "react-router-dom";
-
-//   import { getInventoryById } from "../../modules/inventoryManager";
-// import { getCurrentUser } from "../../modules/userManager";
+import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import { addInventory } from "../../modules/inventoryManager";
 
 const InventoryForm = () => {
@@ -23,7 +20,6 @@ const InventoryForm = () => {
   const [inventory, setInventory] = useState(newInventory);
 
   const history = useHistory();
-  const { invId } = useParams();
 
   const handleChange = (e) => {
     const inventoryCopy = { ...inventory };

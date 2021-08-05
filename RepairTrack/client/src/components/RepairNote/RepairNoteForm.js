@@ -52,6 +52,7 @@ const RepairNoteForm = () => {
       getIssueandInventoryByIssueTicketId(issId).then(setIssueTicket);
       getCurrentUser().then(setCurrentUser);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   if (!issueTicket || !currentUser) {
@@ -76,8 +77,9 @@ const RepairNoteForm = () => {
             <div className="col">
               <img
                 className="img-fluid"
-                alt="Image not available"
+                alt="Not available"
                 src={
+                  // eslint-disable-next-line no-native-reassign
                   (require = `
               /images/${issueTicket.inventory?.imageLoc}
                  `)

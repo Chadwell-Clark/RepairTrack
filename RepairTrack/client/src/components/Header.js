@@ -21,10 +21,12 @@ export default function Header({ isLoggedIn, isAdmin }) {
         <img
           className="img-fluid "
           src={
+            // eslint-disable-next-line no-native-reassign
             (require = `
               /images/vt5l.png
                  `)
           }
+          alt="Tube Icon"
         ></img>
         <NavbarBrand className="mx-5" tag={RRNavLink} to="/">
           <strong>
@@ -103,10 +105,12 @@ export default function Header({ isLoggedIn, isAdmin }) {
         <img
           className="img-fluid "
           src={
+            // eslint-disable-next-line no-native-reassign
             (require = `
               /images/vt5r.png
                  `)
           }
+          alt="Tube Icon"
         ></img>
       </Navbar>
     </div>

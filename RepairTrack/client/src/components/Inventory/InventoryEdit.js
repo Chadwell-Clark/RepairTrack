@@ -51,6 +51,7 @@ const InventoryEdit = () => {
     if (invId !== 0) {
       getInventoryById(invId).then(setInventory);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   if (!inventory) {
@@ -59,6 +60,40 @@ const InventoryEdit = () => {
 
   return (
     <div className="container">
+      <Card className="my-4 p-3 border-0 shadow-sm">
+        <div className="row align-items-start">
+          <h3 className="col">
+            Manufacturer: <strong>{inventory.manufacturer}</strong>
+          </h3>{" "}
+          <h3 className="col">
+            Model: <strong>{inventory.model}</strong>
+          </h3>
+          <div className="col">
+            <img
+              className="img-fluid"
+              src={
+                  // eslint-disable-next-line no-native-reassign
+                (require = `
+              /images/${inventory.imageLoc}
+                 `)
+              }
+              alt="Not Available"
+            />
+          </div>
+          <div className="row">
+            <h3 className="col">
+              Serial Number: <strong>{inventory.serialNumber}</strong>
+            </h3>
+            {inventory?.firmWare ? (
+              <h3 className="col">
+                Firmware: <strong>{inventory.firmWare}</strong>
+              </h3>
+            ) : (
+              ""
+            )}
+          </div>
+        </div>
+      </Card>
       <Card>
         <CardBody>
           <Form>

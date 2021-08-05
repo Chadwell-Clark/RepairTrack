@@ -52,6 +52,7 @@ const IssueTicketForm = () => {
       getInventoryById(invId).then(setInventory);
       //   getCurrentUser().then(setCurrentUser);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   if (!inventory) {
@@ -76,10 +77,12 @@ const IssueTicketForm = () => {
               <img
                 className="img-fluid"
                 src={
+                  // eslint-disable-next-line no-native-reassign
                   (require = `
               /images/${inventory?.imageLoc}
                  `)
                 }
+                alt="Not Available"
               />
             </div>
           </div>

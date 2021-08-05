@@ -1,13 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {
-  Button,
-  Card,
-  CardBody,
-  CardHeader,
-  CardFooter,
-  Badge,
-  Label,
-} from "reactstrap";
+import { Button, Card, CardBody, CardHeader } from "reactstrap";
 import { Link, useHistory, useParams } from "react-router-dom";
 import {
   getRepairNoteById,
@@ -70,10 +62,12 @@ const RepairNoteDetail = () => {
               <img
                 className="img-fluid"
                 src={
+                  // eslint-disable-next-line no-native-reassign
                   (require = `
               /images/${repairNote?.issueTicket?.inventory?.imageLoc}
                  `)
                 }
+                alt="Not Available"
               />
             </div>
           </div>

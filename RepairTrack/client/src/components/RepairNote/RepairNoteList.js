@@ -11,6 +11,7 @@ const RepairNoteList = ({ issueTicket }) => {
 
   useEffect(() => {
     getRepairNotesByIssueTicketId(issueTicket.id).then(setRepairNotes);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   if (repairNotes.length === 0 || repairNotes === null) {

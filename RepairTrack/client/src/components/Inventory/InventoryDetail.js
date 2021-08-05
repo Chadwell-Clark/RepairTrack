@@ -3,14 +3,13 @@ import {
   getInventoryById,
   deleteInventory,
 } from "../../modules/inventoryManager";
-import { Button, Table, Card } from "reactstrap";
+import { Button, Card } from "reactstrap";
 import { Link, useParams, useHistory } from "react-router-dom";
 
 import IssueTicketList from "../IssueTicket/IssueTicketList";
 
 const InventoryDetail = ({ isAdmin }) => {
   const [inventoryItem, setInventoryItem] = useState([]);
-  const [issuetickets, setIssueTickets] = useState([]);
 
   const { invId } = useParams();
   const history = useHistory();
@@ -44,10 +43,12 @@ const InventoryDetail = ({ isAdmin }) => {
             <img
               className="img-fluid"
               src={
+                // eslint-disable-next-line no-native-reassign
                 (require = `
               /images/${inventoryItem.imageLoc}
                  `)
               }
+              alt="Not Available"
             />
           </div>
           <div className="row">
@@ -64,7 +65,7 @@ const InventoryDetail = ({ isAdmin }) => {
           </div>
         </div>
       </Card>
-      <Card className="border-0 ">
+      <Card className=" my-3 border-0 ">
         <div className="row justify-content-around ">
           {isAdmin ? (
             <>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { getAllInventory } from "../../modules/inventoryManager";
-import { Button, Table, Card, CardBody } from "reactstrap";
+import { Button, Table, Card } from "reactstrap";
 import { Link } from "react-router-dom";
 import Inventory from "./Inventory";
 
