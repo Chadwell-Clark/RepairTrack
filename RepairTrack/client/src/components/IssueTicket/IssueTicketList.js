@@ -20,7 +20,7 @@ const IssueTicketList = ({ inventoryItem }) => {
     return (
       <div>
         <div className="row mt-4 ">
-          <h1 className="m-3 text-center">
+          <h1 className=" text-center">
             <strong>Issue Tickets</strong>
           </h1>
           <div className="col-5"></div>

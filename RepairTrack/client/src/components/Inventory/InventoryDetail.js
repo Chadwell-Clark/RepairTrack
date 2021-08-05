@@ -14,9 +14,10 @@ const InventoryDetail = ({ isAdmin }) => {
 
   const { invId } = useParams();
   const history = useHistory();
+
   const handleDelete = (e) => {
     e.preventDefault();
-    deleteInventory(invId).then(history.push(`/inventory`));
+    deleteInventory(invId).then(() => history.push(`/inventory`));
   };
 
   useEffect(() => {
@@ -63,7 +64,7 @@ const InventoryDetail = ({ isAdmin }) => {
           </div>
         </div>
       </Card>
-      <Card className="border-0 shadow-sm">
+      <Card className="border-0 ">
         <div className="row justify-content-around ">
           {isAdmin ? (
             <>

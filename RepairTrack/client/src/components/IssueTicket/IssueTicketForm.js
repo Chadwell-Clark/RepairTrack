@@ -60,7 +60,7 @@ const IssueTicketForm = () => {
 
   return (
     <div className="container">
-      <Card>
+      <Card className="my-3">
         <CardBody>
           <div className="row align-items-start">
             <h5 className="col">
@@ -93,58 +93,34 @@ const IssueTicketForm = () => {
           </div>
         </CardBody>
       </Card>
-      <Card>
+      <Card className="my-3">
         <CardBody>
           <Form>
-            <h5>{`New Issue Ticket For Inventory Item # ${invId}`}</h5>
             <FormGroup row>
-              <Label for="issue" sm={2}>
-                Issue:
-              </Label>
-              <Col sm={10}>
+              <Label sm={2}></Label>
+              <Col sm={8} className="my-3">
+                <h5>{`New Issue Ticket For Inventory Item # ${invId}`}</h5>
+              </Col>
+            </FormGroup>
+            {/* <h5>{`New Issue Ticket For Inventory Item # ${invId}`}</h5> */}
+            <FormGroup row>
+              <Label for="issue" sm={2}></Label>
+              <Col sm={8}>
                 <Input
                   id="issue"
                   type="textarea"
-                  rows="10"
+                  rows="6"
+                  placeholder="Please describe the Issue in detail - Required"
                   value={issueTicket.issue}
                   onChange={handleChange}
                   autoFocus
                 />
               </Col>
             </FormGroup>
-            {/* <FormGroup row>
-              <Label for="partsNeeded" sm={2}>
-                Parts Needed:
-              </Label>
-              <Col sm={10}>
-                <Input
-                  id="partsNeeded"
-                  type="textarea"
-                  rows="6"
-                  value={issueTicket.partsNeeded}
-                  onChange={handleChange}
-                />
-              </Col>
-            </FormGroup> */}
-            {/* <FormGroup row>
-              <Label for="isResolved" sm={2}>
-                Parts Ordered:
-              </Label>
-              <Col sm={10}>
-                <Input
-                  id="isResolved"
-                  type="select"
-                  value={issueTicket.isResolved}
-                  onChange={handleChange}
-                >
-                  <option value="0">Unresolved</option>
-                  <option value="1">Resolved</option>
-                </Input>
-              </Col>
-            </FormGroup> */}
-            <FormGroup row>
+
+            <FormGroup row className="my-3">
               <Label sm={2}></Label>
-              <Col sm={10}>
+              <Col sm={8}>
                 <Button
                   className=""
                   color="success"

@@ -91,17 +91,20 @@ const IssueTicketEdit = () => {
       <Card className="mt-3">
         <CardBody>
           <Form>
-            <h5>{`Edit Issue Ticket # ${issId} For Inventory Item # ${invId}`}</h5>
-
             <FormGroup row>
-              <Label for="issue" sm={2}>
-                Issue:
-              </Label>
+              <Label sm={2}></Label>
+              <Col sm={8} className="my-3">
+                <h5>{`Edit Issue Ticket # ${issId} For Inventory Item # ${invId}`}</h5>
+              </Col>
+            </FormGroup>
+            <FormGroup row>
+              <Label for="issue" sm={2}></Label>
               <Col sm={8}>
                 <Input
                   id="issue"
                   type="textarea"
                   rows="8"
+                  placeholder="Please describe the Issue in detail - Required"
                   value={issueTicket.issue}
                   onChange={handleChange}
                 />
@@ -109,10 +112,9 @@ const IssueTicketEdit = () => {
             </FormGroup>
 
             <FormGroup row>
-              <Label for="isResolved" sm={2}>
+              <Label for="isResolved" sm={2}></Label>
+              <Col sm={8} className="my-3">
                 Issue Resolved
-              </Label>
-              <Col sm={8}>
                 <Input
                   className="isResolved"
                   id="isResolved"

@@ -24,16 +24,15 @@ export default function Login() {
           {/* <img className="logo1" src={logo1} alt="logo1" /> */}
           <fieldset className="loginform m-3">
             <FormGroup row>
-              <div sm={2}>{""}</div>
+              <Label sm={2}></Label>
               <Col sm={8}>
                 <h3>User Login</h3>
               </Col>
             </FormGroup>
+
             <FormGroup row>
-              <Label for="email" sm={2}>
-                Email
-              </Label>
-              <Col sm={8}>
+              <Label for="email" sm={2}></Label>
+              <Col sm={8} className="my-3">
                 <Input
                   id="email"
                   type="text"
@@ -43,10 +42,9 @@ export default function Login() {
                 />
               </Col>
             </FormGroup>
+
             <FormGroup row>
-              <Label for="password" sm={2}>
-                Password
-              </Label>
+              <Label for="password" sm={2}></Label>
               <Col sm={8} className="my-3">
                 <Input
                   id="password"
@@ -56,13 +54,22 @@ export default function Login() {
                 />
               </Col>
             </FormGroup>
-            <br></br>
-            <FormGroup>
-              <Button className="loginbutton">Login</Button>
+
+            <FormGroup row className="my-3">
+              <Label sm={2}></Label>
+              <Col sm={8}>
+                <Button className="loginbutton">Login</Button>
+              </Col>
             </FormGroup>
-            <em>
-              Don't have an account? <Link to="register">Sign up here</Link>
-            </em>
+
+            <FormGroup row className="my-3">
+              <Label row sm={2}></Label>
+              <Col sm={8}>
+                <em>
+                  Don't have an account? <Link to="register">Sign up here</Link>
+                </em>
+              </Col>
+            </FormGroup>
           </fieldset>
         </Form>
       </Card>

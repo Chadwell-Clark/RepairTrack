@@ -66,7 +66,7 @@ export default function Header({ isLoggedIn, isAdmin }) {
                   <>
                     <NavItem className="mx-4">
                       <NavLink tag={RRNavLink} to="/userProfile">
-                        <h3>User Profiles</h3>
+                        <h3>Users</h3>
                       </NavLink>
                     </NavItem>
                   </>

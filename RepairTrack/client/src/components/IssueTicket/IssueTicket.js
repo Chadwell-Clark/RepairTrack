@@ -11,17 +11,17 @@ const IssueTicket = ({ issueTicket }) => {
       <div className="row p-2">
         <div className="col-md-12">
           <div className="row">
-            <div className="col-md-4">
-              <h4 className=" ml-4">
+            <div className="col-md-3">
+              <h4 className="">
                 IssueTicket#: <strong>{issueTicket.id}</strong>
               </h4>
             </div>
-            <div className="col-md-4">
+            <div className="col-md-7">
               <h4 className="text-center">
                 CreationDate: <strong>{issueTicket.dateCreated}</strong>
               </h4>
             </div>
-            <div className="col-md-4">
+            <div className="col-md-2 mr-3">
               <>
                 {issueTicket.isResolved == 0 ? (
                   <Alert className="text-center" color="danger">

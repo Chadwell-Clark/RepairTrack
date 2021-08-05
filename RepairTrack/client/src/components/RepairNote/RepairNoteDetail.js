@@ -6,6 +6,7 @@ import {
   CardHeader,
   CardFooter,
   Badge,
+  Label,
 } from "reactstrap";
 import { Link, useHistory, useParams } from "react-router-dom";
 import {
@@ -52,9 +53,9 @@ const RepairNoteDetail = () => {
 
   return (
     <div className="container">
-      <Card>
+      <Card className="my-3 border-0 shadow">
         <CardBody>
-          <div className="row align-items-start">
+          <div className="row ">
             <h5 className="col">
               IssueTicket # <strong>{repairNote.issueTicket?.id}</strong>
             </h5>{" "}
@@ -65,37 +66,54 @@ const RepairNoteDetail = () => {
             <h5 className="col">
               Model: <strong>{repairNote.issueTicket?.inventory.model}</strong>
             </h5>
-            <div className="col">Image goes here</div>
+            <div className="col">
+              <img
+                className="img-fluid"
+                src={
+                  (require = `
+              /images/${repairNote?.issueTicket?.inventory?.imageLoc}
+                 `)
+                }
+              />
+            </div>
+          </div>
+          <div className="row ">
             <h5 className="col">
               Serial Number:{" "}
               <strong>{repairNote.issueTicket?.inventory.serialNumber}</strong>
             </h5>
+          </div>
+          <div className="row ">
+            <h5 className="col">
+              Issue: <strong>{repairNote.issueTicket?.issue}</strong>
+            </h5>
             {/* <Button
-              className="col"
-              color="primary"
-              tag={Link}
-              to={`/repairNote`}
-            >
-              New Issue
-            </Button>{" "} */}
-            <Button
-              className="col"
+              className=""
               color="primary"
               tag={Link}
               to={`/repairNote/add/${invId}/${issId}`}
             >
               New Repair Note
-            </Button>{" "}
-            <h5>
-              Issue: <strong>{repairNote.issueTicket?.issue}</strong>
-            </h5>
+            </Button>{" "} */}
           </div>
         </CardBody>
+      </Card>
+      <Card className="border-0">
+        <div className="row justify-content-center">
+          <Button
+            className="col-2"
+            color="primary"
+            tag={Link}
+            to={`/repairNote/add/${invId}/${issId}`}
+          >
+            New Repair Note
+          </Button>{" "}
+        </div>
       </Card>
       {/* {RepairNote.id !== undefined ? (
         <RepairNotesList RepairNote={RepairNote} />
       ) : null} */}
-      <Card>
+      <Card className="my-3 border-0 shadow">
         <CardHeader>
           <div className="row align-items-start">
             <h4 className="col">
@@ -120,11 +138,11 @@ const RepairNoteDetail = () => {
             Parts Needed: <strong>{repairNote.partsNeeded}</strong>
           </h4>
         </CardBody>
-        <CardFooter>
-          <div className="row">
-            <h4 className="col-9">Parts: {ordered}</h4>
+        <CardBody>
+          <div className="row justify-content-between">
+            <h4 className="col-4">Parts: {ordered} </h4>
             <Button
-              className="col"
+              className="col-2"
               color="warning"
               tag={Link}
               to={`/repairNote/edit/${invId}/${issId}/${repId}`}
@@ -134,7 +152,7 @@ const RepairNoteDetail = () => {
               Edit
             </Button>{" "}
             <Button
-              className="col"
+              className="col-2"
               color="danger"
               //   tag={Link}
               //   to={``}
@@ -144,7 +162,7 @@ const RepairNoteDetail = () => {
               Delete
             </Button>{" "}
           </div>
-        </CardFooter>
+        </CardBody>
       </Card>
     </div>
   );

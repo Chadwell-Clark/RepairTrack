@@ -5,7 +5,7 @@ import {
   getIssueandInventoryByIssueTicketId,
   deleteIssueTicket,
 } from "../../modules/issueTicketManager";
-import RepairNotesList from "../RepairNote/RepairNoteList";
+import RepairNoteList from "../RepairNote/RepairNoteList";
 
 const IssueTicketDetail = (isAdmin) => {
   const [issueTicket, setIssueTicket] = useState({});
@@ -15,7 +15,9 @@ const IssueTicketDetail = (isAdmin) => {
 
   const handleDelete = (e) => {
     e.preventDefault();
-    deleteIssueTicket(issueTicket.id).then(history.push(`/inventory/${invId}`));
+    deleteIssueTicket(issueTicket.id).then(() =>
+      history.push(`/inventory/${invId}`)
+    );
   };
 
   useEffect(() => {
@@ -53,15 +55,15 @@ const IssueTicketDetail = (isAdmin) => {
             />
           </div>
           <div className="row">
-            <h5 className="col-4">
+            <h5 className="col-5">
               Serial # <strong>{issueTicket.inventory?.serialNumber}</strong>
             </h5>
             {issueTicket.isResolved == 0 ? (
-              <Alert className="text-center col-3" color="danger">
+              <Alert className="text-center col-2" color="danger">
                 <strong>Unresolved</strong>
               </Alert>
             ) : (
-              <Alert className="text-center col-3" color="success">
+              <Alert className="text-center col-2" color="success">
                 <strong>Resolved</strong>
               </Alert>
             )}
@@ -88,19 +90,19 @@ const IssueTicketDetail = (isAdmin) => {
           >
             Edit Issue Ticket
           </Button>{" "}
-          <Button
+          {/* <Button
             className="col-2"
             color="primary"
             tag={Link}
             to={`/repairNote/add/${invId}/${issId}`}
           >
             New Repair Note
-          </Button>{" "}
+          </Button>{" "} */}
         </div>
       </Card>
       {/* <Card className="my-4 shadow"> */}
       {issueTicket.id !== undefined ? (
-        <RepairNotesList issueTicket={issueTicket} />
+        <RepairNoteList issueTicket={issueTicket} />
       ) : null}
       {/* </Card> */}
     </div>

@@ -165,7 +165,8 @@ namespace RepairTrack.Repositories
                 using (var cmd = conn.CreateCommand())
                 {
                     cmd.CommandText = @"
-                        DELETE FROM RepairNote WHERE IssueTicketId = IssueTicket.Id;
+                        
+                        DELETE FROM RepairNote WHERE IssueTicketId = (Select Id FROM IssueTicket Where InventoryId = @id)
                         DELETE FROM IssueTicket WHERE InventoryId = @id
                         DELETE FROM Inventory WHERE id = @id";
 
