@@ -7,7 +7,7 @@ import {
 } from "../../modules/issueTicketManager";
 import RepairNoteList from "../RepairNote/RepairNoteList";
 
-const IssueTicketDetail = (isAdmin) => {
+const IssueTicketDetail = ({ isAdmin }) => {
   const [issueTicket, setIssueTicket] = useState({});
 
   const { issId, invId } = useParams();
@@ -15,9 +15,16 @@ const IssueTicketDetail = (isAdmin) => {
 
   const handleDelete = (e) => {
     e.preventDefault();
-    deleteIssueTicket(issueTicket.id).then(() =>
-      history.push(`/inventory/${invId}`)
+    var deleteConfirm = window.confirm(
+      ` Are You Sure You Want To Delete Issue Ticket # ${issueTicket.id}?`
     );
+    if (deleteConfirm === true) {
+      deleteIssueTicket(issueTicket.id).then(() =>
+        history.push(`/inventory/${invId}`)
+      );
+    } else {
+      history.push(() => `/issueTicket/${invId}/${issId}`);
+    }
   };
 
   useEffect(() => {
@@ -91,21 +98,12 @@ const IssueTicketDetail = (isAdmin) => {
           >
             Edit Issue Ticket
           </Button>{" "}
-          {/* <Button
-            className="col-2"
-            color="primary"
-            tag={Link}
-            to={`/repairNote/add/${invId}/${issId}`}
-          >
-            New Repair Note
-          </Button>{" "} */}
         </div>
       </Card>
-      {/* <Card className="my-4 shadow"> */}
+
       {issueTicket.id !== undefined ? (
         <RepairNoteList issueTicket={issueTicket} />
       ) : null}
-      {/* </Card> */}
     </div>
   );
 };

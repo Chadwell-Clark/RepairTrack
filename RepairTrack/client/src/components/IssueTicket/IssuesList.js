@@ -20,7 +20,7 @@ const IssuesList = () => {
         <strong>Issue Tickets</strong>
       </h1>
       {issueTickets.map((item) => (
-        <IssueTicket issueTicket={item} key={item.id} />
+        <IssueTicket issueTicket={item} key={`Ticket-${item.id}`} />
       ))}
     </div>
   );

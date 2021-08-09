@@ -12,7 +12,7 @@ const IssueTicketList = ({ inventoryItem }) => {
   useEffect(() => {
     getIssueTicketsByInventoryId(invId)
       .then(setIssueTickets)
-      .then(() => setIsLoaded(true));
+      .then(setIsLoaded(true));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

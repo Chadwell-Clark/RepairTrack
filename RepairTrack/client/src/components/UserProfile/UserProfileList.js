@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 import { getAllUsers } from "../../modules/userProfileManager";
-import { Table } from "reactstrap";
+import { Table, Card } from "reactstrap";
 import User from "./UserProfile";
 
 const UserProfileList = () => {

@@ -35,72 +35,69 @@ export default function Header({ isLoggedIn, isAdmin }) {
         </NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
-          <Nav className="mr-auto d-flex justify-content-around" navbar>
-            {/* When isLoggedIn === true, we will render these links */}
-            {isLoggedIn && (
-              <>
-                {/* <NavItem>
-                  <NavLink tag={RRNavLink} to="/">
-                    Home
-                  </NavLink>
-                </NavItem> */}
-                <NavItem className="mx-4">
-                  <NavLink tag={RRNavLink} to="/inventory">
-                    <h3>Inventory</h3>
-                  </NavLink>
-                </NavItem>
-                <NavItem className="mx-4">
-                  <NavLink
-                    tag={RRNavLink}
-                    className="nav-link"
-                    to="/issueTicket"
-                    activeClassName="active"
-                  >
-                    <h3>Issue Tickets</h3>
-                  </NavLink>
-                </NavItem>
-                {/* <NavItem>
+          <div className="row">
+            <Nav className="d-flex justify-content-center" navbar>
+              {/* When isLoggedIn === true, we will render these links */}
+              {isLoggedIn && (
+                <>
+                  <NavItem className="mx-4">
+                    <NavLink tag={RRNavLink} to="/inventory">
+                      <h3>Inventory</h3>
+                    </NavLink>
+                  </NavItem>
+                  <NavItem className="mx-4">
+                    <NavLink
+                      tag={RRNavLink}
+                      className="nav-link"
+                      to="/issueTicket"
+                      activeClassName="active"
+                    >
+                      <h3>Issue Tickets</h3>
+                    </NavLink>
+                  </NavItem>
+                  {/* <NavItem>
                   <NavLink tag={RRNavLink} className="nav-link" to="/post/add">
                     New Post
                   </NavLink>
                 </NavItem> */}
-                {isAdmin && (
-                  <>
-                    <NavItem className="mx-4">
-                      <NavLink tag={RRNavLink} to="/userProfile">
-                        <h3>Users</h3>
-                      </NavLink>
-                    </NavItem>
-                  </>
-                )}
-                <NavItem className="mx-4">
-                  <a
-                    aria-current="page"
-                    className="nav-link"
-                    style={{ cursor: "pointer" }}
-                    onClick={logout}
-                    href="/"
-                  >
-                    <h3>Logout</h3>
-                  </a>
-                </NavItem>
-              </>
-            )}
-            {!isLoggedIn && (
-              <>
-                <NavItem>
-                  <NavLink className="mx-4" tag={RRNavLink} to="/login">
-                    <h3>Login</h3>
-                  </NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink className="mx-4" tag={RRNavLink} to="/register">
-                    <h3>Register</h3>
-                  </NavLink>
-                </NavItem>
-              </>
-            )}
-          </Nav>
+                  {isAdmin && (
+                    <>
+                      <NavItem className="mx-4">
+                        <NavLink tag={RRNavLink} to="/userProfile">
+                          <h3>Users</h3>
+                        </NavLink>
+                      </NavItem>
+                    </>
+                  )}
+                  <NavItem className="mx-4">
+                    <a
+                      aria-current="page"
+                      className="nav-link"
+                      style={{ cursor: "pointer" }}
+                      onClick={logout}
+                      href="/"
+                    >
+                      <h3>Logout</h3>
+                    </a>
+                  </NavItem>
+                </>
+              )}
+              {!isLoggedIn && (
+                <>
+                  <NavItem>
+                    <NavLink className="mx-4" tag={RRNavLink} to="/login">
+                      <h3>Login</h3>
+                    </NavLink>
+                  </NavItem>
+                  <NavItem>
+                    <NavLink className="mx-4" tag={RRNavLink} to="/register">
+                      <h3>Register</h3>
+                    </NavLink>
+                  </NavItem>
+                </>
+              )}
+            </Nav>
+          </div>
         </Collapse>
         <img
           className="img-fluid "

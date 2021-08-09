@@ -25,6 +25,7 @@ code {
 
 .footer {
   background-color: rgb(252, 252, 250);
+
   position: sticky;
   top: 100%;
 
